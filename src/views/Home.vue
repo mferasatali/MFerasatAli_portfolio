@@ -10,13 +10,13 @@
     <div class="d-flex align-center flex-row flex-wrap mt-6">
       <div class="image">
         <div
-          class="base-card mr-md-4 d-flex align-center flex-column"
+          class="base-card mr-md-4 d-flex align-center flex-column mx-8"
           ref="image"
-          style="min-height: 360px"
+          style="min-height: 400px"
         >
-          <img src="@/assets/mferasatali.png" alt="ferasat" />
+          <img src="@/assets/mferasatali.png" alt="ferasat" height="500px" />
           <p class="header-simple mt-4 text-grey">
-            {{ `${experienceYears - 1}.${experienceMonths}` }}+ Years
+            {{ `${experienceYears - 1}.${experienceMonths}` }}+ Years of Professional Experience
           </p>
         </div>
       </div>
@@ -110,19 +110,7 @@ const calculateExperience = () => {
   &-tagline {
     gap: 0.5rem;
     border-radius: 5rem;
-    border: 2px solid map-get($map: $dark-colors, $key: "border");
-    background: linear-gradient(
-        177.98deg,
-        rgba(28, 83, 244, 0.1) -94.88%,
-        rgba(6, 3, 27, 0.5) 51.01%,
-        rgba(28, 83, 244, 0.1) 146.6%
-      ),
-      linear-gradient(
-        0deg,
-        map-get($map: $dark-colors, $key: "border"),
-        map-get($map: $dark-colors, $key: "border")
-      );
-    box-shadow: 0px 4px 40px 0px rgba(103, 39, 236, 0.16);
+    color: #ffffff;
     line-height: 1rem;
   }
 
@@ -132,7 +120,7 @@ const calculateExperience = () => {
     }
 
     .unique-title {
-      background: linear-gradient(180deg, #ffffff 9.77%, #0a0424 108.98%);
+      background: linear-gradient(180deg, #ffffff 9.77%, #b4a383 108.98%);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -144,14 +132,12 @@ const calculateExperience = () => {
 
   &-description {
     width: 70%;
+    margin-top: 3rem !important;
+    color: #ffffff  !important;
   }
 }
 
 .base-card {
-  padding: 1.75rem 1.5rem !important;
-  background: #0a0b21 !important;
-  box-shadow: 0 6px 32px rgba(44, 50, 169, 0.04) !important;
-  border-radius: 20px !important;
   opacity: 0;
   display: none;
   transform: translateX(-200px) translateY(-50px);
@@ -165,5 +151,8 @@ const calculateExperience = () => {
     width: 100%;
     margin-top: 1rem;
   }
+}
+img {
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.5); /* A subtle black shadow */
 }
 </style>

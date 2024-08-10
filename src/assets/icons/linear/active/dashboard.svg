@@ -5,20 +5,20 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.3859 11.3569C15.741 11.57 15.8562 12.0307 15.6431 12.3859L12.6431 17.3859C12.43 17.741 11.9693 17.8562 11.6141 17.6431C11.2589 17.43 11.1438 16.9693 11.3569 16.6141L14.3569 11.6141C14.57 11.2589 15.0307 11.1438 15.3859 11.3569Z" fill="url(#paint3_linear_1218_53107)"/>
 <defs>
 <linearGradient id="paint0_linear_1218_53107" x1="12" y1="3.25" x2="12" y2="20.75" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1218_53107" x1="12" y1="16.25" x2="12" y2="20" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 <linearGradient id="paint2_linear_1218_53107" x1="12.0001" y1="6.25" x2="12.0001" y2="10.7501" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 <linearGradient id="paint3_linear_1218_53107" x1="13.5" y1="11.2499" x2="13.5" y2="17.7501" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 </defs>
 </svg>

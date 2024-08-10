@@ -92,21 +92,11 @@ import { FerasatSocialLinks } from "@/utils/ferasatSocialLinks";
 .free-trail-btn {
   border: 2px solid map-get($map: $dark-colors, $key: "border");
   border-radius: 0.8rem;
-  background: linear-gradient(
-      180deg,
-      rgba(28, 83, 244, 0.1) -52.63%,
-      rgba(3, 0, 22, 0.54) 51.46%,
-      rgba(28, 83, 244, 0.1) 142.11%
-    ),
-    linear-gradient(
-      0deg,
-      map-get($map: $dark-colors, $key: "border"),
-      map-get($map: $dark-colors, $key: "border")
-    );
+  background: #263238
 }
 .base-card {
   padding: 1.75rem 1.5rem !important;
-  background: #0a0b21 !important;
+  background: #263238 !important;
   box-shadow: 0 6px 32px rgba(44, 50, 169, 0.04) !important;
   border-radius: 20px !important;
 
@@ -122,7 +112,7 @@ import { FerasatSocialLinks } from "@/utils/ferasatSocialLinks";
     @extend .base-scrollbar;
   }
   &-menu {
-    background: #0f112b !important;
+    background: #000000 !important;
   }
 }
 </style>

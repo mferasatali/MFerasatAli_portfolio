@@ -5,8 +5,8 @@
         cols="12"
         class="d-flex align-center justify-center flex-column mt-8"
       >
-        <p class="main-heading" ref="title1"></p>
-        <p class="paragraph" ref="title2"></p>
+        <p class=" text-center main-heading" ref="title1"></p>
+        <p class="text-center paragraph" ref="title2"></p>
       </v-col>
       <v-col
         cols="12"
@@ -138,7 +138,7 @@ const showProjectImages = (title: string) => {
 
   .base-card {
     padding: 1.75rem 1.5rem !important;
-    background: #0a0b21 !important;
+    background: #263238 !important;
     box-shadow: 0 6px 32px rgba(44, 50, 169, 0.04) !important;
     border-radius: 20px !important;
   }
@@ -162,7 +162,7 @@ const showProjectImages = (title: string) => {
   .learnmore {
     font-size: 15px;
     font-weight: 600;
-    color: #0e0ef9;
+    color: #263238;
   }
 
   .animation {

@@ -9,7 +9,7 @@
         elevation="0"
       >
         <RouterLink to="/" class="d-flex align-center justify-center">
-          <img width="100px" src="@/assets/mfa-logo.png" class="mr-4" />
+          <img width="100px" src="@/assets/mfa-logo.svg" class="mr-4" />
         </RouterLink>
         <v-list class="d-flex align-start flex-column mt-16" style="gap: 1rem">
           <v-list-item
@@ -175,13 +175,14 @@ const setTab = (tab: string) => {
 
 <style scoped lang="scss">
 .nav {
-  background-color: #06031b !important;
+  background-color: #000000 !important;
   border: none !important;
   border-radius: 20px !important;
   padding: 2.5rem 1rem 4rem 1rem;
+  z-index: 1000;
 }
 .app-bar {
-  background-color: #06031b !important;
+  background-color: #000000 !important;
   box-shadow: none;
 }
 .main-class {

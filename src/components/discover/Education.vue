@@ -1,6 +1,6 @@
 <template>
   <section id="serving-best">
-    <v-row align="center">
+    <v-row align="center" justify="center">
       <v-col
         cols="12"
         class="d-flex align-center justify-center flex-column mt-9"
@@ -42,7 +42,7 @@
       <!-- Skills & Interests -->
       <v-col cols="12" sm="6">
         <div
-          class="base-card d-flex align-center flex-column animation animation-skills-interest"
+          class="base-card d-flex align-center flex-column animation animation-skills-interest ma-4"
           ref="skillsAndInterestAnimation"
         >
           <div class="d-flex flex-column" style="gap: 0.6rem">
@@ -188,10 +188,9 @@ onMounted(async () => {
 @import "@/assets/scss/variables.scss";
 
 #serving-best {
-  padding: 2.5rem 5rem 0rem 0rem;
   .base-card {
     padding: 1.75rem 1.5rem !important;
-    background: #0a0b21 !important;
+    background: #263238 !important;
     box-shadow: 0 6px 32px rgba(44, 50, 169, 0.04) !important;
     border-radius: 20px !important;
   }

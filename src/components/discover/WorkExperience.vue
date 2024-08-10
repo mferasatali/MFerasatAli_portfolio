@@ -5,8 +5,8 @@
         cols="12"
         class="d-flex align-center justify-center flex-column mt-8"
       >
-        <p class="main-heading" ref="title1"></p>
-        <p class="paragraph" ref="title2"></p>
+        <p class="main-heading text-center" ref="title1"></p>
+        <p class="paragraph text-center" ref="title2"></p>
       </v-col>
       <v-col
         cols="12"
@@ -14,7 +14,7 @@
         style="gap: 2rem"
       >
         <div
-          class="d-flex base-card flex-column animation-div"
+          class="d-flex base-card flex-column animation-div ma-4"
           ref="workExperienceAnimation"
         >
           <p class="header-simple">Details</p>
@@ -101,7 +101,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .base-card {
   padding: 1.75rem 1.5rem !important;
-  background: #0a0b21 !important;
+  background: #263238 !important;
   box-shadow: 0 6px 32px rgba(44, 50, 169, 0.04) !important;
   border-radius: 20px !important;
 
@@ -129,7 +129,7 @@ onMounted(async () => {
 .learnmore {
   font-size: 15px;
   font-weight: 600;
-  color: #0e0ef9;
+  color: #263238;
 }
 
 .animation {

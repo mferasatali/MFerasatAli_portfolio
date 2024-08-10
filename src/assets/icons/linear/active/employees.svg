@@ -7,28 +7,28 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M6.00869 14.25H4C2.48122 14.25 1.25 15.4812 1.25 17C1.25 17.9665 2.0335 18.75 3 18.75H4V18.5C4 18.07 4.04934 17.6516 4.14267 17.25H3C2.86193 17.25 2.75 17.1381 2.75 17C2.75 16.3096 3.30964 15.75 4 15.75H4.7358C5.06756 15.1765 5.49989 14.6685 6.00869 14.25Z" fill="url(#paint5_linear_1218_52777)"/>
 <defs>
 <linearGradient id="paint0_linear_1218_52777" x1="12" y1="5.25" x2="12" y2="12.75" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1218_52777" x1="12" y1="14.25" x2="12" y2="20.75" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 <linearGradient id="paint2_linear_1218_52777" x1="17.9971" y1="6.25" x2="17.9971" y2="11.75" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 <linearGradient id="paint3_linear_1218_52777" x1="20.3706" y1="14.25" x2="20.3706" y2="18.75" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 <linearGradient id="paint4_linear_1218_52777" x1="6.00298" y1="6.25" x2="6.00298" y2="11.75" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 <linearGradient id="paint5_linear_1218_52777" x1="3.62935" y1="14.25" x2="3.62935" y2="18.75" gradientUnits="userSpaceOnUse">
-<stop stop-color="#585ad3"/>
-<stop offset="1" stop-color="#585ad3"/>
+<stop stop-color="#ffffff"/>
+<stop offset="1" stop-color="#ffffff"/>
 </linearGradient>
 </defs>
 </svg>
