@@ -50,6 +50,14 @@
         <div class="d-flex flex-column mt-2 base-card base-card-menu">
           <v-btn
             variant="text"
+            href="https://docs.google.com/document/d/1A-R_jMio_P9suJDP8aKNNMK7uHaTDEOH/edit?usp=sharing"
+            target="_blank"
+          >
+            <v-icon class="mr-2"> mdi-download </v-icon>
+           CV
+          </v-btn>
+          <v-btn
+            variant="text"
             href="https://drive.google.com/file/d/1NKosJ2dj94GCBNEzmjgpjcA82yuKfUsp/view?usp=sharing"
             target="_blank"
           >

@@ -4,8 +4,9 @@
       <v-navigation-drawer
         class="nav"
         v-model="appBar"
-        :temporary="$vuetify.display.mdAndUp ? false : true"
+        :temporary="true"
         :width="250"
+        elevation="0"
       >
         <RouterLink to="/" class="d-flex align-center justify-center">
           <img width="100px" src="@/assets/mfa-logo.png" class="mr-4" />
@@ -133,7 +134,6 @@
       <template v-slot:prepend>
         <v-app-bar-nav-icon
           @click.stop="appBar = !appBar"
-          v-if="!$vuetify.display.mdAndUp"
         ></v-app-bar-nav-icon>
       </template>
       <v-spacer />
@@ -176,7 +176,7 @@ const setTab = (tab: string) => {
 <style scoped lang="scss">
 .nav {
   background-color: #06031b !important;
-  border: 2px solid #3e386c !important;
+  border: none !important;
   border-radius: 20px !important;
   padding: 2.5rem 1rem 4rem 1rem;
 }
