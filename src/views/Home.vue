@@ -95,11 +95,7 @@ const canDo = ref(
 
 const buttonsInfo = [
   {
-    text: "Skills",
-    link: "#skills",
-  },
-  {
-    text: "Education",
+    text: "Education & Skills",
     link: "/education",
   },
   {
