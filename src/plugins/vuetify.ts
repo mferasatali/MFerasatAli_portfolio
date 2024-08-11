@@ -20,7 +20,7 @@ export default createVuetify({
         colors: {
           primary: '#1867C0',
           secondary: '#5CBBF6',
-          border: '#1D1E3B',
+          border: '#1c0e0e',
           background: "#000000",
           text: "#cbd8f7",
           "active-green": "#5FCFAC",

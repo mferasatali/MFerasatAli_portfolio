@@ -11,7 +11,7 @@ import axios from "axios";
 export const AppStore = defineStore("app", () => {
   const exploreCurrentTab = ref(0);
   const navBar = ref("Home");
-
+  const headerConnnect = ref(false);
   function setNavBar(title: string) {
     navBar.value = title;
   }
@@ -37,11 +37,12 @@ export const AppStore = defineStore("app", () => {
     }
   }
 
+
   return {
-    exploreCurrentTab,
+    headerConnnect,
     setNavBar,
     getNavBar,
     setExploreCurrentTab,
-    chatBotApi,
+    chatBotApi
   };
 });
