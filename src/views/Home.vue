@@ -17,13 +17,13 @@
         class="d-flex align-start flex-column"
         style="gap: 3rem"
       >
-        <div class="image">
+        <div class="image d-flex align-center flex-column">
           <img
             src="@/assets/mferasatali_picture.jpg"
             alt="ferasat"
             height="500px"
           />
-          <div class="desc desc-name pa-3">
+          <div class="desc desc-name pa-3 mt-2">
             <div class="text-center home-title">
               <p class="main-heading1" ref="title1"></p>
               <p class="mt-1 main-heading1 unique-title mt-2" ref="title2"></p>
