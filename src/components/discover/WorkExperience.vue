@@ -102,7 +102,7 @@ onMounted(async () => {
 .base-card {
   padding: 1.75rem 1.5rem !important;
   background: #263238 !important;
-  box-shadow: 0 6px 32px rgba(44, 50, 169, 0.04) !important;
+  // box-shadow: 0 6px 32px rgba(0, 0, 0, 0.04) !important;
   border-radius: 20px !important;
 
   @media (min-width: 1100px) {

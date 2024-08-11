@@ -17,7 +17,12 @@ body {
   font-weight: 700;
   font-size: 3rem;
   line-height: 3rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 }
+
 .main-heading {
   font-size: 40px;
   font-weight: 600;

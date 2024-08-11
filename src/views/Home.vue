@@ -15,7 +15,7 @@
           style="min-height: 400px"
         >
           <img src="@/assets/mferasatali.png" alt="ferasat" height="500px" />
-          <p class="header-simple mt-4 text-grey">
+          <p class="header-simple mt-4 text-grey text-center">
             {{ `${experienceYears - 1}.${experienceMonths}` }}+ Years of Professional Experience
           </p>
         </div>
@@ -153,6 +153,9 @@ const calculateExperience = () => {
   }
 }
 img {
-  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.5); /* A subtle black shadow */
+  width: 430px;
+  @media (max-width: 450px) {
+    width: 280px;
+  }
 }
 </style>
