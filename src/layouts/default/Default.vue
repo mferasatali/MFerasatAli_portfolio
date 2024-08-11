@@ -61,7 +61,7 @@ const path = computed(() => route);
   position: relative;
 }
 .image {
-  background: url("@/assets/images/Ellipse 1.png") center/cover no-repeat;
+  // background: url("@/assets/images/Ellipse 1.png") center/cover no-repeat;
 }
 .btn-explore {
   position: sticky;
