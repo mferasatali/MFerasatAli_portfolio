@@ -1,46 +1,49 @@
 <template>
-  <div class="d-flex align-center justify-center flex-column home">
-    <!-- Tagline -->
-    <div
-      class="home-tagline d-flex align-center justify-start py-1 px-4 mt-4"
-      v-if="false"
-    >
-      <img width="30" src="@/assets/icons/stars.svg" alt="HCMS" />
-      <p class="">profileIntroduction('MFA');</p>
-      <img width="30" src="@/assets/icons/stars.svg" alt="HCMS" />
-    </div>
-    <!-- Main heading -->
-    <div class="d-flex align-center flex-row flex-wrap mt-6">
-      <div class="image">
-        <div
-          class="base-card mr-md-4 d-flex align-center flex-column mx-8 "
-          ref="image"
-          style="min-height: 400px"
-        >
+  <section>
+    <v-row class="mt-12" align="center">
+      <v-col
+        cols="12"
+        md="7"
+        class="d-flex align-center justify-center flex-column"
+      >
+        <div class="text-center desc desc-div ma-2">
+          <p class="main-heading1">Introduction</p>
+          <p ref="description" class="base-body-text text-text1 mt-3"></p>
+        </div>
+      </v-col>
+      <v-col
+        cols="12"
+        md="3"
+        class="d-flex align-start flex-column"
+        style="gap: 3rem"
+      >
+        <div class="image">
           <img
             src="@/assets/mferasatali_picture.jpg"
             alt="ferasat"
             height="500px"
           />
-          <p class="header-simple mt-4 text-grey text-center">
-            {{ `${experienceYears - 1}.${experienceMonths}` }}+ Years of
-            Professional Experience
-          </p>
+          <div class="desc desc-name pa-3">
+            <div class="text-center home-title">
+              <p class="main-heading1" ref="title1"></p>
+              <p class="mt-1 main-heading1 unique-title mt-2" ref="title2"></p>
+              <p class="main-heading1 mt-4 text-grey text-center" v-if="false">
+                {{ `` }}+ 
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="mt-5 mt-md-12 text-center home-title">
-        <p class="base-title" ref="title1"></p>
-        <p class="mt-4 base-title unique-title mt-2" ref="title2"></p>
-      </div>
-    </div>
-    <!-- Description -->
-    <div class="home-description text-center desc-div">
-      <p
-        ref="description"
-        class="base-body-text mt-2 text-text"
-      ></p>
-    </div>
-  </div>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" class="d-flex align-center justify-center flex-column">
+        <div class="text-center desc desc-do ma-2">
+          <p class="main-heading1">What Can i do</p>
+          <p ref="whaticando" class="base-body-text text-text mt-3"></p>
+        </div>
+      </v-col>
+    </v-row>
+  </section>
 </template>
 
 <script lang="ts" setup>
@@ -60,9 +63,14 @@ const experienceMonths = ref(0);
 const title1 = ref(null);
 const title2 = ref(null);
 const description = ref(null);
+const whaticando = ref(null);
 const image = ref(null);
 const introduction = ref(
-  "Welcome();! <br> I'm a passionate Software Engineer and Web Developer based in Lahore, Pakistan. <br> With expertise in building scalable web applications and a commitment to innovation, <br> I bring a unique blend of technical skills and creativity to drive success in every project. <br> Explore my journey through code and creativity below. <br> Let's build something amazing together! <br> Unlock more about my journey by clicking the button on right side."
+  "</br></br>Welcome to my portfolio! I'm MFerasat Ali, </br></br> a Software Engineer and Web Developer based in Lahore, Pakistan. With a Bachelor's in Computer Science from the University of Central Punjab, I specialize in technologies like JavaScript, Node.js, Vue.js, and Express.</br></br> I've worked on impactful projects such as The95Star, SmartLuxuryRide, HCMS Recruitment Portal, and QudratTech.AI, focusing on robust online systems and AI-driven functionalities. At Aslase, I integrate advanced features and manage system performance, drawing from my experience at Byte Sailors and HCMS.</br></br> Proficient in both frontend and backend development, I excel in creating seamless user experiences and scalable web applications. <br>"
+);
+
+const canDo = ref(
+  "As an experienced Software Engineer and Web Developer, I bring a unique blend of technical skills and practical expertise to the table. <br> My background includes a comprehensive understanding of both frontend and backend development, utilizing technologies such as JavaScript, Vue.js, Node.js, and Express.<br> I excel at creating intuitive, user-friendly interfaces and robust backend systems that enhance the overall user experience. <br> My work often involves integrating cutting-edge functionalities, improving system efficiency, and ensuring the scalability of web applications. <br> Whether it's optimizing financial transactions or developing innovative features, my goal is to deliver high-quality, scalable solutions. Take a look at my portfolio to discover how my skills and experience can help bring your vision to life."
 );
 
 onMounted(async () => {
@@ -72,12 +80,12 @@ onMounted(async () => {
   }
   calculateExperience();
   gsap.to(image.value, {
-    duration: 1,
     display: "block",
     opacity: 1,
     x: 1,
     y: 1,
-    delay: 3,
+    duration: 2.5,
+    ease: "bounce.in",
   });
   gsap.to(title1.value, {
     duration: 1,
@@ -87,15 +95,21 @@ onMounted(async () => {
   });
   gsap.to(title2.value, {
     duration: 2,
-    text: "Software Engineer",
+    text: `FS - Software Engineer ( ${experienceYears.value - 1}.${experienceMonths.value}+ years)`,
     ease: "ease-out",
     delay: 2.1,
   });
   gsap.to(description.value, {
-    duration: 3,
     text: introduction.value,
-    ease: "none",
-    delay: 1,
+    duration: 1,
+    scale: 1,
+    ease: "expoScale(1, 2)",
+  });
+  gsap.to(whaticando.value, {
+    text: canDo.value,
+    duration: 1,
+    scale: 1,
+    ease: "expoScale(1, 2)",
   });
 });
 const calculateExperience = () => {
@@ -142,7 +156,6 @@ const calculateExperience = () => {
 
   &-description {
     width: 70%;
-    margin-top: 3rem !important;
     color: #ffffff !important;
   }
 }
@@ -169,9 +182,25 @@ img {
     width: 280px;
   }
 }
-.desc-div {
-  border: 2px solid #c5c5c5;
-    border-radius: 16px;
-    padding: 49px;
+.desc {
+  border: 2px solid #141921;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 16px;
+  &-div {
+    min-width: 300px;
+    max-width: 550px;
+    @media (max-width: 450px) {
+      min-width: 280px;
+      max-width: 300;
+    }
+  }
+
+  &-do {
+    width: 80%;
+  }
+}
+.text-text1 {
+  color: rgb(203 216 247) !important
 }
 </style>
