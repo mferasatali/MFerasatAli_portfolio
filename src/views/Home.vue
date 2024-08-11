@@ -87,7 +87,7 @@ onMounted(async () => {
   });
   gsap.to(title2.value, {
     duration: 2,
-    text: "Software Engineer [ Full Stack ]",
+    text: "Software Engineer",
     ease: "ease-out",
     delay: 2.1,
   });
