@@ -92,11 +92,11 @@ import { FerasatSocialLinks } from "@/utils/ferasatSocialLinks";
 .free-trail-btn {
   border: 2px solid map-get($map: $dark-colors, $key: "border");
   border-radius: 0.8rem;
-  background: #263238
+  background: #251414
 }
 .base-card {
   padding: 1.75rem 1.5rem !important;
-  background: #263238 !important;
+  background: #251414 !important;
   box-shadow: 0 6px 32px rgba(44, 50, 169, 0.04) !important;
   border-radius: 20px !important;
 

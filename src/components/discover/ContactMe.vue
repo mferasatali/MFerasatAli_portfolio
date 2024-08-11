@@ -198,7 +198,7 @@ const contactFerasat = async () => {
       .v-input__control {
         .v-field.v-field--no-label.v-field--variant-solo.v-theme--dark.v-locale--is-ltr {
           border-radius: 13px !important;
-          background: #263238;
+          background: #251414;
         }
 
         .v-text-field__slot {

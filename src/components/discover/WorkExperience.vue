@@ -101,7 +101,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .base-card {
   padding: 1.75rem 1.5rem !important;
-  background: #263238 !important;
+  background: #251414 !important;
   // box-shadow: 0 6px 32px rgba(0, 0, 0, 0.04) !important;
   border-radius: 20px !important;
 
@@ -129,7 +129,7 @@ onMounted(async () => {
 .learnmore {
   font-size: 15px;
   font-weight: 600;
-  color: #263238;
+  color: #251414;
 }
 
 .animation {

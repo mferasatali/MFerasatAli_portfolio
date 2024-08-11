@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <div >
+    <div>
       <v-navigation-drawer
         class="nav"
         v-model="appBar"
@@ -130,11 +130,13 @@
         </v-list>
       </v-navigation-drawer>
     </div>
-    <v-app-bar class="app-bar">
+    <v-app-bar
+      class="app-bar"
+      elevation="0"
+      style="background: #1e0808 !important"
+    >
       <template v-slot:prepend>
-        <v-app-bar-nav-icon
-          @click.stop="appBar = !appBar"
-        ></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click.stop="appBar = !appBar"></v-app-bar-nav-icon>
       </template>
       <v-spacer />
       <HeaderComponent />
@@ -175,7 +177,7 @@ const setTab = (tab: string) => {
 
 <style scoped lang="scss">
 .nav {
-  background-color: #000000 !important;
+  background-color: #1e080861 !important;
   border: none !important;
   border-radius: 20px !important;
   padding: 2.5rem 1rem 4rem 1rem;
@@ -184,6 +186,7 @@ const setTab = (tab: string) => {
 .app-bar {
   background-color: #000000 !important;
   box-shadow: none;
+  color: white;
 }
 .main-class {
   width: 100%;
