@@ -138,7 +138,7 @@ const showProjectImages = (title: string) => {
 
   .base-card {
     padding: 1.75rem 1.5rem !important;
-    background: #263238 !important;
+    background: #251414 !important;
     // box-shadow: 0 6px 32px rgba(44, 50, 169, 0.04) !important;
     border-radius: 20px !important;
   }
@@ -162,7 +162,7 @@ const showProjectImages = (title: string) => {
   .learnmore {
     font-size: 15px;
     font-weight: 600;
-    color: #263238;
+    color: #251414;
   }
 
   .animation {

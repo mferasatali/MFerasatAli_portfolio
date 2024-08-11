@@ -183,8 +183,9 @@ img {
   }
 }
 .desc {
-  border: 2px solid #141921;
+  border: 2px solid #1c0e0e;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  background: #251414;
   padding: 30px;
   border-radius: 16px;
   &-div {

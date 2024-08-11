@@ -43,7 +43,7 @@ export default createVuetify({
           secondary: '#113031',
           border: '#1D1E3B',
           text: "#cbd8f7",
-          background: "#000000",
+          background: "#1e080861",
           "active-green": "#5FCFAC",
           "text-light-blue": "#778cbc",
           white: "#ffffff",
