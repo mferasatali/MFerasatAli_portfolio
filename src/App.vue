@@ -135,7 +135,6 @@
       elevation="0"
       style="background: #1e0808 !important"
     >
-      "
       <template v-slot:prepend>
         <v-app-bar-nav-icon @click.stop="appBar = !appBar"></v-app-bar-nav-icon>
       </template>
