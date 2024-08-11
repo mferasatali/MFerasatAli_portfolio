@@ -256,7 +256,7 @@ img {
 }
 
 .link-btn {
-  border: 1px solid #856d6d;
+  // border: 1px solid #856d6d;
   background: #483535;
 
   &-r1 {
