@@ -1,7 +1,10 @@
 <template>
   <div class="d-flex align-center justify-center flex-column home">
     <!-- Tagline -->
-    <div class="home-tagline d-flex align-center justify-start py-1 px-4 mt-4" v-if="false">
+    <div
+      class="home-tagline d-flex align-center justify-start py-1 px-4 mt-4"
+      v-if="false"
+    >
       <img width="30" src="@/assets/icons/stars.svg" alt="HCMS" />
       <p class="">profileIntroduction('MFA');</p>
       <img width="30" src="@/assets/icons/stars.svg" alt="HCMS" />
@@ -10,13 +13,18 @@
     <div class="d-flex align-center flex-row flex-wrap mt-6">
       <div class="image">
         <div
-          class="base-card mr-md-4 d-flex align-center flex-column mx-8"
+          class="base-card mr-md-4 d-flex align-center flex-column mx-8 "
           ref="image"
           style="min-height: 400px"
         >
-          <img src="@/assets/mferasatali.png" alt="ferasat" height="500px" />
+          <img
+            src="@/assets/mferasatali_picture.jpg"
+            alt="ferasat"
+            height="500px"
+          />
           <p class="header-simple mt-4 text-grey text-center">
-            {{ `${experienceYears - 1}.${experienceMonths}` }}+ Years of Professional Experience
+            {{ `${experienceYears - 1}.${experienceMonths}` }}+ Years of
+            Professional Experience
           </p>
         </div>
       </div>
@@ -26,10 +34,12 @@
       </div>
     </div>
     <!-- Description -->
-    <p
-      ref="description"
-      class="base-body-text mt-2 home-description text-center text-text"
-    ></p>
+    <div class="home-description text-center desc-div">
+      <p
+        ref="description"
+        class="base-body-text mt-2 text-text"
+      ></p>
+    </div>
   </div>
 </template>
 
@@ -70,16 +80,16 @@ onMounted(async () => {
     delay: 3,
   });
   gsap.to(title1.value, {
-    duration: 2,
+    duration: 1,
     text: "Muhammad Ferasat Ali",
     ease: "none",
     delay: 0.5,
   });
   gsap.to(title2.value, {
-    duration: 1,
-    text: "Full Stack Software Engineer",
-    ease: "none",
-    delay: 0.1,
+    duration: 2,
+    text: "Software Engineer [ Full Stack ]",
+    ease: "ease-out",
+    delay: 2.1,
   });
   gsap.to(description.value, {
     duration: 3,
@@ -133,7 +143,7 @@ const calculateExperience = () => {
   &-description {
     width: 70%;
     margin-top: 3rem !important;
-    color: #ffffff  !important;
+    color: #ffffff !important;
   }
 }
 
@@ -153,9 +163,15 @@ const calculateExperience = () => {
   }
 }
 img {
+  border-radius: 120px;
   width: 430px;
   @media (max-width: 450px) {
     width: 280px;
   }
+}
+.desc-div {
+  border: 2px solid #c5c5c5;
+    border-radius: 16px;
+    padding: 49px;
 }
 </style>
