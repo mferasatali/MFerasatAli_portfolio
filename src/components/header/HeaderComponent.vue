@@ -54,7 +54,7 @@
             target="_blank"
           >
             <v-icon class="mr-2"> mdi-download </v-icon>
-           CV
+            CV
           </v-btn>
           <v-btn
             variant="text"
@@ -80,9 +80,21 @@
 
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { AppStore } from "@/store/app";
+const store = AppStore();
+
 const open = ref(false);
 import { FerasatSocialLinks } from "@/utils/ferasatSocialLinks";
+
+watch(
+  () => store.headerConnnect,
+  (newValue) => {
+    if (newValue) {
+      open.value = true;
+    }
+  }
+);
 </script>
 
 <style scoped lang="scss">
@@ -92,7 +104,7 @@ import { FerasatSocialLinks } from "@/utils/ferasatSocialLinks";
 .free-trail-btn {
   border: 2px solid map-get($map: $dark-colors, $key: "border");
   border-radius: 0.8rem;
-  background: #251414
+  background: #251414;
 }
 .base-card {
   padding: 1.75rem 1.5rem !important;
@@ -112,7 +124,7 @@ import { FerasatSocialLinks } from "@/utils/ferasatSocialLinks";
     @extend .base-scrollbar;
   }
   &-menu {
-    background: #000000 !important;
+    background: #59191961 !important;
   }
 }
 </style>

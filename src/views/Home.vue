@@ -9,6 +9,24 @@
         <div class="text-center desc desc-div ma-2">
           <p class="main-heading1">Introduction</p>
           <p ref="description" class="base-body-text text-text1 mt-3"></p>
+          <div class="mt-4">
+            <v-btn
+              variant="text"
+              v-for="(content, index) in buttonsInfo"
+              :key="index"
+              :class="`link-btn link-btn-r${index + 1} ma-1`"
+              :to="content.link"
+            >
+              {{ content.text }}
+            </v-btn>
+            <v-btn
+              variant="text"
+              class="`link-btn link-btn-rconnect ma-1 `"
+              @click="setHeaderValue"
+            >
+              Info
+            </v-btn>
+          </div>
         </div>
       </v-col>
       <v-col
@@ -28,7 +46,7 @@
               <p class="main-heading1" ref="title1"></p>
               <p class="mt-1 main-heading1 unique-title mt-2" ref="title2"></p>
               <p class="main-heading1 mt-4 text-grey text-center" v-if="false">
-                {{ `` }}+ 
+                {{ `` }}+
               </p>
             </div>
           </div>
@@ -51,7 +69,9 @@ import { ref, onMounted } from "vue";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import moment from "moment";
-import { getIntroduction } from "@/utils/googleSpreadSheetAPI";
+import { getSheetData } from "@/utils/googleSpreadSheetAPI";
+import { AppStore } from "@/store/app";
+const store = AppStore();
 
 gsap.registerPlugin(TextPlugin);
 
@@ -73,10 +93,33 @@ const canDo = ref(
   "As an experienced Software Engineer and Web Developer, I bring a unique blend of technical skills and practical expertise to the table. <br> My background includes a comprehensive understanding of both frontend and backend development, utilizing technologies such as JavaScript, Vue.js, Node.js, and Express.<br> I excel at creating intuitive, user-friendly interfaces and robust backend systems that enhance the overall user experience. <br> My work often involves integrating cutting-edge functionalities, improving system efficiency, and ensuring the scalability of web applications. <br> Whether it's optimizing financial transactions or developing innovative features, my goal is to deliver high-quality, scalable solutions. Take a look at my portfolio to discover how my skills and experience can help bring your vision to life."
 );
 
+const buttonsInfo = [
+  {
+    text: "Education & Skills",
+    link: "/education",
+  },
+  {
+    text: "Experience",
+    link: "/work-experience",
+  },
+  {
+    text: "Projects",
+    link: "/personal-project",
+  },
+  {
+    text: "Contact ME",
+    link: "/contact-me",
+  },
+];
+
 onMounted(async () => {
-  const intro = await getIntroduction();
+  const intro = await getSheetData("Introduction");
+  const whatido = await getSheetData("CanDo");
   if (intro) {
     introduction.value = intro;
+  }
+  if (whatido) {
+    canDo.value = whatido;
   }
   calculateExperience();
   gsap.to(image.value, {
@@ -95,7 +138,9 @@ onMounted(async () => {
   });
   gsap.to(title2.value, {
     duration: 2,
-    text: `FS - Software Engineer ( ${experienceYears.value - 1}.${experienceMonths.value}+ years)`,
+    text: `FS - Software Engineer ( ${experienceYears.value - 1}.${
+      experienceMonths.value
+    }+ years)`,
     ease: "ease-out",
     delay: 2.1,
   });
@@ -109,7 +154,8 @@ onMounted(async () => {
     text: canDo.value,
     duration: 1,
     scale: 1,
-    ease: "expoScale(1, 2)",
+    delay: 1,
+    ease: "expoScale(1, 3)",
   });
 });
 const calculateExperience = () => {
@@ -119,6 +165,10 @@ const calculateExperience = () => {
 
   experienceMonths.value = months;
   experienceYears.value = years;
+};
+
+const setHeaderValue = () => {
+  store.headerConnnect = store.headerConnnect ? false : true;
 };
 </script>
 
@@ -202,6 +252,31 @@ img {
   }
 }
 .text-text1 {
-  color: rgb(203 216 247) !important
+  color: rgb(203 216 247) !important;
+}
+
+.link-btn {
+  // border: 1px solid #856d6d;
+  background: #483535;
+
+  &-r1 {
+    border-radius: 14px;
+  }
+  &-r2 {
+    border-radius: 16px;
+  }
+  &-r3 {
+    border-radius: 18px;
+  }
+  &-r4 {
+    border-radius: 13px;
+  }
+  &-r5 {
+    border-radius: 14px;
+  }
+  &-rconnect {
+    border-radius: 11px;
+    background: #310000;
+  }
 }
 </style>

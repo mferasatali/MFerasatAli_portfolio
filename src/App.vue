@@ -177,14 +177,14 @@ const setTab = (tab: string) => {
 
 <style scoped lang="scss">
 .nav {
-  background-color: #1e080861 !important;
+  background-color: rgb(24 6 6) !important;
   border: none !important;
   border-radius: 20px !important;
   padding: 2.5rem 1rem 4rem 1rem;
   z-index: 1000;
 }
 .app-bar {
-  background-color: #000000 !important;
+  background-color: rgb(24 6 6) !important;
   box-shadow: none;
   color: white;
 }

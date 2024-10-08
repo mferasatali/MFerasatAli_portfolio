@@ -78,22 +78,6 @@ export const getExperienceFromSheet = async () => {
   }
 };
 
-export const getIntroduction = async () => {
-  const sheetName = "Introduction";
-  const query = encodeURIComponent("Select *");
-  const url = `${base}sheet=${sheetName}&tq=${query}`;
-
-  try {
-    const response = await fetch(url);
-    const text = await response.text();
-    const res = JSON.parse(text.substr(47).slice(0, -2));
-    const intro = res.table.rows.map((item: any) => item.c[0].v);
-    return intro[0];
-  } catch (error: any) {
-    return []; // Return an empty array in case of error
-  }
-};
-
 export const getInterestsFromSheet = async () => {
   const sheetName = "Interests";
   const query = encodeURIComponent("Select *");
@@ -105,6 +89,23 @@ export const getInterestsFromSheet = async () => {
     const res = JSON.parse(text.substr(47).slice(0, -2));
     const Interests = res.table.rows.map((item: any) => item.c[0].v);
     return Interests;
+  } catch (error: any) {
+    return []; // Return an empty array in case of error
+  }
+};
+
+
+export const getSheetData = async (sheet:string) => {
+  const sheetName = sheet;
+  const query = encodeURIComponent("Select *");
+  const url = `${base}sheet=${sheetName}&tq=${query}`;
+
+  try {
+    const response = await fetch(url);
+    const text = await response.text();
+    const res = JSON.parse(text.substr(47).slice(0, -2));
+    const intro = res.table.rows.map((item: any) => item.c[0].v);
+    return intro[0];
   } catch (error: any) {
     return []; // Return an empty array in case of error
   }
