@@ -1,17 +1,20 @@
 $light-colors : (
-    primary: #1867C0,
-    secondary: #5CBBF6,
+    primary: #6366f1,
+    secondary: #8b5cf6,
     border: #1c0e0e,
     white: #ffffff,
     dark: #000000
 );
 
 $dark-colors : (
-    primary: #1e080861,
-    secondary: #113031,
-    border: #1c0e0e,
+    primary: #0f172a,
+    secondary: #1e293b,
+    border: #334155,
     white: #ffffff,
-    dark: #000000
+    dark: #000000,
+    accent: #6366f1,
+    accent-purple: #8b5cf6,
+    accent-cyan: #06b6d4
 );
 
 $breakpoints: (

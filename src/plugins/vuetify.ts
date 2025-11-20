@@ -39,11 +39,12 @@ export default createVuetify({
       },
       dark:{
         colors:{
-          primary: '#092122',
-          secondary: '#113031',
-          border: '#1c0e0e',
+          primary: '#6366f1',
+          secondary: '#8b5cf6',
+          border: '#334155',
           text: "#cbd8f7",
-          background: "#1e080861",
+          background: "#0f172a",
+          surface: "#1e293b",
           "active-green": "#5FCFAC",
           "text-light-blue": "#778cbc",
           white: "#ffffff",
@@ -52,10 +53,10 @@ export default createVuetify({
           "it-and-software": "#33bfff",
           "hard-skills": "#ff8473",
           "green-skills": "#3ce17e",
-          link: "#1c53f4",
+          link: "#6366f1",
           "base-text": "#ffffff",
-          "dark-bg": "#212444",
-          "grey": "#BDBDBD",
+          "dark-bg": "#0f172a",
+          "grey": "#94a3b8",
         }
       }
     },
