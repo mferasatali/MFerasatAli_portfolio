@@ -1,8 +1,13 @@
 <template>
   <div class="landing-page">
     <!-- Animated Background Particles -->
-    <div class="particles-background">
-      <div v-for="i in 50" :key="i" class="particle" :style="getParticleStyle(i)"></div>
+    <div class="particles-background" v-if="showParticles">
+      <div
+        v-for="i in particleCount"
+        :key="i"
+        class="particle"
+        :style="getParticleStyle(i)"
+      ></div>
     </div>
 
     <!-- Hero Section -->
@@ -14,28 +19,68 @@
       </div>
       <v-container class="hero-container">
         <v-row align="center" justify="center" class="min-height-screen">
-          <v-col cols="12" md="6" class="d-flex align-center justify-center flex-column">
+          <v-col
+            cols="12"
+            md="6"
+            class="d-flex align-center justify-center flex-column"
+          >
             <div class="hero-content">
               <div class="greeting-text" ref="greetingRef">Hello, I'm</div>
               <h1 class="hero-title" ref="nameRef">Muhammad Ferasat Ali</h1>
-              <h2 class="hero-subtitle" ref="roleRef">Full Stack Software Engineer</h2>
+              <h2 class="hero-subtitle" ref="roleRef">
+                Full Stack Software Engineer
+              </h2>
               <p class="hero-description" ref="descriptionRef"></p>
               <div class="hero-buttons mt-8">
-                <v-btn
-                  class="modern-btn mr-4 mb-4"
-                  size="large"
-                  @click="scrollToSection('projects')"
-                >
-                  View My Work
-                </v-btn>
-                <v-btn
-                  class="outline-btn mb-4"
-                  size="large"
-                  variant="outlined"
-                  @click="scrollToSection('contact')"
-                >
-                  Get In Touch
-                </v-btn>
+                <div class="main-buttons">
+                  <v-btn
+                    class="modern-btn mr-4 mb-4"
+                    size="large"
+                    @click="scrollToSection('projects')"
+                  >
+                    View My Work
+                  </v-btn>
+                  <v-btn
+                    class="outline-btn mb-4"
+                    size="large"
+                    variant="outlined"
+                    @click="scrollToSection('contact')"
+                  >
+                    Get In Touch
+                  </v-btn>
+                </div>
+                <div class="download-buttons">
+                  <v-btn
+                    class="download-btn mb-4"
+                    size="large"
+                    variant="text"
+                    href="https://docs.google.com/document/d/1A-R_jMio_P9suJDP8aKNNMK7uHaTDEOH/edit?usp=sharing"
+                    target="_blank"
+                  >
+                    <v-icon class="mr-2">mdi-download</v-icon>
+                    CV
+                  </v-btn>
+                  <v-btn
+                    class="download-btn mb-4"
+                    size="large"
+                    variant="text"
+                    href="https://drive.google.com/file/d/1NKosJ2dj94GCBNEzmjgpjcA82yuKfUsp/view?usp=sharing"
+                    target="_blank"
+                  >
+                    <v-icon class="mr-2">mdi-download</v-icon>
+                    Resume
+                  </v-btn>
+                  <v-btn
+                    class="download-btn mb-4"
+                    size="large"
+                    variant="text"
+                    href="https://drive.google.com/file/d/18a37mXxFUQZzhxqfwQeBEKYo-eIKSacu/view?usp=sharing"
+                    target="_blank"
+                  >
+                    <v-icon class="mr-2">mdi-download</v-icon>
+                    Cover Letter
+                  </v-btn>
+                </div>
               </div>
               <div class="social-links mt-8">
                 <a
@@ -69,13 +114,23 @@
 
     <!-- Section Divider -->
     <div class="section-divider">
-      <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z" fill="url(#gradient1)"/>
+      <svg
+        viewBox="0 0 1440 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z"
+          fill="url(#gradient1)"
+        />
         <defs>
           <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3" />
-            <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.2" />
-            <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.3" />
+            <stop offset="0%" style="stop-color: #6366f1; stop-opacity: 0.3" />
+            <stop offset="50%" style="stop-color: #8b5cf6; stop-opacity: 0.2" />
+            <stop
+              offset="100%"
+              style="stop-color: #06b6d4; stop-opacity: 0.3"
+            />
           </linearGradient>
         </defs>
       </svg>
@@ -105,13 +160,23 @@
 
     <!-- Section Divider -->
     <div class="section-divider reverse">
-      <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,50 Q360,100 720,50 T1440,50 L1440,0 L0,0 Z" fill="url(#gradient2)"/>
+      <svg
+        viewBox="0 0 1440 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,50 Q360,100 720,50 T1440,50 L1440,0 L0,0 Z"
+          fill="url(#gradient2)"
+        />
         <defs>
           <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3" />
-            <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.2" />
-            <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.3" />
+            <stop offset="0%" style="stop-color: #6366f1; stop-opacity: 0.3" />
+            <stop offset="50%" style="stop-color: #8b5cf6; stop-opacity: 0.2" />
+            <stop
+              offset="100%"
+              style="stop-color: #06b6d4; stop-opacity: 0.3"
+            />
           </linearGradient>
         </defs>
       </svg>
@@ -127,7 +192,9 @@
               <span class="section-number">02</span>
               <h2 class="section-title">Professional Experience</h2>
             </div>
-            <p class="section-subtitle">Navigating Challenges and Driving Success</p>
+            <p class="section-subtitle">
+              Navigating Challenges and Driving Success
+            </p>
           </v-col>
           <v-col cols="12" md="10" class="mx-auto">
             <div class="timeline">
@@ -135,7 +202,7 @@
                 v-for="(exp, index) in experiences"
                 :key="index"
                 class="timeline-item"
-                :ref="el => setExperienceRef(el, index)"
+                :ref="(el) => setExperienceRef(el, index)"
               >
                 <div class="timeline-marker">
                   <div class="marker-pulse"></div>
@@ -151,7 +218,9 @@
                     <span class="experience-duration">{{ exp.duration }}</span>
                   </div>
                   <ul class="experience-list mt-4">
-                    <li v-for="(item, idx) in exp.content" :key="idx">{{ item }}</li>
+                    <li v-for="(item, idx) in exp.content" :key="idx">
+                      {{ item }}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -163,13 +232,23 @@
 
     <!-- Section Divider -->
     <div class="section-divider">
-      <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z" fill="url(#gradient3)"/>
+      <svg
+        viewBox="0 0 1440 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z"
+          fill="url(#gradient3)"
+        />
         <defs>
           <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3" />
-            <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.2" />
-            <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.3" />
+            <stop offset="0%" style="stop-color: #6366f1; stop-opacity: 0.3" />
+            <stop offset="50%" style="stop-color: #8b5cf6; stop-opacity: 0.2" />
+            <stop
+              offset="100%"
+              style="stop-color: #06b6d4; stop-opacity: 0.3"
+            />
           </linearGradient>
         </defs>
       </svg>
@@ -197,13 +276,15 @@
               v-for="(edu, index) in education"
               :key="index"
               class="glass-card education-card pa-6 mb-4"
-              :ref="el => setEducationRef(el, index)"
+              :ref="(el) => setEducationRef(el, index)"
             >
               <div class="card-glow"></div>
               <div class="education-icon">
                 <v-icon>mdi-certificate</v-icon>
               </div>
-              <h3 class="education-degree">{{ edu.degree }} - {{ edu.studyIn }}</h3>
+              <h3 class="education-degree">
+                {{ edu.degree }} - {{ edu.studyIn }}
+              </h3>
               <p class="education-institution">{{ edu.institutionName }}</p>
               <p class="education-duration">{{ edu.duration }}</p>
               <p v-if="edu.marks" class="education-marks">{{ edu.marks }}</p>
@@ -221,7 +302,7 @@
                   v-for="(skill, index) in skills"
                   :key="index"
                   class="skill-chip"
-                  :ref="el => setSkillRef(el, index)"
+                  :ref="(el) => setSkillRef(el, index)"
                 >
                   {{ skill }}
                 </div>
@@ -244,13 +325,23 @@
 
     <!-- Section Divider -->
     <div class="section-divider reverse">
-      <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,50 Q360,100 720,50 T1440,50 L1440,0 L0,0 Z" fill="url(#gradient4)"/>
+      <svg
+        viewBox="0 0 1440 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,50 Q360,100 720,50 T1440,50 L1440,0 L0,0 Z"
+          fill="url(#gradient4)"
+        />
         <defs>
           <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3" />
-            <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.2" />
-            <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.3" />
+            <stop offset="0%" style="stop-color: #6366f1; stop-opacity: 0.3" />
+            <stop offset="50%" style="stop-color: #8b5cf6; stop-opacity: 0.2" />
+            <stop
+              offset="100%"
+              style="stop-color: #06b6d4; stop-opacity: 0.3"
+            />
           </linearGradient>
         </defs>
       </svg>
@@ -266,7 +357,10 @@
               <span class="section-number">04</span>
               <h2 class="section-title">Featured Projects</h2>
             </div>
-            <p class="section-subtitle">Exploring diverse realms, showcasing creativity and technical proficiency</p>
+            <p class="section-subtitle">
+              Exploring diverse realms, showcasing creativity and technical
+              proficiency
+            </p>
           </v-col>
         </v-row>
         <v-row>
@@ -279,13 +373,16 @@
           >
             <div
               class="project-card glass-card"
-              :ref="el => setProjectRef(el, index)"
+              :ref="(el) => setProjectRef(el, index)"
               @mouseenter="project.selected = true"
               @mouseleave="project.selected = false"
             >
               <div class="card-glow"></div>
               <div class="project-badge">Project</div>
-              <div class="project-image-wrapper" v-if="project.projectImages && project.projectImages.length">
+              <div
+                class="project-image-wrapper"
+                v-if="project.projectImages && project.projectImages.length"
+              >
                 <v-carousel
                   v-if="project.selected"
                   show-arrows="hover"
@@ -310,11 +407,16 @@
               <div class="project-content pa-4">
                 <div class="project-header">
                   <h3 class="project-title">{{ project.title }}</h3>
-                  <span v-if="project.subtitle" class="project-subtitle">{{ project.subtitle }}</span>
+                  <span v-if="project.subtitle" class="project-subtitle">{{
+                    project.subtitle
+                  }}</span>
                 </div>
                 <p class="project-date">{{ project.date }}</p>
                 <ul class="project-features">
-                  <li v-for="(feature, idx) in project.content.slice(0, 3)" :key="idx">
+                  <li
+                    v-for="(feature, idx) in project.content.slice(0, 3)"
+                    :key="idx"
+                  >
                     {{ feature }}
                   </li>
                 </ul>
@@ -339,13 +441,23 @@
 
     <!-- Section Divider -->
     <div class="section-divider">
-      <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z" fill="url(#gradient5)"/>
+      <svg
+        viewBox="0 0 1440 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0,50 Q360,0 720,50 T1440,50 L1440,100 L0,100 Z"
+          fill="url(#gradient5)"
+        />
         <defs>
           <linearGradient id="gradient5" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.3" />
-            <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:0.2" />
-            <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.3" />
+            <stop offset="0%" style="stop-color: #6366f1; stop-opacity: 0.3" />
+            <stop offset="50%" style="stop-color: #8b5cf6; stop-opacity: 0.2" />
+            <stop
+              offset="100%"
+              style="stop-color: #06b6d4; stop-opacity: 0.3"
+            />
           </linearGradient>
         </defs>
       </svg>
@@ -361,7 +473,9 @@
               <span class="section-number">05</span>
               <h2 class="section-title">Get In Touch</h2>
             </div>
-            <p class="section-subtitle">I'd love to hear from you. Let's connect!</p>
+            <p class="section-subtitle">
+              I'd love to hear from you. Let's connect!
+            </p>
           </v-col>
           <v-col cols="12" md="8" class="mx-auto">
             <div class="glass-card contact-card pa-8">
@@ -441,7 +555,10 @@
     <footer class="footer-section">
       <v-container>
         <div class="footer-content text-center">
-          <p>&copy; {{ new Date().getFullYear() }} Muhammad Ferasat Ali. All rights reserved.</p>
+          <p>
+            &copy; {{ new Date().getFullYear() }} Muhammad Ferasat Ali. All
+            rights reserved.
+          </p>
           <div class="footer-links mt-4">
             <a
               v-for="(link, index) in socialLinks"
@@ -491,9 +608,19 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FerasatProjects } from "@/utils/ferasatProjects";
 import { FerasatExperience } from "@/utils/ferasatExperiences";
-import { FerasatEducation, FerasatSkills, FerasatInterests } from "@/utils/ferasatJourney";
+import {
+  FerasatEducation,
+  FerasatSkills,
+  FerasatInterests,
+} from "@/utils/ferasatJourney";
 import { FerasatSocialLinks } from "@/utils/ferasatSocialLinks";
-import { getSheetData, getExperienceFromSheet, getSkillsFromSheet, getInterestsFromSheet, loadSheetsApi } from "@/utils/googleSpreadSheetAPI";
+import {
+  getSheetData,
+  getExperienceFromSheet,
+  getSkillsFromSheet,
+  getInterestsFromSheet,
+  loadSheetsApi,
+} from "@/utils/googleSpreadSheetAPI";
 import { IProjects, IExperience } from "@/interfaces";
 
 gsap.registerPlugin(TextPlugin);
@@ -507,6 +634,8 @@ const education = ref(FerasatEducation);
 const skills = ref<string[]>([]);
 const interests = ref<string[]>([]);
 const activeSection = ref("hero");
+const showParticles = ref(false);
+const particleCount = ref(20); // Reduced from 50
 
 // Contact form
 const firstName = ref("");
@@ -543,19 +672,26 @@ const educationRefs = ref<any[]>([]);
 const skillRefs = ref<any[]>([]);
 const projectRefs = ref<any[]>([]);
 
-// Particle animation styles
+// Particle animation styles - Optimized
 const getParticleStyle = (index: number) => {
-  const size = Math.random() * 4 + 2;
+  const isMobile = window.innerWidth <= 768;
+  if (isMobile) {
+    particleCount.value = 10; // Even fewer on mobile
+  }
+  const size = isMobile ? Math.random() * 2 + 1 : Math.random() * 3 + 1.5;
   const left = Math.random() * 100;
-  const animationDuration = Math.random() * 20 + 10;
-  const animationDelay = Math.random() * 5;
-  
+  const animationDuration = isMobile
+    ? Math.random() * 6 + 3
+    : Math.random() * 8 + 4;
+  const animationDelay = Math.random() * 1;
+
   return {
     width: `${size}px`,
     height: `${size}px`,
     left: `${left}%`,
     animationDuration: `${animationDuration}s`,
     animationDelay: `${animationDelay}s`,
+    willChange: "transform, opacity",
   };
 };
 
@@ -593,25 +729,42 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
-// Handle scroll for active section
+// Handle scroll for active section - Debounced for performance
+let scrollTimeout: number | null = null;
 const handleScroll = () => {
-  const sections = navigation.map(nav => document.getElementById(nav.id)).filter(Boolean);
-  const scrollPosition = window.scrollY + 200;
+  if (scrollTimeout !== null) {
+    cancelAnimationFrame(scrollTimeout);
+  }
+  scrollTimeout = requestAnimationFrame(() => {
+    const sections = navigation
+      .map((nav) => document.getElementById(nav.id))
+      .filter(Boolean);
+    const scrollPosition = window.scrollY + 200;
 
-  sections.forEach((section) => {
-    if (section) {
-      const offsetTop = section.offsetTop;
-      const offsetHeight = section.offsetHeight;
-      if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-        activeSection.value = section.id;
+    sections.forEach((section) => {
+      if (section) {
+        const offsetTop = section.offsetTop;
+        const offsetHeight = section.offsetHeight;
+        if (
+          scrollPosition >= offsetTop &&
+          scrollPosition < offsetTop + offsetHeight
+        ) {
+          activeSection.value = section.id;
+        }
       }
-    }
+    });
   });
 };
 
 // Contact form submit
 const contactFerasat = async () => {
-  if (!firstName.value || !lastName.value || !email.value || !message.value || !phoneNumber.value) {
+  if (
+    !firstName.value ||
+    !lastName.value ||
+    !email.value ||
+    !message.value ||
+    !phoneNumber.value
+  ) {
     snackbarMessage.value = "Please fill all fields";
     snackbarColor.value = "error";
     snackbar.value = true;
@@ -645,85 +798,113 @@ const contactFerasat = async () => {
 
 // Animations
 onMounted(async () => {
-  // Load data from Google Sheets
-  try {
-    const intro = await getSheetData("Introduction");
-    if (intro) introduction.value = intro;
+  // Start animations immediately (non-blocking)
+  startAnimations();
 
-    const whatido = await getSheetData("CanDo");
-    if (whatido) canDo.value = whatido;
+  // Load data from Google Sheets in background (non-blocking)
+  loadDataInBackground();
+});
 
-    const experience = await getExperienceFromSheet();
-    if (experience && experience.length) {
-      experiences.value = experience.reverse();
-    } else {
-      experiences.value = FerasatExperience.reverse();
-    }
+// Start animations immediately
+const startAnimations = () => {
+  // Enable particles after a short delay
+  setTimeout(() => {
+    showParticles.value = true;
+  }, 100);
 
-    const skillsData = await getSkillsFromSheet();
-    if (skillsData && skillsData.length) {
-      skills.value = skillsData;
-    } else {
-      skills.value = FerasatSkills;
-    }
-
-    const interestsData = await getInterestsFromSheet();
-    if (interestsData && interestsData.length) {
-      interests.value = interestsData;
-    } else {
-      interests.value = FerasatInterests;
-    }
-  } catch (error) {
-    console.error("Error loading data:", error);
-    experiences.value = FerasatExperience.reverse();
-    skills.value = FerasatSkills;
-    interests.value = FerasatInterests;
-  }
-
-  // Hero animations
+  // Hero animations - Faster
   gsap.to(greetingRef.value, {
-    duration: 1,
+    duration: 0.5,
     opacity: 1,
     y: 0,
     ease: "power2.out",
   });
 
   gsap.to(nameRef.value, {
-    duration: 1.5,
+    duration: 0.8,
     text: "Muhammad Ferasat Ali",
     ease: "none",
-    delay: 0.3,
+    delay: 0.1,
   });
 
   gsap.to(roleRef.value, {
-    duration: 1,
+    duration: 0.6,
     text: "Full Stack Software Engineer",
     ease: "none",
-    delay: 1.5,
+    delay: 0.6,
   });
 
   gsap.to(descriptionRef.value, {
-    duration: 2,
+    duration: 1,
     text: introduction.value,
     ease: "none",
-    delay: 2.5,
+    delay: 1,
   });
 
   gsap.from(imageRef.value, {
-    duration: 1.5,
-    scale: 0.8,
+    duration: 0.8,
+    scale: 0.9,
     opacity: 0,
     ease: "power2.out",
-    delay: 0.5,
+    delay: 0.2,
   });
 
-  // About section
+  // Setup scroll animations with reduced instances
+  setupScrollAnimations();
+};
+
+// Load data in background (non-blocking)
+const loadDataInBackground = async () => {
+  try {
+    // Use Promise.allSettled to load all data in parallel without blocking
+    const results = await Promise.allSettled([
+      getSheetData("Introduction").catch(() => null),
+      getSheetData("CanDo").catch(() => null),
+      getExperienceFromSheet().catch(() => null),
+      getSkillsFromSheet().catch(() => null),
+      getInterestsFromSheet().catch(() => null),
+    ]);
+
+    // Update data as it loads
+    if (results[0].status === "fulfilled" && results[0].value) {
+      introduction.value = results[0].value;
+    }
+    if (results[1].status === "fulfilled" && results[1].value) {
+      canDo.value = results[1].value;
+    }
+    if (results[2].status === "fulfilled" && results[2].value && results[2].value.length) {
+      experiences.value = results[2].value.reverse();
+    } else {
+      experiences.value = FerasatExperience.reverse();
+    }
+    if (results[3].status === "fulfilled" && results[3].value && results[3].value.length) {
+      skills.value = results[3].value;
+    } else {
+      skills.value = FerasatSkills;
+    }
+    if (results[4].status === "fulfilled" && results[4].value && results[4].value.length) {
+      interests.value = results[4].value;
+    } else {
+      interests.value = FerasatInterests;
+    }
+  } catch (error) {
+    console.error("Error loading data:", error);
+    // Fallback to default data
+    experiences.value = FerasatExperience.reverse();
+    skills.value = FerasatSkills;
+    interests.value = FerasatInterests;
+  }
+};
+
+// Setup scroll animations with optimized ScrollTrigger
+const setupScrollAnimations = () => {
+  // About section - Faster
   gsap.to(aboutTitleRef.value, {
     scrollTrigger: {
       trigger: aboutTitleRef.value,
       start: "top 80%",
     },
-    duration: 0.8,
+    duration: 0.5,
     opacity: 1,
     y: 0,
   });
@@ -733,7 +914,7 @@ onMounted(async () => {
       trigger: aboutSubtitleRef.value,
       start: "top 80%",
     },
-    duration: 1,
+    duration: 0.6,
     text: "Passionate about creating innovative solutions",
     ease: "none",
   });
@@ -743,82 +924,101 @@ onMounted(async () => {
       trigger: aboutTextRef.value,
       start: "top 80%",
     },
-    duration: 2,
+    duration: 1,
     text: canDo.value,
     ease: "none",
   });
 
-  // Experience animations
-  experienceRefs.value.forEach((ref, index) => {
-    if (ref) {
-      gsap.from(ref, {
+  // Batch animations for better performance
+  requestAnimationFrame(() => {
+    // Experience animations - Faster
+    experienceRefs.value.forEach((ref, index) => {
+      if (ref) {
+        gsap.from(ref, {
+          scrollTrigger: {
+            trigger: ref,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          duration: 0.4,
+          opacity: 0,
+          x: -20,
+          delay: index * 0.03,
+        });
+      }
+    });
+
+    // Education animations - Faster
+    educationRefs.value.forEach((ref, index) => {
+      if (ref) {
+        gsap.from(ref, {
+          scrollTrigger: {
+            trigger: ref,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          duration: 0.4,
+          opacity: 0,
+          y: 15,
+          delay: index * 0.03,
+        });
+      }
+    });
+
+    // Skills animations - Faster (batch animate)
+    if (skillRefs.value.length > 0) {
+      gsap.from(skillRefs.value.filter(Boolean), {
         scrollTrigger: {
-          trigger: ref,
-          start: "top 80%",
+          trigger: skillRefs.value[0],
+          start: "top 85%",
+          toggleActions: "play none none none",
         },
-        duration: 0.8,
+        duration: 0.3,
         opacity: 0,
-        x: -50,
-        delay: index * 0.1,
+        scale: 0.9,
+        stagger: 0.02,
       });
     }
+
+    // Project animations - Faster
+    projectRefs.value.forEach((ref, index) => {
+      if (ref) {
+        gsap.from(ref, {
+          scrollTrigger: {
+            trigger: ref,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          duration: 0.4,
+          opacity: 0,
+          y: 20,
+          delay: index * 0.03,
+        });
+      }
+    });
   });
 
-  // Education animations
-  educationRefs.value.forEach((ref, index) => {
-    if (ref) {
-      gsap.from(ref, {
-        scrollTrigger: {
-          trigger: ref,
-          start: "top 80%",
-        },
-        duration: 0.8,
-        opacity: 0,
-        y: 30,
-        delay: index * 0.1,
+  // Scroll listener with throttling
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        handleScroll();
+        ticking = false;
       });
+      ticking = true;
     }
-  });
-
-  // Skills animations
-  skillRefs.value.forEach((ref, index) => {
-    if (ref) {
-      gsap.from(ref, {
-        scrollTrigger: {
-          trigger: ref,
-          start: "top 80%",
-        },
-        duration: 0.5,
-        opacity: 0,
-        scale: 0,
-        delay: index * 0.03,
-      });
-    }
-  });
-
-  // Project animations
-  projectRefs.value.forEach((ref, index) => {
-    if (ref) {
-      gsap.from(ref, {
-        scrollTrigger: {
-          trigger: ref,
-          start: "top 80%",
-        },
-        duration: 0.8,
-        opacity: 0,
-        y: 50,
-        delay: index * 0.1,
-      });
-    }
-  });
-
-  // Scroll listener
-  window.addEventListener("scroll", handleScroll);
-});
+  }, { passive: true });
+};
 
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  // Clean up all ScrollTrigger instances
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  // Clear any pending timeouts
+  if (scrollTimeout !== null) {
+    cancelAnimationFrame(scrollTimeout);
+  }
 });
 </script>
 
@@ -828,6 +1028,9 @@ onUnmounted(() => {
 .landing-page {
   position: relative;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
 }
 
 // Animated Particles Background
@@ -843,14 +1046,38 @@ onUnmounted(() => {
 
   .particle {
     position: absolute;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(99, 102, 241, 0.6) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
     animation: float infinite ease-in-out;
-    opacity: 0.6;
+    opacity: 0.4;
+    will-change: transform, opacity;
+    transform: translateZ(0); // Force GPU acceleration
+    backface-visibility: hidden;
+
+    @media (max-width: 768px) {
+      opacity: 0.2;
+      animation-duration: 6s;
+    }
+  }
+
+  @media (max-width: 768px) {
+    // Already reduced via particleCount
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .particle {
+      animation: none;
+      opacity: 0.2;
+    }
   }
 
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0) translateX(0) scale(1);
       opacity: 0.6;
     }
@@ -876,6 +1103,17 @@ onUnmounted(() => {
   position: relative;
   z-index: 1;
   margin: -50px 0;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    height: 60px;
+    margin: -30px 0;
+  }
+
+  @media (max-width: 480px) {
+    height: 40px;
+    margin: -20px 0;
+  }
 
   &.reverse {
     transform: rotate(180deg);
@@ -885,6 +1123,7 @@ onUnmounted(() => {
     width: 100%;
     height: 100%;
     display: block;
+    min-width: 100%;
   }
 }
 
@@ -895,7 +1134,11 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(99, 102, 241, 0.05) 0%,
+    transparent 70%
+  );
   pointer-events: none;
   z-index: 0;
 }
@@ -907,6 +1150,11 @@ onUnmounted(() => {
   justify-content: center;
   gap: 20px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
 
   .section-number {
     font-size: 72px;
@@ -919,8 +1167,16 @@ onUnmounted(() => {
     font-family: "Poppins", sans-serif;
     line-height: 1;
 
+    @media (max-width: 960px) {
+      font-size: 56px;
+    }
+
     @media (max-width: 768px) {
-      font-size: 48px;
+      font-size: 40px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 32px;
     }
   }
 }
@@ -935,9 +1191,19 @@ onUnmounted(() => {
   background-clip: text;
   display: flex;
   align-items: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  @media (max-width: 960px) {
+    font-size: 28px;
+  }
 
   @media (max-width: 768px) {
-    font-size: 24px;
+    font-size: 22px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
   }
 }
 
@@ -945,19 +1211,35 @@ onUnmounted(() => {
 .hero-section {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh; // Dynamic viewport height for mobile
   display: flex;
   align-items: center;
-  padding: 80px 0;
+  padding: 60px 0;
   overflow: hidden;
+  width: 100%;
+  max-width: 100vw;
 
-    .hero-background {
+  @media (max-width: 768px) {
+    padding: 40px 0;
+    min-height: auto;
+  }
+
+  .hero-background {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba(99, 102, 241, 0.15) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 80%,
+        rgba(139, 92, 246, 0.15) 0%,
+        transparent 50%
+      );
     z-index: 1;
     overflow: hidden;
 
@@ -966,39 +1248,77 @@ onUnmounted(() => {
       border-radius: 50%;
       filter: blur(80px);
       opacity: 0.5;
-      animation: orbFloat 20s infinite ease-in-out;
+      animation: orbFloat 12s infinite ease-in-out;
+      will-change: transform;
+      transform: translateZ(0);
 
       &.orb-1 {
         width: 500px;
         height: 500px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(99, 102, 241, 0.4) 0%,
+          transparent 70%
+        );
         top: -200px;
         left: -200px;
         animation-delay: 0s;
+
+        @media (max-width: 768px) {
+          width: 300px;
+          height: 300px;
+          top: -100px;
+          left: -100px;
+        }
       }
 
       &.orb-2 {
         width: 400px;
         height: 400px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(139, 92, 246, 0.4) 0%,
+          transparent 70%
+        );
         bottom: -150px;
         right: -150px;
         animation-delay: 7s;
+
+        @media (max-width: 768px) {
+          width: 250px;
+          height: 250px;
+          bottom: -75px;
+          right: -75px;
+        }
       }
 
       &.orb-3 {
         width: 300px;
         height: 300px;
-        background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+        background: radial-gradient(
+          circle,
+          rgba(6, 182, 212, 0.3) 0%,
+          transparent 70%
+        );
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         animation-delay: 14s;
+
+        @media (max-width: 768px) {
+          width: 200px;
+          height: 200px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
       }
     }
 
     @keyframes orbFloat {
-      0%, 100% {
+      0%,
+      100% {
         transform: translate(0, 0) scale(1);
       }
       33% {
@@ -1017,6 +1337,11 @@ onUnmounted(() => {
 
   .min-height-screen {
     min-height: calc(100vh - 160px);
+    min-height: calc(100dvh - 160px);
+
+    @media (max-width: 768px) {
+      min-height: auto;
+    }
   }
 
   .greeting-text {
@@ -1037,9 +1362,20 @@ onUnmounted(() => {
     background-clip: text;
     margin-bottom: 16px;
     line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    @media (max-width: 960px) {
+      font-size: 48px;
+    }
 
     @media (max-width: 768px) {
-      font-size: 42px;
+      font-size: 36px;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 28px;
     }
   }
 
@@ -1048,9 +1384,19 @@ onUnmounted(() => {
     font-weight: 600;
     color: #8b5cf6;
     margin-bottom: 24px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    @media (max-width: 960px) {
+      font-size: 28px;
+    }
 
     @media (max-width: 768px) {
-      font-size: 24px;
+      font-size: 20px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 18px;
     }
   }
 
@@ -1059,6 +1405,18 @@ onUnmounted(() => {
     line-height: 1.8;
     color: #cbd5e1;
     max-width: 600px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 100%;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
   }
 
   .hero-image-wrapper {
@@ -1066,20 +1424,43 @@ onUnmounted(() => {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+
+    @media (max-width: 768px) {
+      margin-top: 40px;
+    }
 
     .image-glow {
       position: absolute;
       width: 120%;
       height: 120%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(139, 92, 246, 0.2) 50%, transparent 70%);
+      max-width: 600px;
+      background: radial-gradient(
+        circle,
+        rgba(99, 102, 241, 0.4) 0%,
+        rgba(139, 92, 246, 0.2) 50%,
+        transparent 70%
+      );
       border-radius: 50%;
       filter: blur(60px);
       z-index: -1;
-      animation: pulseGlow 3s infinite ease-in-out;
+      animation: pulseGlow 2s infinite ease-in-out;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        height: 100%;
+        filter: blur(40px);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
     }
 
     @keyframes pulseGlow {
-      0%, 100% {
+      0%,
+      100% {
         transform: scale(1);
         opacity: 0.6;
       }
@@ -1096,15 +1477,31 @@ onUnmounted(() => {
       border-radius: 24px;
       border: 3px solid rgba(99, 102, 241, 0.4);
       box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4),
-                  0 0 100px rgba(139, 92, 246, 0.2);
-      transition: all 0.3s ease;
+        0 0 100px rgba(139, 92, 246, 0.2);
+      transition: all 0.2s ease;
       position: relative;
       z-index: 1;
+      object-fit: cover;
+
+      @media (max-width: 768px) {
+        max-width: 100%;
+        border-radius: 20px;
+      }
+
+      @media (max-width: 480px) {
+        max-width: 100%;
+        border-width: 2px;
+      }
 
       &:hover {
         transform: scale(1.02);
+
+        @media (max-width: 768px) {
+          transform: none; // Disable hover transform on mobile
+        }
+
         box-shadow: 0 30px 80px rgba(99, 102, 241, 0.5),
-                    0 0 120px rgba(139, 92, 246, 0.3);
+          0 0 120px rgba(139, 92, 246, 0.3);
       }
     }
   }
@@ -1123,7 +1520,7 @@ onUnmounted(() => {
       background: rgba(99, 102, 241, 0.1);
       border-radius: 12px;
       border: 1px solid rgba(99, 102, 241, 0.3);
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
 
       img {
         width: 24px;
@@ -1145,11 +1542,16 @@ onUnmounted(() => {
     left: 50%;
     transform: translateX(-50%);
     cursor: pointer;
-    animation: bounce 2s infinite;
+    animation: bounce 1.5s infinite;
 
     @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-10px); }
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
     }
 
     .v-icon {
@@ -1165,7 +1567,7 @@ onUnmounted(() => {
   border-radius: 12px;
   padding: 12px 32px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
   &:hover {
     background: rgba(99, 102, 241, 0.1);
@@ -1173,11 +1575,153 @@ onUnmounted(() => {
   }
 }
 
+// Hero Buttons Container
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  align-items: center;
+
+  .main-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+
+      .v-btn {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .download-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 8px;
+
+    @media (max-width: 960px) {
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+      gap: 12px;
+      margin-top: 0;
+
+      .v-btn {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+// Download Buttons - Enhanced Design
+.download-btn {
+  color: #e2e8f0;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-weight: 600;
+  font-size: 15px;
+  text-transform: none;
+  position: relative;
+  overflow: hidden;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 1024px) {
+    padding: 12px 24px;
+    font-size: 14px;
+    min-width: 120px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 14px 20px;
+    min-width: 100%;
+    width: 100%;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(99, 102, 241, 0.2),
+      transparent
+    );
+    transition: left 0.3s ease;
+  }
+
+  .v-icon {
+    font-size: 22px;
+    margin-right: 10px;
+    color: #8b5cf6;
+    transition: all 0.2s ease;
+  }
+
+  &:hover {
+    background: linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.2) 0%,
+      rgba(139, 92, 246, 0.15) 100%
+    );
+    border-color: rgba(99, 102, 241, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4),
+      0 0 30px rgba(139, 92, 246, 0.2);
+    color: #ffffff;
+
+    &::before {
+      left: 100%;
+    }
+
+    .v-icon {
+      color: #ffffff;
+      transform: translateY(-2px) scale(1.1);
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
 // Section Styles
 .section {
-  padding: 100px 0;
+  padding: 80px 0;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 0;
+  }
 
   .section-title {
     font-size: 48px;
@@ -1188,9 +1732,19 @@ onUnmounted(() => {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 16px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    @media (max-width: 960px) {
+      font-size: 40px;
+    }
 
     @media (max-width: 768px) {
-      font-size: 36px;
+      font-size: 32px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 28px;
     }
   }
 
@@ -1199,6 +1753,17 @@ onUnmounted(() => {
     color: #94a3b8;
     max-width: 600px;
     margin: 0 auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      padding: 0 20px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -1220,6 +1785,12 @@ onUnmounted(() => {
   .timeline {
     position: relative;
     padding-left: 40px;
+    width: 100%;
+    max-width: 100%;
+
+    @media (max-width: 768px) {
+      padding-left: 30px;
+    }
 
     &::before {
       content: "";
@@ -1229,6 +1800,10 @@ onUnmounted(() => {
       bottom: 0;
       width: 2px;
       background: linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%);
+
+      @media (max-width: 768px) {
+        left: 10px;
+      }
     }
 
     .timeline-item {
@@ -1245,8 +1820,15 @@ onUnmounted(() => {
         background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
         border: 3px solid #0f172a;
         box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.3),
-                    0 0 20px rgba(99, 102, 241, 0.5);
+          0 0 20px rgba(99, 102, 241, 0.5);
         z-index: 2;
+
+        @media (max-width: 768px) {
+          left: -25px;
+          width: 16px;
+          height: 16px;
+          border-width: 2px;
+        }
 
         .marker-pulse {
           position: absolute;
@@ -1257,7 +1839,7 @@ onUnmounted(() => {
           height: 100%;
           border-radius: 50%;
           background: rgba(99, 102, 241, 0.6);
-          animation: pulse 2s infinite;
+          animation: pulse 1.5s infinite;
         }
 
         @keyframes pulse {
@@ -1274,10 +1856,21 @@ onUnmounted(() => {
 
       .experience-card {
         border-radius: 20px;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
+        width: 100%;
+        max-width: 100%;
+
+        @media (max-width: 768px) {
+          padding: 20px !important;
+        }
 
         &:hover {
           transform: translateX(10px);
+
+          @media (max-width: 768px) {
+            transform: none; // Disable hover transform on mobile
+          }
+
           box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
         }
 
@@ -1358,7 +1951,11 @@ onUnmounted(() => {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(99, 102, 241, 0.2) 0%,
+        rgba(139, 92, 246, 0.2) 100%
+      );
       border-radius: 16px;
       margin-bottom: 16px;
       border: 1px solid rgba(99, 102, 241, 0.3);
@@ -1406,12 +2003,16 @@ onUnmounted(() => {
 
       .skill-chip {
         padding: 12px 24px;
-        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+        background: linear-gradient(
+          135deg,
+          rgba(99, 102, 241, 0.1) 0%,
+          rgba(139, 92, 246, 0.1) 100%
+        );
         border: 1px solid rgba(99, 102, 241, 0.3);
         border-radius: 24px;
         color: #cbd5e1;
         font-weight: 500;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
         position: relative;
         overflow: hidden;
 
@@ -1422,12 +2023,21 @@ onUnmounted(() => {
           left: -100%;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-          transition: left 0.5s ease;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+          );
+          transition: left 0.3s ease;
         }
 
         &:hover {
-          background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+          background: linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.2) 0%,
+            rgba(139, 92, 246, 0.2) 100%
+          );
           transform: translateY(-3px) scale(1.05);
           box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
           border-color: rgba(99, 102, 241, 0.5);
@@ -1461,30 +2071,52 @@ onUnmounted(() => {
   .project-card {
     border-radius: 24px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 100%;
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 100%;
+    max-width: 100%;
+
+    @media (max-width: 768px) {
+      border-radius: 20px;
+    }
 
     .project-badge {
       position: absolute;
       top: 20px;
       right: 20px;
       padding: 6px 16px;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.9) 0%, rgba(139, 92, 246, 0.9) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(99, 102, 241, 0.9) 0%,
+        rgba(139, 92, 246, 0.9) 100%
+      );
       border-radius: 20px;
       font-size: 12px;
       font-weight: 600;
       color: white;
       z-index: 10;
       box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+
+      @media (max-width: 480px) {
+        top: 10px;
+        right: 10px;
+        padding: 4px 12px;
+        font-size: 10px;
+      }
     }
 
     &:hover {
       transform: translateY(-15px) scale(1.02);
+
+      @media (max-width: 768px) {
+        transform: translateY(-5px) scale(1);
+      }
+
       box-shadow: 0 25px 70px rgba(99, 102, 241, 0.4),
-                  0 0 100px rgba(139, 92, 246, 0.2);
+        0 0 100px rgba(139, 92, 246, 0.2);
     }
 
     .project-image-wrapper {
@@ -1576,7 +2208,7 @@ onUnmounted(() => {
           color: #cbd5e1;
           text-decoration: none;
           font-size: 14px;
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
 
           &:hover {
             background: rgba(99, 102, 241, 0.2);
@@ -1592,6 +2224,61 @@ onUnmounted(() => {
 .contact-section {
   .contact-card {
     border-radius: 24px;
+
+    .download-section {
+      .download-section-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+
+        @media (max-width: 768px) {
+          font-size: 20px;
+        }
+      }
+
+      .download-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .download-link-btn {
+          flex: 1;
+          min-width: 200px;
+          color: #cbd5e1;
+          border: 2px solid rgba(99, 102, 241, 0.3);
+          border-radius: 12px;
+          padding: 12px 24px;
+          background: rgba(99, 102, 241, 0.1);
+          transition: all 0.2s ease;
+          font-weight: 500;
+
+          @media (max-width: 768px) {
+            min-width: 100%;
+            width: 100%;
+          }
+
+          .v-icon {
+            color: #8b5cf6;
+          }
+
+          &:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+            color: #ffffff;
+          }
+        }
+      }
+    }
 
     .modern-input {
       :deep(.v-field) {
@@ -1690,7 +2377,11 @@ onUnmounted(() => {
       transform: translate(-50%, -50%) scale(0);
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+      background: radial-gradient(
+        circle,
+        rgba(99, 102, 241, 0.3) 0%,
+        transparent 70%
+      );
       border-radius: 50%;
       transition: transform 0.3s ease;
     }
@@ -1699,7 +2390,7 @@ onUnmounted(() => {
       color: #cbd5e1;
       position: relative;
       z-index: 1;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
 
     &:hover {
@@ -1718,10 +2409,14 @@ onUnmounted(() => {
     }
 
     &.active {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(139, 92, 246, 0.4) 100%);
+      background: linear-gradient(
+        135deg,
+        rgba(99, 102, 241, 0.4) 0%,
+        rgba(139, 92, 246, 0.4) 100%
+      );
       border-color: #6366f1;
       box-shadow: 0 0 25px rgba(99, 102, 241, 0.6),
-                  0 0 50px rgba(139, 92, 246, 0.3);
+        0 0 50px rgba(139, 92, 246, 0.3);
       transform: scale(1.1);
 
       &::before {
@@ -1736,4 +2431,3 @@ onUnmounted(() => {
   }
 }
 </style>
-
