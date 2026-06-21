@@ -3,11 +3,15 @@ export interface PersonalProjectsPayload {
   subtitle: string;
   date: string;
   content: string[];
+  stack: string[];
+  projectType: string;
+  isPrivate: boolean;
   links: Links[];
   animation: string;
   projectImages: string[];
   selected: Boolean;
 }
+
 export interface Links {
   url: string;
   name: string;

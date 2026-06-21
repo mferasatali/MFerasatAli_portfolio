@@ -1,5 +1,5 @@
 {
-  "name": "hcms-landing-page",
+  "name": "mferasat-portfolio",
   "version": "0.0.0",
   "scripts": {
     "mfa": "vite",
@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@mdi/font": "7.0.96",
+    "@vueuse/core": "^14.3.0",
     "axios": "^1.6.2",
     "gapi-script": "^1.2.0",
     "gsap": "^3.12.3",
+    "lenis": "^1.3.23",
     "moment": "^2.30.1",
     "pinia": "^2.0.23",
     "roboto-fontface": "*",

@@ -1,6 +1,8 @@
 @use "sass:map";
 @import "./variables.scss";
 
+@import "./tokens.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 * {
@@ -10,10 +12,11 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  background-image: var(--gradient-mesh);
   background-attachment: fixed;
-  color: #e2e8f0;
+  color: var(--color-text);
   overflow-x: hidden;
 }
 
@@ -137,9 +140,9 @@ body {
   }
 }
 
-// Smooth scroll
+// Smooth scroll handled by Lenis on landing page
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 // Custom scrollbar

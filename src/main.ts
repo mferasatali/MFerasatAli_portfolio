@@ -7,6 +7,7 @@
 // Plugins
 import { registerPlugins } from "@/plugins";
 import "@/assets/scss/global.scss";
+import "lenis/dist/lenis.css";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import { requestInterceptor } from "./interceptor";

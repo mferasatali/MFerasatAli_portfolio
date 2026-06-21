@@ -39,12 +39,12 @@ export default createVuetify({
       },
       dark:{
         colors:{
-          primary: '#6366f1',
-          secondary: '#8b5cf6',
-          border: '#334155',
-          text: "#cbd8f7",
-          background: "#0f172a",
-          surface: "#1e293b",
+          primary: '#3b82f6',
+          secondary: '#6366f1',
+          border: 'rgba(255, 255, 255, 0.08)',
+          text: "#f8fafc",
+          background: "#080d1a",
+          surface: "#131b2e",
           "active-green": "#5FCFAC",
           "text-light-blue": "#778cbc",
           white: "#ffffff",
