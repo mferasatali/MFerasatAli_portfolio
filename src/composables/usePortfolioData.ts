@@ -7,6 +7,8 @@ import {
   FerasatSkillsFlat,
 } from "@/utils/ferasatSkillCategories";
 import { FerasatSocialLinks, PROFILE } from "@/utils/ferasatProfile";
+import { getFeaturedArticles } from "@/utils/ferasatArticles";
+import { FerasatTestimonials } from "@/utils/ferasatTestimonials";
 import { IExperience, IJourney } from "@/interfaces";
 
 /**
@@ -23,6 +25,8 @@ export function usePortfolioData() {
   const profile = ref(PROFILE);
   const introduction = ref(PROFILE.summary);
   const canDo = ref(PROFILE.summary);
+  const articles = ref(getFeaturedArticles(3));
+  const testimonials = ref(FerasatTestimonials);
   const isDataLoaded = ref(false);
 
   onMounted(() => {
@@ -39,6 +43,8 @@ export function usePortfolioData() {
     profile,
     introduction,
     canDo,
+    articles,
+    testimonials,
     isDataLoaded,
   };
 }

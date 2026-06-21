@@ -19,6 +19,9 @@ import AboutSection from "./sections/AboutSection.vue";
 import ExperienceSection from "./sections/ExperienceSection.vue";
 import SkillsSection from "./sections/SkillsSection.vue";
 import ProjectsSection from "./sections/ProjectsSection.vue";
+import GitHubSection from "./sections/GitHubSection.vue";
+import BlogSection from "./sections/BlogSection.vue";
+import TestimonialsSection from "./sections/TestimonialsSection.vue";
 import ContactSection from "./sections/ContactSection.vue";
 
 const { prefersReducedMotion } = useReducedMotion();
@@ -33,6 +36,8 @@ const {
   introduction,
   canDo,
   isDataLoaded,
+  articles,
+  testimonials,
 } = usePortfolioData();
 
 const { lenis, initLenis, scrollTo, scrollToTop } = useLenisScroll(prefersReducedMotion);
@@ -61,6 +66,11 @@ onMounted(() => {
     isReady.value = true;
     initLenis();
   }
+
+  if (window.location.hash) {
+    const id = window.location.hash.replace("#", "");
+    setTimeout(() => scrollTo(id), 600);
+  }
 });
 </script>
 
@@ -78,7 +88,6 @@ onMounted(() => {
       <HeroSection
         :introduction="introduction"
         :title="profile.title"
-        :resume-url="profile.resumeUrl"
         :location="profile.location"
         :social-links="socialLinks"
         :project-count="projects.length"
@@ -101,7 +110,16 @@ onMounted(() => {
       <SectionDivider id="d4" reverse />
       <ProjectsSection :projects="projects" />
 
+      <SectionDivider id="d4b" />
+      <GitHubSection />
+
       <SectionDivider id="d5" />
+      <BlogSection :articles="articles" />
+
+      <SectionDivider id="d6" reverse />
+      <TestimonialsSection :testimonials="testimonials" />
+
+      <SectionDivider id="d7" />
       <ContactSection :social-links="socialLinks" :profile="profile" />
     </main>
 

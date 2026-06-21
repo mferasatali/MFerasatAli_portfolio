@@ -26,8 +26,28 @@ export const PROFILE = {
   linkedin: "https://linkedin.com/in/mferasatali",
   github: "https://github.com/mferasatali",
   location: "Lahore, Pakistan",
-  resumeUrl:
-    "https://drive.google.com/file/d/1NKosJ2dj94GCBNEzmjgpjcA82yuKfUsp/view?usp=sharing",
   summary:
-    "Senior Full-Stack Software Engineer with 3+ years delivering enterprise-scale web applications and AI-integrated platforms for high-profile UAE clients — including Mubadala Investment Company, G42 (Inception · Core42 · Space42), Emirates Foundation, Dubai Municipality, and Khalifa University — through IBHC Abu Dhabi. Proficient across Vue.js, React, Angular, Nuxt.js, and Next.js on the frontend; Node.js, NestJS, and Laravel on the backend; PostgreSQL, MongoDB, and Redis for data. Actively integrating LLMs, RAG pipelines, vector databases, and OpenAI API into production systems.",
+    "Senior Full-Stack Software Engineer with 3+ years delivering enterprise-scale web applications and AI-integrated platforms for high-profile UAE clients — including Mubadala Investment Company, G42 (Inception · Core42 · Space42), Emirates Foundation, Dubai Municipality, and Khalifa University — through Inception - IBHC Abu Dhabi. Proficient across Vue.js, React, Angular, Nuxt.js, and Next.js on the frontend; Node.js, NestJS, and Laravel on the backend; PostgreSQL, MongoDB, and Redis for data. Actively integrating LLMs, RAG pipelines, vector databases, and OpenAI API into production systems.",
 };
+
+export type AvailabilityStatus = "open" | "limited" | "unavailable";
+
+/** Update status here — shown in hero badge & assistant answers */
+export const AVAILABILITY = {
+  status: "open" as AvailabilityStatus,
+  label: "Open to opportunities",
+  detail: "Available for full-time & contract roles",
+} as const;
+
+/** Original Google Drive / Docs links for PDF download */
+export const DOWNLOAD_LINKS = {
+  resume:
+    "https://drive.google.com/file/d/103HXbWAvlNYBAMDhJ0YCU1N1iVlMQHGO/view?usp=sharing",
+  coverLetter:
+    "https://drive.google.com/file/d/1A6Tq135tMbH4GIExc42oWNtzgvIf_78c/view?usp=sharing",
+} as const;
+
+export const DOWNLOAD_ITEMS = [
+  { label: "Resume", url: DOWNLOAD_LINKS.resume },
+  { label: "Cover Letter", url: DOWNLOAD_LINKS.coverLetter },
+] as const;

@@ -6,13 +6,13 @@ import MagneticButton from "../effects/MagneticButton.vue";
 import StatsBar from "../layout/StatsBar.vue";
 import { splitTextToWords } from "@/composables/useGsapReveal";
 import { TextPlugin } from "gsap/TextPlugin";
+import { DOWNLOAD_ITEMS, AVAILABILITY } from "@/utils/ferasatProfile";
 
 gsap.registerPlugin(TextPlugin);
 
 const props = defineProps<{
   introduction: string;
   title: string;
-  resumeUrl: string;
   location: string;
   socialLinks: ISocialLinks.SocialLinks[];
   projectCount: number;
@@ -26,6 +26,7 @@ const nameRef = ref<HTMLElement | null>(null);
 const roleRef = ref<HTMLElement | null>(null);
 const descRef = ref<HTMLElement | null>(null);
 const imageRef = ref<HTMLElement | null>(null);
+const downloadOpen = ref(false);
 
 onMounted(() => {
   if (prefersReducedMotion.value) {
@@ -71,6 +72,14 @@ onMounted(() => {
       <v-row align="center" class="hero-row">
         <v-col cols="12" lg="6" class="hero-col-content">
           <div class="hero-content">
+            <div
+              class="availability-badge"
+              :class="`status-${AVAILABILITY.status}`"
+              :title="AVAILABILITY.detail"
+            >
+              <span class="availability-dot" aria-hidden="true" />
+              {{ AVAILABILITY.label }}
+            </div>
             <p class="greeting" ref="greetingRef">Hello, I'm</p>
             <h1 class="hero-name" ref="nameRef">Muhammad Ferasat Ali</h1>
             <p class="hero-role" ref="roleRef">{{ title }}</p>
@@ -83,15 +92,13 @@ onMounted(() => {
                 </v-btn>
               </MagneticButton>
               <MagneticButton>
-                <v-btn
-                  class="outline-btn"
-                  size="large"
-                  variant="outlined"
-                  :href="resumeUrl"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <v-btn class="outline-btn" size="large" variant="outlined" to="/resume">
                   View Resume
+                </v-btn>
+              </MagneticButton>
+              <MagneticButton>
+                <v-btn class="outline-btn" size="large" variant="outlined" to="/cover-letter">
+                  Cover Letter
                 </v-btn>
               </MagneticButton>
               <MagneticButton>
@@ -99,6 +106,34 @@ onMounted(() => {
                   View Projects
                 </v-btn>
               </MagneticButton>
+
+              <div class="download-dropdown">
+                <v-btn
+                  class="outline-btn download-toggle"
+                  size="large"
+                  variant="outlined"
+                  @click="downloadOpen = !downloadOpen"
+                >
+                  <v-icon start>mdi-download</v-icon>
+                  Download
+                  <v-icon end>{{ downloadOpen ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
+                </v-btn>
+                <Transition name="dropdown">
+                  <div v-if="downloadOpen" class="download-menu">
+                    <a
+                      v-for="item in DOWNLOAD_ITEMS"
+                      :key="item.label"
+                      :href="item.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="download-item"
+                      @click="downloadOpen = false"
+                    >
+                      {{ item.label }}
+                    </a>
+                  </div>
+                </Transition>
+              </div>
             </div>
 
             <StatsBar
@@ -183,6 +218,66 @@ onMounted(() => {
   padding: 2rem 0;
 }
 
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.875rem 0.35rem 0.625rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: rgba(34, 197, 94, 0.1);
+  color: #86efac;
+
+  &.status-limited {
+    border-color: rgba(245, 158, 11, 0.35);
+    background: rgba(245, 158, 11, 0.1);
+    color: #fcd34d;
+
+    .availability-dot {
+      background: #f59e0b;
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.55);
+    }
+  }
+
+  &.status-unavailable {
+    border-color: rgba(148, 163, 184, 0.35);
+    background: rgba(148, 163, 184, 0.1);
+    color: #cbd5e1;
+
+    .availability-dot {
+      background: #94a3b8;
+      box-shadow: none;
+      animation: none;
+    }
+  }
+}
+
+.availability-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.65);
+  animation: availability-pulse 2s ease-in-out infinite;
+}
+
+@keyframes availability-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.65;
+    transform: scale(0.85);
+  }
+}
+
 .greeting {
   font-size: 0.875rem;
   letter-spacing: 0.2em;
@@ -223,6 +318,47 @@ onMounted(() => {
   gap: 0.75rem;
   align-items: flex-start;
   margin-bottom: 1.5rem;
+}
+
+.download-dropdown {
+  position: relative;
+}
+
+.download-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  min-width: 180px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.download-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: background 0.2s, color 0.2s;
+
+  &:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--color-text);
+  }
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
 }
 
 .hero-stats {

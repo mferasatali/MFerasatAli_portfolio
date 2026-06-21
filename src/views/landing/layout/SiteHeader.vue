@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+import { RouterLink } from "vue-router";
 import { useMediaQuery } from "@vueuse/core";
 import { NAV_ITEMS } from "@/constants/navigation";
 import MagneticButton from "../effects/MagneticButton.vue";
@@ -50,7 +51,11 @@ onUnmounted(() => {
       </nav>
 
       <div class="header-actions">
-        <MagneticButton v-if="!isMobile">
+        <nav v-if="!isMobile" class="doc-links" aria-label="Documents">
+          <RouterLink to="/resume" class="doc-link">Resume</RouterLink>
+          <RouterLink to="/cover-letter" class="doc-link">Cover Letter</RouterLink>
+        </nav>
+        <MagneticButton v-if="!isMobile" class="hire-wrap">
           <v-btn class="modern-btn hire-btn" size="small" @click="navigate('contact')">
             Hire Me
           </v-btn>
@@ -81,6 +86,18 @@ onUnmounted(() => {
           {{ item.label }}
         </button>
         <v-btn class="modern-btn mt-4" block @click="navigate('contact')">Hire Me</v-btn>
+        <RouterLink to="/resume" class="drawer-doc-link" @click="drawerOpen = false">
+          <v-icon size="small">mdi-file-document-outline</v-icon>
+          Resume
+        </RouterLink>
+        <RouterLink to="/cover-letter" class="drawer-doc-link" @click="drawerOpen = false">
+          <v-icon size="small">mdi-email-outline</v-icon>
+          Cover Letter
+        </RouterLink>
+        <RouterLink to="/blog" class="drawer-doc-link" @click="drawerOpen = false">
+          <v-icon size="small">mdi-post-outline</v-icon>
+          Articles
+        </RouterLink>
       </nav>
     </Transition>
   </header>
@@ -135,7 +152,21 @@ onUnmounted(() => {
 
 .nav-desktop {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.15rem;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+@media (max-width: 1200px) {
+  .nav-link {
+    padding: 0.5rem 0.65rem;
+    font-size: 0.8125rem;
+  }
+
+  .doc-link {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.75rem;
+  }
 }
 
 .nav-link {
@@ -163,6 +194,58 @@ onUnmounted(() => {
 .hire-btn {
   font-size: 0.8125rem !important;
   padding: 0 1.25rem !important;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.doc-links {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+}
+
+.hire-wrap {
+  flex-shrink: 0;
+}
+
+.doc-link {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+
+  &:hover,
+  &.router-link-active {
+    color: var(--color-primary-light);
+    background: rgba(59, 130, 246, 0.1);
+  }
+}
+
+.drawer-doc-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  margin-top: 0.5rem;
+
+  &:hover {
+    color: var(--color-primary-light);
+    border-color: rgba(59, 130, 246, 0.35);
+  }
 }
 
 .menu-toggle {

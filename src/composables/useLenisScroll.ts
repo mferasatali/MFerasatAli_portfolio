@@ -31,6 +31,9 @@ export function useLenisScroll(prefersReducedMotion: Ref<boolean>) {
     }) as unknown as LenisScrollController;
 
     lenis.value.on("scroll", ScrollTrigger.update);
+    lenis.value.on("scroll", () => {
+      window.dispatchEvent(new Event("scroll"));
+    });
 
     tickerCallback = (time: number) => {
       lenis.value?.raf(time * 1000);

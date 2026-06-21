@@ -10,6 +10,8 @@ export const NAV_ITEMS: NavItem[] = [
   { id: "experience", label: "Experience", icon: "mdi-briefcase" },
   { id: "skills", label: "Skills", icon: "mdi-school" },
   { id: "projects", label: "Projects", icon: "mdi-folder" },
+  { id: "blog", label: "Articles", icon: "mdi-post-outline" },
+  { id: "testimonials", label: "Reviews", icon: "mdi-star-outline" },
   { id: "contact", label: "Contact", icon: "mdi-email" },
 ];
 

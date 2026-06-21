@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ISocialLinks } from "@/interfaces";
+import { RouterLink } from "vue-router";
 
 defineProps<{ socialLinks: ISocialLinks.SocialLinks[] }>();
 const emit = defineEmits<{ scrollTop: [] }>();
@@ -12,8 +13,11 @@ const emit = defineEmits<{ scrollTop: [] }>();
         &copy; {{ new Date().getFullYear() }} Muhammad Ferasat Ali. All rights reserved.
       </p>
       <div class="footer-links">
+        <RouterLink to="/resume" class="footer-link">Resume</RouterLink>
+        <RouterLink to="/cover-letter" class="footer-link">Cover Letter</RouterLink>
+        <RouterLink to="/blog" class="footer-link">Articles</RouterLink>
         <a
-          v-for="(link, index) in socialLinks.slice(0, 4)"
+          v-for="(link, index) in socialLinks"
           :key="index"
           :href="link.link"
           target="_blank"

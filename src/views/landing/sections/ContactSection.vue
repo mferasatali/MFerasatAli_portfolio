@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { RouterLink } from "vue-router";
 import type { ISocialLinks } from "@/interfaces";
 import { loadSheetsApi } from "@/utils/googleSpreadSheetAPI";
 import type { PROFILE } from "@/utils/ferasatProfile";
@@ -70,7 +71,7 @@ const contactFerasat = async () => {
       <div class="contact-grid">
         <div class="contact-info">
           <div class="section-title-wrapper">
-            <span class="section-number">05</span>
+            <span class="section-number">07</span>
             <h2 class="section-title contact-title">Let's build something</h2>
           </div>
           <p class="contact-lead">
@@ -97,6 +98,8 @@ const contactFerasat = async () => {
           </div>
 
           <div class="contact-social">
+            <RouterLink to="/resume" class="social-chip">Resume</RouterLink>
+            <RouterLink to="/cover-letter" class="social-chip">Cover Letter</RouterLink>
             <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer" class="social-chip">
               LinkedIn
             </a>
@@ -240,7 +243,8 @@ const contactFerasat = async () => {
   text-decoration: none;
   transition: border-color 0.2s, color 0.2s;
 
-  &:hover {
+  &:hover,
+  &.router-link-active {
     border-color: var(--color-primary);
     color: var(--color-primary-light);
   }

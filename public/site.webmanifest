@@ -1,0 +1,14 @@
+{
+  "name": "Muhammad Ferasat Ali",
+  "short_name": "MFA",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#080d1a",
+  "background_color": "#080d1a",
+  "display": "standalone"
+}

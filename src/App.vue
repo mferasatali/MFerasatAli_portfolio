@@ -1,11 +1,16 @@
 <template>
   <v-app>
+    <ScrollProgressBar />
     <RouterView />
+    <CommandPalette />
+    <PortfolioAssistant />
   </v-app>
 </template>
 
 <script setup lang="ts">
-// Single page portfolio - no navigation needed
+import ScrollProgressBar from "@/components/ScrollProgressBar.vue";
+import CommandPalette from "@/components/CommandPalette.vue";
+import PortfolioAssistant from "@/components/PortfolioAssistant.vue";
 </script>
 
 <style scoped lang="scss">

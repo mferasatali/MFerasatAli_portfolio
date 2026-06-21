@@ -2,7 +2,7 @@ import { IExperience } from "@/interfaces/index";
 
 export const FerasatExperience: IExperience.ExperiencePayload[] = [
   {
-    companyName: "IBHC",
+    companyName: "Inception - IBHC",
     role: "Senior Software Engineer",
     duration: "Jan 2024 – Present",
     location: "Remote · Abu Dhabi, UAE",
