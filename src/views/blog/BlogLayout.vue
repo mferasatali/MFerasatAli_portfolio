@@ -55,7 +55,7 @@ const isArticle = computed(() => route.name === "Article");
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(8, 13, 26, 0.92);
+  background: var(--color-toolbar-bg);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
 }

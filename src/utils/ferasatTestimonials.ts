@@ -1,10 +1,13 @@
 import type { Testimonial } from "@/interfaces/testimonial.interface";
 
+/**
+ * LinkedIn-style recommendations. Replace quote text with your exact LinkedIn copy when ready.
+ */
 export const FerasatTestimonials: Testimonial[] = [
   {
     id: "t1",
     quote:
-      "Muhammad delivered critical modules on Takafo+ with exceptional attention to detail — complex approval workflows, real-time notifications, and Azure SSO integration. He communicates clearly with stakeholders and handles production issues under pressure without compromise on quality.",
+      "I had the pleasure of working closely with Muhammad on Takafo+ at Inception - IBHC. He consistently delivered complex Vue 3 modules — approval workflows, Azure SSO, and real-time WebSocket features — with exceptional attention to detail. Muhammad communicates clearly with stakeholders, handles production pressure calmly, and never compromises on quality. I would gladly work with him again on any enterprise initiative.",
     name: "Nick",
     role: "Technical Programme Lead",
     company: "Inception - IBHC",
@@ -13,7 +16,7 @@ export const FerasatTestimonials: Testimonial[] = [
   {
     id: "t2",
     quote:
-      "As our Frontend Lead, Ferasat raised the bar for the entire team — code reviews, Vue 3 architecture, and mentoring juniors. His OpenAI and RAG integrations shipped to production reliably, and he bridges product requirements with clean technical execution.",
+      "Muhammad Ferasat Ali has been an outstanding Frontend Lead at Aslase. He mentors the team effectively, sets high standards through code reviews, and architects scalable Vue 3 and React applications. His OpenAI and RAG integrations shipped to production reliably, and he bridges the gap between product requirements and clean technical delivery better than most engineers I've managed.",
     name: "Abdullah Riaz",
     role: "Engineering Manager",
     company: "Aslase",
@@ -22,7 +25,7 @@ export const FerasatTestimonials: Testimonial[] = [
   {
     id: "t3",
     quote:
-      "Reliable full-stack engineer who owns features end-to-end. From Vue/React frontends to Node.js APIs and PostgreSQL tuning — he improved our API response times measurably and integrated payment gateways with zero downtime in production.",
+      "Ferasat is one of the most reliable full-stack engineers I've worked with at Byte Sailors. He owned features end-to-end — from Vue/React frontends to Node.js APIs and PostgreSQL performance tuning. He integrated Stripe, PayPal, and Braintree payment gateways with zero downtime and measurably improved our API response times. A strong hire for any product team.",
     name: "Sajjad Ali",
     role: "CTO",
     company: "Byte Sailors",
@@ -31,7 +34,7 @@ export const FerasatTestimonials: Testimonial[] = [
   {
     id: "t4",
     quote:
-      "Strong problem-solver on AI assessment and recruitment workflows. Structured prompt engineering, secure session handling, and a calm approach during live exam incidents made him a go-to engineer on our enterprise delivery team.",
+      "Working with Muhammad on our AI assessment platform was a great experience. He brought structured prompt engineering, secure session handling, and a calm, solutions-first mindset during live exam incidents. When production issues arose, he was the engineer the team turned to. His ability to integrate OpenAI into real enterprise workflows is genuinely impressive.",
     name: "Alia",
     role: "Senior Product Owner",
     company: "AI Assessment · UAE",

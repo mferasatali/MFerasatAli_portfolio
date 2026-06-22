@@ -16,6 +16,7 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
     ],
     projectType: "Enterprise · Private",
     isPrivate: true,
+    slug: "takafo-plus",
     content: [
       "Enterprise Human Capital Management platform — 11 modules, 30+ user roles covering end-to-end recruiting, CRM, onboarding, succession planning, VIP referrals, talent marketplace, and Emiratization tracking.",
       "AI candidate matching, Heygen avatar interviews, real-time WebSocket notifications, Azure MSAL SSO + B2C auth, and OpenAI-powered candidate scoring.",
@@ -32,6 +33,7 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
     stack: ["Vue.js", "Node.js", "OpenAI API", "PostgreSQL"],
     projectType: "Enterprise · Private",
     isPrivate: true,
+    slug: "qudra-tech",
     content: [
       "AI-powered candidate assessment platform with timed test environments and automated question generation via OpenAI API.",
       "AI-driven scoring and evaluation, session security, and live exam monitoring with real-time issue resolution.",
@@ -48,6 +50,7 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
     stack: ["Vue.js", "Heygen API", "OpenAI", "Node.js"],
     projectType: "Enterprise · Private",
     isPrivate: true,
+    slug: "ai-avatars",
     content: [
       "Interactive AI avatar interview experience integrated into recruitment workflows.",
       "Real-time live avatar powered by Heygen API with OpenAI-driven conversational intelligence for automated human-like candidate screening at scale.",
@@ -103,6 +106,7 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
     stack: ["Vue 3", "Pinia", "Tailwind CSS"],
     projectType: "Open Source · Public",
     isPrivate: false,
+    slug: "invoice-generator",
     content: [
       "Browser-based invoice builder with real-time preview and PDF export.",
       "Multi-currency support and local-storage persistence.",

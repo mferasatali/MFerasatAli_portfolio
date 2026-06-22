@@ -230,12 +230,12 @@ onMounted(() => {
   letter-spacing: 0.02em;
   border: 1px solid rgba(34, 197, 94, 0.35);
   background: rgba(34, 197, 94, 0.1);
-  color: #86efac;
+  color: var(--color-availability-open);
 
   &.status-limited {
     border-color: rgba(245, 158, 11, 0.35);
     background: rgba(245, 158, 11, 0.1);
-    color: #fcd34d;
+    color: var(--color-availability-limited);
 
     .availability-dot {
       background: #f59e0b;
@@ -246,7 +246,7 @@ onMounted(() => {
   &.status-unavailable {
     border-color: rgba(148, 163, 184, 0.35);
     background: rgba(148, 163, 184, 0.1);
-    color: #cbd5e1;
+    color: var(--color-availability-closed);
 
     .availability-dot {
       background: #94a3b8;

@@ -6,6 +6,7 @@ export interface PersonalProjectsPayload {
   stack: string[];
   projectType: string;
   isPrivate: boolean;
+  slug?: string;
   links: Links[];
   animation: string;
   projectImages: string[];

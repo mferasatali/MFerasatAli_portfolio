@@ -26,6 +26,11 @@ export const PROFILE = {
   linkedin: "https://linkedin.com/in/mferasatali",
   github: "https://github.com/mferasatali",
   location: "Lahore, Pakistan",
+  phone: "03424658936",
+  phoneDisplay: "+92 342 4658936",
+  /** Opens WhatsApp chat (Pakistan +92) */
+  whatsappUrl:
+    "https://wa.me/923424658936?text=Hi%20Muhammad%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect.",
   summary:
     "Senior Full-Stack Software Engineer with 3+ years delivering enterprise-scale web applications and AI-integrated platforms for high-profile UAE clients — including Mubadala Investment Company, G42 (Inception · Core42 · Space42), Emirates Foundation, Dubai Municipality, and Khalifa University — through Inception - IBHC Abu Dhabi. Proficient across Vue.js, React, Angular, Nuxt.js, and Next.js on the frontend; Node.js, NestJS, and Laravel on the backend; PostgreSQL, MongoDB, and Redis for data. Actively integrating LLMs, RAG pipelines, vector databases, and OpenAI API into production systems.",
 };

@@ -168,7 +168,19 @@ const FAQ_ENTRIES: FaqEntry[] = [
       "full-time",
       "full time",
     ],
-    answer: `${AVAILABILITY.label}. Reach out via the contact form on the portfolio, email ${PROFILE.email}, or LinkedIn (${PROFILE.linkedin.replace("https://", "")}). Resume: /resume · Cover letter: /cover-letter`,
+    answer: `${AVAILABILITY.label}. Reach out via WhatsApp (${PROFILE.phoneDisplay}), contact form, email ${PROFILE.email}, or LinkedIn.`,
+  },
+  {
+    keywords: ["whatsapp", "whats app", "phone", "call", "number", "mobile", "text me"],
+    answer: `Chat with ${PROFILE.name} on WhatsApp at ${PROFILE.phoneDisplay} — tap the button below to open a conversation.`,
+    actions: [
+      {
+        label: "Chat on WhatsApp",
+        icon: "mdi-whatsapp",
+        href: PROFILE.whatsappUrl,
+        external: true,
+      },
+    ],
   },
   {
     keywords: [

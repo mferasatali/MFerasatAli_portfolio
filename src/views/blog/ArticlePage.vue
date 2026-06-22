@@ -9,6 +9,7 @@ import {
   CATEGORY_COLORS,
   FerasatArticles,
 } from "@/utils/ferasatArticles";
+import { applyPageSeo } from "@/utils/siteSeo";
 
 const route = useRoute();
 
@@ -28,7 +29,12 @@ watch(
   article,
   (value) => {
     if (value) {
-      document.title = `${value.title} — Muhammad Ferasat Ali`;
+      applyPageSeo({
+        path: `/blog/${value.slug}`,
+        title: `${value.title} — Muhammad Ferasat Ali`,
+        description: value.excerpt,
+        type: "article",
+      });
     }
   },
   { immediate: true }
@@ -164,7 +170,7 @@ onMounted(() => {
   font-size: 0.6875rem;
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--color-chip-bg);
   color: var(--color-text-dim);
   border: 1px solid var(--color-border);
 }

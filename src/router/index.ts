@@ -1,5 +1,5 @@
-// Composables
 import { createRouter, createWebHistory } from "vue-router";
+import { applyPageSeo, applyPageSeoFromRoute } from "@/utils/siteSeo";
 
 const routes = [
   {
@@ -31,6 +31,11 @@ const routes = [
     component: () => import("@/views/blog/ArticlePage.vue"),
   },
   {
+    path: "/projects/:slug",
+    name: "ProjectCaseStudy",
+    component: () => import("@/views/projects/ProjectCaseStudyPage.vue"),
+  },
+  {
     path: "/404",
     name: "NotFound",
     component: () => import("@/views/NotFoundPage.vue"),
@@ -53,9 +58,18 @@ const router = createRouter({
 });
 
 router.afterEach((to) => {
-  const title =
-    (to.meta.title as string) || "Muhammad Ferasat Ali — Senior Full-Stack Engineer";
-  document.title = title;
+  if (to.name === "Article" || to.name === "ProjectCaseStudy") return;
+
+  if (to.name === "CatchAll" || to.name === "NotFound") {
+    applyPageSeo({
+      path: to.path,
+      title: "404 — Page Not Found",
+      description: "The page you are looking for does not exist.",
+    });
+    return;
+  }
+
+  applyPageSeoFromRoute(to.path);
 
   if (to.hash) {
     const id = to.hash.replace("#", "");

@@ -240,7 +240,7 @@ watch(open, (isOpen) => {
   flex-direction: column;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  background: rgba(8, 13, 26, 0.96);
+  background: var(--color-overlay-bg);
   backdrop-filter: blur(20px);
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
   overflow: hidden;
@@ -464,7 +464,7 @@ watch(open, (isOpen) => {
   border-radius: var(--radius-sm);
   border: none;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   cursor: pointer;
 
   &:disabled {

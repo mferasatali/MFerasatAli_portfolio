@@ -31,8 +31,15 @@
             <p>ALT: ferasatali14@gmail.com</p>
           </div>
           <div class="d-flex align-center" style="gap: 0.6rem">
-            <v-icon> mdi-phone </v-icon>
-            <p>03424658936</p>
+            <v-icon> mdi-whatsapp </v-icon>
+            <a
+              href="https://wa.me/923424658936"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: inherit; text-decoration: none"
+            >
+              03424658936
+            </a>
           </div>
         </div>
         <div

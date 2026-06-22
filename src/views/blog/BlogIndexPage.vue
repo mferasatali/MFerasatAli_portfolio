@@ -209,7 +209,7 @@ onMounted(() => {
   font-size: 0.6875rem;
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--color-chip-bg);
   color: var(--color-text-dim);
   border: 1px solid var(--color-border);
 }

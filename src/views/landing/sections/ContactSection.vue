@@ -91,9 +91,14 @@ const contactFerasat = async () => {
               <v-icon>mdi-github</v-icon>
               github.com/mferasatali
             </a>
-            <a href="tel:03424658936" class="contact-detail">
-              <v-icon>mdi-phone</v-icon>
-              +92 342 4658936
+            <a
+              :href="profile.whatsappUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="contact-detail whatsapp-detail"
+            >
+              <v-icon>mdi-whatsapp</v-icon>
+              {{ profile.phoneDisplay }}
             </a>
           </div>
 
@@ -105,6 +110,9 @@ const contactFerasat = async () => {
             </a>
             <a :href="profile.github" target="_blank" rel="noopener noreferrer" class="social-chip">
               GitHub
+            </a>
+            <a :href="profile.whatsappUrl" target="_blank" rel="noopener noreferrer" class="social-chip">
+              WhatsApp
             </a>
             <a :href="`mailto:${profile.email}`" class="social-chip">
               Email
@@ -228,6 +236,10 @@ const contactFerasat = async () => {
   }
 }
 
+.whatsapp-detail:hover {
+  color: var(--color-whatsapp-hover);
+}
+
 .contact-social {
   display: flex;
   flex-wrap: wrap;
@@ -256,7 +268,7 @@ const contactFerasat = async () => {
 
 :deep(.modern-input) {
   .v-field {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--color-chip-bg-hover);
     border-radius: var(--radius-md);
   }
 

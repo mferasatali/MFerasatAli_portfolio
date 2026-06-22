@@ -4,6 +4,7 @@ import { RouterLink } from "vue-router";
 import { useMediaQuery } from "@vueuse/core";
 import { NAV_ITEMS } from "@/constants/navigation";
 import MagneticButton from "../effects/MagneticButton.vue";
+import ThemeToggle from "@/components/ThemeToggle.vue";
 
 defineProps<{ activeSection: string }>();
 const emit = defineEmits<{ navigate: [id: string] }>();
@@ -55,6 +56,7 @@ onUnmounted(() => {
           <RouterLink to="/resume" class="doc-link">Resume</RouterLink>
           <RouterLink to="/cover-letter" class="doc-link">Cover Letter</RouterLink>
         </nav>
+        <ThemeToggle v-if="!isMobile" />
         <MagneticButton v-if="!isMobile" class="hire-wrap">
           <v-btn class="modern-btn hire-btn" size="small" @click="navigate('contact')">
             Hire Me
@@ -86,6 +88,10 @@ onUnmounted(() => {
           {{ item.label }}
         </button>
         <v-btn class="modern-btn mt-4" block @click="navigate('contact')">Hire Me</v-btn>
+        <div class="drawer-theme">
+          <ThemeToggle />
+          <span>Toggle theme</span>
+        </div>
         <RouterLink to="/resume" class="drawer-doc-link" @click="drawerOpen = false">
           <v-icon size="small">mdi-file-document-outline</v-icon>
           Resume
@@ -116,7 +122,7 @@ onUnmounted(() => {
     border-color 0.4s;
 
   &.scrolled {
-    background: rgba(5, 5, 8, 0.85);
+    background: var(--color-header-bg);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--color-border);
   }
@@ -230,6 +236,16 @@ onUnmounted(() => {
   }
 }
 
+.drawer-theme {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
 .drawer-doc-link {
   display: flex;
   align-items: center;
@@ -266,7 +282,7 @@ onUnmounted(() => {
   top: var(--header-height);
   left: 0;
   right: 0;
-  background: rgba(5, 5, 8, 0.97);
+  background: var(--color-drawer-bg);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--color-border);
   padding: 1.5rem;

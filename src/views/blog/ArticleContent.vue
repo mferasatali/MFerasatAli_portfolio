@@ -78,12 +78,12 @@ defineProps<{ blocks: ArticleBlock[] }>();
   margin: 1.25rem 0 1.75rem;
   padding: 1.25rem 1.5rem;
   border-radius: var(--radius-md);
-  background: var(--color-bg-elevated);
+  background: var(--color-code-bg);
   border: 1px solid var(--color-border);
   overflow-x: auto;
   font-size: 0.8125rem;
   line-height: 1.65;
-  color: #e2e8f0;
+  color: var(--color-code-text);
 
   code {
     font-family: "Consolas", "Monaco", "Courier New", monospace;

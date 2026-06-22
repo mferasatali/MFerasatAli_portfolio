@@ -13,6 +13,9 @@ import VueAxios from "vue-axios";
 import { requestInterceptor } from "./interceptor";
 import router from './router' 
 import moment from 'moment';
+import { initAppTheme } from "@/composables/useAppTheme";
+
+initAppTheme();
 
 
 

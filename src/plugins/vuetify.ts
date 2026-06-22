@@ -11,18 +11,24 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 
+const savedTheme =
+  typeof localStorage !== "undefined" && localStorage.getItem("mfa-theme") === "light"
+    ? "light"
+    : "dark";
+
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {
-    defaultTheme: "dark",
+    defaultTheme: savedTheme,
     themes: {
       light: {
         colors: {
-          primary: '#1867C0',
-          secondary: '#5CBBF6',
-          border: '#1c0e0e',
-          background: "#000000",
-          text: "#cbd8f7",
+          primary: '#2563eb',
+          secondary: '#6366f1',
+          border: 'rgba(15, 23, 42, 0.1)',
+          background: "#f1f5f9",
+          text: "#0f172a",
+          surface: "#ffffff",
           "active-green": "#5FCFAC",
           "text-light-blue": "#778cbc",
           white: "#ffffff",
@@ -32,7 +38,7 @@ export default createVuetify({
           "hard-skills": "#ff8473",
           "green-skills": "#3ce17e",
           link: "#1c53f4",
-          "base-text": "#ffffff",
+          "base-text": "#0f172a",
           "dark-bg": "#212444",
           "grey": "#BDBDBD",
         },

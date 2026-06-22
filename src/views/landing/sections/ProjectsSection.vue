@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, nextTick, onMounted, inject, computed, type Ref } from "vue";
+import { RouterLink } from "vue-router";
 import type { IProjects } from "@/interfaces";
 import TiltCard from "../effects/TiltCard.vue";
 import { useGsapReveal } from "@/composables/useGsapReveal";
@@ -187,6 +188,16 @@ watch(
             {{ link.name }}
           </a>
         </div>
+
+        <RouterLink
+          v-if="featured.slug"
+          :to="`/projects/${featured.slug}`"
+          class="case-study-btn"
+          @click="closeModal"
+        >
+          <v-icon size="small">mdi-text-box-search-outline</v-icon>
+          Read full case study
+        </RouterLink>
       </div>
     </v-dialog>
   </section>
@@ -236,13 +247,13 @@ watch(
 .badge-private {
   background: rgba(59, 130, 246, 0.15);
   border: 1px solid rgba(59, 130, 246, 0.35);
-  color: #93c5fd;
+  color: var(--color-badge-private-text);
 }
 
 .badge-public {
   background: rgba(34, 197, 94, 0.15);
   border: 1px solid rgba(34, 197, 94, 0.35);
-  color: #86efac;
+  color: var(--color-badge-public-text);
 }
 
 .project-image-wrap {
@@ -312,7 +323,7 @@ watch(
   font-size: 0.6875rem;
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--color-chip-bg);
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
 }
@@ -396,6 +407,26 @@ watch(
     color: var(--color-text-muted);
     margin-bottom: 0.35rem;
     font-size: 0.9375rem;
+  }
+}
+
+.case-study-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: var(--color-primary-light);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(59, 130, 246, 0.22);
   }
 }
 

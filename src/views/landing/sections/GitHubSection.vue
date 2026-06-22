@@ -170,7 +170,7 @@ onMounted(async () => {
   text-transform: uppercase;
   border-radius: 999px;
   background: rgba(34, 197, 94, 0.15);
-  color: #86efac;
+  color: var(--color-live-badge);
   border: 1px solid rgba(34, 197, 94, 0.35);
   vertical-align: middle;
 }

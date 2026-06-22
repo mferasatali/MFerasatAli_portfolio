@@ -103,7 +103,7 @@ watch(
   font-family: var(--font-display);
   font-size: clamp(6rem, 15vw, 12rem);
   font-weight: 800;
-  color: rgba(99, 102, 241, 0.04);
+  color: var(--color-watermark);
   line-height: 1;
   pointer-events: none;
   user-select: none;

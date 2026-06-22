@@ -90,7 +90,7 @@ watch(open, async (isOpen) => {
   flex-direction: column;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  background: rgba(8, 13, 26, 0.98);
+  background: var(--color-overlay-bg);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }

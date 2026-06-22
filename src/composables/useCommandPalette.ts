@@ -1,6 +1,8 @@
 import { ref, computed, watch, onMounted, onUnmounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { NAV_ITEMS } from "@/constants/navigation";
+import { FerasatCaseStudies } from "@/utils/ferasatCaseStudies";
+import { useAppTheme } from "@/composables/useAppTheme";
 
 export interface CommandItem {
   id: string;
@@ -17,6 +19,7 @@ export function useCommandPalette() {
   const activeIndex = ref(0);
   const router = useRouter();
   const route = useRoute();
+  const { toggleTheme } = useAppTheme();
 
   const navigateSection = (sectionId: string) => {
     open.value = false;
@@ -105,6 +108,32 @@ export function useCommandPalette() {
       keywords: ["contact", "hire", "email", "message"],
       icon: "mdi-send",
       action: () => navigateSection("contact"),
+    });
+
+    FerasatCaseStudies.forEach((study) => {
+      items.push({
+        id: `project-${study.slug}`,
+        label: `${study.title} (case study)`,
+        group: "Projects",
+        keywords: [study.slug, study.title.toLowerCase(), "case study", "project"],
+        icon: "mdi-text-box-search-outline",
+        action: () => {
+          open.value = false;
+          router.push(`/projects/${study.slug}`);
+        },
+      });
+    });
+
+    items.push({
+      id: "toggle-theme",
+      label: "Toggle light / dark theme",
+      group: "Actions",
+      keywords: ["theme", "dark", "light", "mode"],
+      icon: "mdi-theme-light-dark",
+      action: () => {
+        open.value = false;
+        toggleTheme();
+      },
     });
 
     return items;

@@ -154,37 +154,37 @@ watch(
 .badge-frontend {
   background: rgba(59, 130, 246, 0.12);
   border-color: rgba(59, 130, 246, 0.35);
-  color: #93c5fd;
+  color: var(--color-badge-frontend-text);
 }
 
 .badge-backend {
   background: rgba(139, 92, 246, 0.12);
   border-color: rgba(139, 92, 246, 0.35);
-  color: #c4b5fd;
+  color: var(--color-badge-backend-text);
 }
 
 .badge-ai {
   background: rgba(34, 197, 94, 0.12);
   border-color: rgba(34, 197, 94, 0.35);
-  color: #86efac;
+  color: var(--color-badge-ai-text);
 }
 
 .badge-cloud {
   background: rgba(245, 158, 11, 0.12);
   border-color: rgba(245, 158, 11, 0.35);
-  color: #fcd34d;
+  color: var(--color-badge-cloud-text);
 }
 
 .badge-languages {
   background: rgba(100, 116, 139, 0.15);
   border-color: rgba(100, 116, 139, 0.35);
-  color: #cbd5e1;
+  color: var(--color-badge-languages-text);
 }
 
 .badge-databases {
   background: rgba(20, 184, 166, 0.12);
   border-color: rgba(20, 184, 166, 0.35);
-  color: #5eead4;
+  color: var(--color-badge-databases-text);
 }
 
 @media (max-width: 768px) {
