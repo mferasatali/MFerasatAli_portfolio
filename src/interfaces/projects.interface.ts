@@ -8,6 +8,7 @@ export interface PersonalProjectsPayload {
   isPrivate: boolean;
   slug?: string;
   links: Links[];
+  liveDemo?: string;
   animation: string;
   projectImages: string[];
   selected: Boolean;

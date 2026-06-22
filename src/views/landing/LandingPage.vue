@@ -22,7 +22,13 @@ import ProjectsSection from "./sections/ProjectsSection.vue";
 import GitHubSection from "./sections/GitHubSection.vue";
 import BlogSection from "./sections/BlogSection.vue";
 import TestimonialsSection from "./sections/TestimonialsSection.vue";
+import RecruiterSection from "./sections/RecruiterSection.vue";
 import ContactSection from "./sections/ContactSection.vue";
+import RecruiterSummaryBar from "@/components/recruiter/RecruiterSummaryBar.vue";
+import RecruiterPackDialog from "@/components/recruiter/RecruiterPackDialog.vue";
+import { useRecruiterPack } from "@/composables/useRecruiterPack";
+
+const { packOpen } = useRecruiterPack();
 
 const { prefersReducedMotion } = useReducedMotion();
 const {
@@ -82,6 +88,7 @@ onMounted(() => {
     <CustomCursor />
 
     <SiteHeader :active-section="activeSection" @navigate="scrollTo" />
+    <RecruiterSummaryBar />
     <FloatingNav :active-section="activeSection" @navigate="scrollTo" />
 
     <main>
@@ -107,7 +114,10 @@ onMounted(() => {
         :is-data-loaded="isDataLoaded"
       />
 
-      <SectionDivider id="d4" reverse />
+      <SectionDivider id="d3b" reverse />
+      <RecruiterSection />
+
+      <SectionDivider id="d4" />
       <ProjectsSection :projects="projects" />
 
       <SectionDivider id="d4b" />
@@ -124,6 +134,7 @@ onMounted(() => {
     </main>
 
     <SiteFooter :social-links="socialLinks" @scroll-top="scrollToTop" />
+    <RecruiterPackDialog v-model="packOpen" />
   </div>
 </template>
 

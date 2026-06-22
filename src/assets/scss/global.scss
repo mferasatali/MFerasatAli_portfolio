@@ -145,6 +145,22 @@ body {
   }
 }
 
+@media print {
+  .v-application,
+  .site-header,
+  .floating-nav,
+  .recruiter-summary-bar,
+  .scroll-progress-bar,
+  .portfolio-assistant,
+  .command-palette,
+  .shortcuts-hint,
+  .preloader,
+  .particle-field,
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
 // Smooth scroll handled by Lenis on landing page
 html {
   scroll-behavior: auto;

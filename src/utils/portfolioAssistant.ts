@@ -1,4 +1,5 @@
 import { PROFILE, AVAILABILITY, DOWNLOAD_LINKS } from "@/utils/ferasatProfile";
+import { RECRUITER_SUMMARY, RESUME_LAST_UPDATED } from "@/utils/ferasatRecruiter";
 import { FerasatExperience } from "@/utils/ferasatExperiences";
 import { FerasatProjects } from "@/utils/ferasatProjects";
 import { FerasatSkillsFlat } from "@/utils/ferasatSkillCategories";
@@ -52,15 +53,39 @@ const COVER_LETTER_ACTIONS: AssistantAction[] = [
 ];
 
 const DEFAULT_SUGGESTIONS = [
+  "Recruiter pack",
   "What's your experience?",
-  "Download resume",
-  "Cover letter",
+  "Notice period?",
   "How can I hire you?",
 ];
 
 const FALLBACK_ANSWER = `I'm MFA's portfolio assistant. I can share info about experience, projects, skills, and how to get in touch. Try one of the suggestions below, or ask about Vue, AI, enterprise work, or contact details.`;
 
 const FAQ_ENTRIES: FaqEntry[] = [
+  {
+    keywords: ["recruiter", "recruiter pack", "pack", "brief", "hiring manager", "talent"],
+    answer: `Recruiter pack: resume PDF, cover letter, LinkedIn, GitHub, WhatsApp, and a copy-paste bio. Open the "For Recruiters" section on the homepage or visit /recruiter.`,
+    actions: [
+      { label: "Recruiter page", icon: "mdi-account-tie", route: "/recruiter" },
+      ...RESUME_ACTIONS,
+    ],
+  },
+  {
+    keywords: ["notice", "notice period", "when can you start", "start date", "joining"],
+    answer: `Notice period: ${RECRUITER_SUMMARY.noticePeriod}. ${AVAILABILITY.detail}.`,
+  },
+  {
+    keywords: ["salary", "compensation", "pay", "rate", "package", "ctc"],
+    answer: `Salary is discussed on a brief call based on role, location, and contract type. Email ${PROFILE.email} or use WhatsApp to connect.`,
+  },
+  {
+    keywords: ["contract", "full-time", "full time", "freelance", "part-time", "part time"],
+    answer: `Open to full-time and contract. ${AVAILABILITY.detail}. Best contact: WhatsApp or the contact form.`,
+  },
+  {
+    keywords: ["certification", "certifications", "degree", "education", "university"],
+    answer: `B.Sc. Computer Science, University of Central Punjab (2023). Production experience with Vue 3, OpenAI API, and Azure SSO on enterprise UAE platforms.`,
+  },
   {
     keywords: [
       "who",

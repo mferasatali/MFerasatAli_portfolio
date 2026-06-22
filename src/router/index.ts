@@ -36,6 +36,12 @@ const routes = [
     component: () => import("@/views/projects/ProjectCaseStudyPage.vue"),
   },
   {
+    path: "/recruiter",
+    name: "Recruiter",
+    component: () => import("@/views/recruiter/RecruiterPage.vue"),
+    meta: { title: "Recruiter Brief — Muhammad Ferasat Ali" },
+  },
+  {
     path: "/404",
     name: "NotFound",
     component: () => import("@/views/NotFoundPage.vue"),

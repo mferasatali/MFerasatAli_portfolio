@@ -9,6 +9,7 @@ export const NAV_ITEMS: NavItem[] = [
   { id: "about", label: "About", icon: "mdi-account" },
   { id: "experience", label: "Experience", icon: "mdi-briefcase" },
   { id: "skills", label: "Skills", icon: "mdi-school" },
+  { id: "recruiters", label: "Recruiters", icon: "mdi-account-tie" },
   { id: "projects", label: "Projects", icon: "mdi-folder" },
   { id: "blog", label: "Articles", icon: "mdi-post-outline" },
   { id: "testimonials", label: "Reviews", icon: "mdi-star-outline" },

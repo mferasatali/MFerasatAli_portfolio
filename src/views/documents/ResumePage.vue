@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+import { useRoute } from "vue-router";
 import DocumentLayout from "./DocumentLayout.vue";
 import { PROFILE, DOWNLOAD_LINKS } from "@/utils/ferasatProfile";
+import { RESUME_LAST_UPDATED } from "@/utils/ferasatRecruiter";
 import { FerasatExperience } from "@/utils/ferasatExperiences";
 import { FerasatEducation } from "@/utils/ferasatJourney";
 import { FerasatSkillCategories } from "@/utils/ferasatSkillCategories";
@@ -8,6 +11,14 @@ import { FerasatProjects } from "@/utils/ferasatProjects";
 
 const publicProjects = FerasatProjects.filter((p) => !p.isPrivate);
 const featuredProjects = FerasatProjects.filter((p) => p.isPrivate).slice(0, 4);
+
+const route = useRoute();
+
+onMounted(() => {
+  if (route.query.print === "1") {
+    setTimeout(() => window.print(), 400);
+  }
+});
 </script>
 
 <template>
@@ -20,6 +31,7 @@ const featuredProjects = FerasatProjects.filter((p) => p.isPrivate).slice(0, 4);
         <div class="resume-header-text">
           <h1 class="resume-name">{{ PROFILE.name }}</h1>
           <p class="resume-title">{{ PROFILE.title }}</p>
+          <p class="resume-updated">Last updated {{ RESUME_LAST_UPDATED }}</p>
           <div class="resume-contact">
             <span>{{ PROFILE.location }}</span>
             <span class="dot">·</span>
@@ -164,8 +176,14 @@ const featuredProjects = FerasatProjects.filter((p) => p.isPrivate).slice(0, 4);
   font-size: 0.9375rem;
   font-weight: 600;
   color: #3b82f6;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
   line-height: 1.45;
+}
+
+.resume-updated {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 0.75rem;
 }
 
 .resume-contact {

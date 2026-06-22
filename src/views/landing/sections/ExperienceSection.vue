@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, nextTick, onMounted, inject, type Ref } from "vue";
 import type { IExperience } from "@/interfaces";
+import ExperienceTimeline from "@/components/recruiter/ExperienceTimeline.vue";
 import { useGsapReveal } from "@/composables/useGsapReveal";
 
 const props = defineProps<{
@@ -51,6 +52,7 @@ watch(
         </div>
         <p class="section-subtitle">Navigating challenges and driving success</p>
       </div>
+      <ExperienceTimeline />
     </v-container>
 
     <div class="experience-track-wrap">

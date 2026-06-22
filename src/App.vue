@@ -4,6 +4,7 @@
     <RouterView />
     <CommandPalette />
     <PortfolioAssistant />
+    <KeyboardShortcutsHint />
   </v-app>
 </template>
 
@@ -13,6 +14,8 @@ import { useTheme } from "vuetify";
 import ScrollProgressBar from "@/components/ScrollProgressBar.vue";
 import CommandPalette from "@/components/CommandPalette.vue";
 import PortfolioAssistant from "@/components/PortfolioAssistant.vue";
+
+import KeyboardShortcutsHint from "@/components/KeyboardShortcutsHint.vue";
 
 onMounted(() => {
   const saved = localStorage.getItem("mfa-theme");

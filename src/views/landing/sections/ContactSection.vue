@@ -4,7 +4,11 @@ import { RouterLink } from "vue-router";
 import type { ISocialLinks } from "@/interfaces";
 import { loadSheetsApi } from "@/utils/googleSpreadSheetAPI";
 import type { PROFILE } from "@/utils/ferasatProfile";
+import { CALENDLY_URL } from "@/utils/ferasatRecruiter";
+import { useRecruiterPack } from "@/composables/useRecruiterPack";
 import MagneticButton from "../effects/MagneticButton.vue";
+
+const { openPack } = useRecruiterPack();
 
 defineProps<{
   socialLinks: ISocialLinks.SocialLinks[];
@@ -71,7 +75,7 @@ const contactFerasat = async () => {
       <div class="contact-grid">
         <div class="contact-info">
           <div class="section-title-wrapper">
-            <span class="section-number">07</span>
+            <span class="section-number">08</span>
             <h2 class="section-title contact-title">Let's build something</h2>
           </div>
           <p class="contact-lead">
@@ -103,6 +107,19 @@ const contactFerasat = async () => {
           </div>
 
           <div class="contact-social">
+            <button type="button" class="social-chip recruiter-chip" @click="openPack">
+              Recruiter pack
+            </button>
+            <a
+              v-if="CALENDLY_URL"
+              :href="CALENDLY_URL"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-chip"
+            >
+              Book 30 min
+            </a>
+            <RouterLink to="/recruiter" class="social-chip">Recruiter page</RouterLink>
             <RouterLink to="/resume" class="social-chip">Resume</RouterLink>
             <RouterLink to="/cover-letter" class="social-chip">Cover Letter</RouterLink>
             <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer" class="social-chip">
@@ -254,12 +271,20 @@ const contactFerasat = async () => {
   color: var(--color-text-muted);
   text-decoration: none;
   transition: border-color 0.2s, color 0.2s;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
 
   &:hover,
   &.router-link-active {
     border-color: var(--color-primary);
     color: var(--color-primary-light);
   }
+}
+
+.recruiter-chip {
+  border-color: rgba(59, 130, 246, 0.35);
+  color: var(--color-primary-light);
 }
 
 .contact-form-wrap {

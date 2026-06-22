@@ -27,7 +27,7 @@ onMounted(() => {
     <v-container>
       <div class="section-header">
         <div class="section-title-wrapper">
-          <span class="section-number">05</span>
+          <span class="section-number">06</span>
           <h2 ref="titleRef" class="section-title">Articles</h2>
         </div>
         <p class="section-subtitle">

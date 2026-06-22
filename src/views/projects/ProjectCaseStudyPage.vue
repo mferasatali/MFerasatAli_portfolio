@@ -2,10 +2,15 @@
 import { computed, watch, onMounted } from "vue";
 import { useRoute, RouterLink } from "vue-router";
 import { getCaseStudyBySlug } from "@/utils/ferasatCaseStudies";
+import { CASE_STUDY_ARCHITECTURE } from "@/utils/ferasatRecruiter";
+import TakafoModuleMap from "@/components/recruiter/TakafoModuleMap.vue";
 import { applyPageSeo } from "@/utils/siteSeo";
 
 const route = useRoute();
 const study = computed(() => getCaseStudyBySlug(route.params.slug as string));
+const architecture = computed(() =>
+  study.value ? CASE_STUDY_ARCHITECTURE[study.value.slug] : undefined
+);
 
 watch(
   study,
@@ -69,6 +74,13 @@ onMounted(() => {
         <h2>My role</h2>
         <p>{{ study.role }}</p>
       </section>
+
+      <section v-if="architecture" class="case-block architecture-block">
+        <h2>Architecture</h2>
+        <p class="architecture-text">{{ architecture }}</p>
+      </section>
+
+      <TakafoModuleMap v-if="study.slug === 'takafo-plus'" />
 
       <section class="case-block">
         <h2>Challenge</h2>
@@ -224,6 +236,16 @@ onMounted(() => {
   background: var(--color-chip-bg);
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
+}
+
+.architecture-text {
+  font-family: ui-monospace, monospace;
+  font-size: 0.875rem;
+  padding: 1rem;
+  background: var(--color-chip-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  line-height: 1.6;
 }
 
 .case-block {

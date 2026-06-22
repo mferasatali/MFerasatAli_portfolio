@@ -14,8 +14,12 @@ import { requestInterceptor } from "./interceptor";
 import router from './router' 
 import moment from 'moment';
 import { initAppTheme } from "@/composables/useAppTheme";
+import { initAnalytics } from "@/composables/useAnalytics";
+import { initReferralTracking } from "@/composables/useReferralTracking";
 
 initAppTheme();
+initReferralTracking();
+initAnalytics();
 
 
 

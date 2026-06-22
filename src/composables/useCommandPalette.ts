@@ -3,6 +3,8 @@ import { useRouter, useRoute } from "vue-router";
 import { NAV_ITEMS } from "@/constants/navigation";
 import { FerasatCaseStudies } from "@/utils/ferasatCaseStudies";
 import { useAppTheme } from "@/composables/useAppTheme";
+import { useRecruiterPack } from "@/composables/useRecruiterPack";
+import { CALENDLY_URL } from "@/utils/ferasatRecruiter";
 
 export interface CommandItem {
   id: string;
@@ -20,6 +22,7 @@ export function useCommandPalette() {
   const router = useRouter();
   const route = useRoute();
   const { toggleTheme } = useAppTheme();
+  const { openPack } = useRecruiterPack();
 
   const navigateSection = (sectionId: string) => {
     open.value = false;
@@ -79,6 +82,17 @@ export function useCommandPalette() {
           router.push("/blog");
         },
       },
+      {
+        id: "recruiter",
+        label: "Recruiter brief",
+        group: "Pages",
+        keywords: ["recruiter", "hire", "pack", "brief", "cv"],
+        icon: "mdi-account-tie",
+        action: () => {
+          open.value = false;
+          router.push("/recruiter");
+        },
+      },
     ];
 
     NAV_ITEMS.filter((n) => n.id !== "hero").forEach((item) => {
@@ -100,6 +114,36 @@ export function useCommandPalette() {
       icon: "mdi-github",
       action: () => navigateSection("github"),
     });
+
+    items.push({
+      id: "recruiter-pack",
+      label: "Open recruiter pack",
+      group: "Actions",
+      keywords: ["recruiter", "pack", "resume", "download", "links"],
+      icon: "mdi-briefcase-download",
+      action: () => {
+        open.value = false;
+        if (route.path !== "/") {
+          router.push("/").then(() => setTimeout(() => openPack(), 300));
+        } else {
+          openPack();
+        }
+      },
+    });
+
+    if (CALENDLY_URL) {
+      items.push({
+        id: "book-call",
+        label: "Book 30 min call",
+        group: "Actions",
+        keywords: ["calendly", "book", "call", "schedule", "meeting"],
+        icon: "mdi-calendar",
+        action: () => {
+          open.value = false;
+          window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
+        },
+      });
+    }
 
     items.push({
       id: "contact-hire",

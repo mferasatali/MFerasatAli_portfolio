@@ -7,6 +7,10 @@ import StatsBar from "../layout/StatsBar.vue";
 import { splitTextToWords } from "@/composables/useGsapReveal";
 import { TextPlugin } from "gsap/TextPlugin";
 import { DOWNLOAD_ITEMS, AVAILABILITY } from "@/utils/ferasatProfile";
+import { CALENDLY_URL } from "@/utils/ferasatRecruiter";
+import { useRecruiterPack } from "@/composables/useRecruiterPack";
+
+const { openPack } = useRecruiterPack();
 
 gsap.registerPlugin(TextPlugin);
 
@@ -102,8 +106,28 @@ onMounted(() => {
                 </v-btn>
               </MagneticButton>
               <MagneticButton>
-                <v-btn class="outline-btn" size="large" variant="outlined" @click="scrollTo('projects')">
-                  View Projects
+                <v-btn class="outline-btn" size="large" variant="outlined" @click="openPack">
+                  <v-icon start>mdi-briefcase-download</v-icon>
+                  Recruiter Pack
+                </v-btn>
+              </MagneticButton>
+              <MagneticButton v-if="CALENDLY_URL">
+                <v-btn
+                  class="outline-btn"
+                  size="large"
+                  variant="outlined"
+                  :href="CALENDLY_URL"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tag="a"
+                >
+                  <v-icon start>mdi-calendar</v-icon>
+                  Book 30 min
+                </v-btn>
+              </MagneticButton>
+              <MagneticButton>
+                <v-btn class="outline-btn" size="large" variant="outlined" @click="scrollTo('recruiters')">
+                  For Recruiters
                 </v-btn>
               </MagneticButton>
 

@@ -57,7 +57,7 @@ watch(
     <v-container>
       <div class="section-header">
         <div class="section-title-wrapper">
-          <span class="section-number">04</span>
+          <span class="section-number">05</span>
           <h2 ref="titleRef" class="section-title">Featured Projects</h2>
         </div>
         <p class="section-subtitle">
@@ -115,7 +115,18 @@ watch(
 
               <p class="project-desc">{{ project.content[0] }}</p>
 
-              <div v-if="!project.isPrivate && project.links.length" class="project-links">
+              <div v-if="!project.isPrivate && (project.links.length || project.liveDemo)" class="project-links">
+                <a
+                  v-if="project.liveDemo"
+                  :href="project.liveDemo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link demo-link"
+                  @click.stop
+                >
+                  <v-icon size="small">mdi-play-circle-outline</v-icon>
+                  Live demo
+                </a>
                 <a
                   v-for="(link, idx) in project.links.filter((l) => l.url)"
                   :key="idx"
@@ -175,7 +186,17 @@ watch(
           <li v-for="(f, i) in featured.content" :key="i">{{ f }}</li>
         </ul>
 
-        <div v-if="!featured.isPrivate && featured.links.length" class="project-links">
+        <div v-if="!featured.isPrivate && (featured.links.length || featured.liveDemo)" class="project-links">
+          <a
+            v-if="featured.liveDemo"
+            :href="featured.liveDemo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-link demo-link"
+          >
+            <v-icon size="small">mdi-play-circle-outline</v-icon>
+            Live demo
+          </a>
           <a
             v-for="(link, idx) in featured.links.filter((l) => l.url)"
             :key="idx"
