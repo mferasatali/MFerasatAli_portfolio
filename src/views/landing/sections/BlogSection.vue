@@ -5,6 +5,9 @@ import type { Article } from "@/interfaces/blog.interface";
 import { formatArticleDate, CATEGORY_COLORS } from "@/utils/ferasatArticles";
 import { useGsapReveal } from "@/composables/useGsapReveal";
 import { useReducedMotion } from "@/composables/useReducedMotion";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 defineProps<{ articles: Article[] }>();
 
@@ -28,10 +31,10 @@ onMounted(() => {
       <div class="section-header">
         <div class="section-title-wrapper">
           <span class="section-number">06</span>
-          <h2 ref="titleRef" class="section-title">Articles</h2>
+          <h2 ref="titleRef" class="section-title">{{ t('sections.blog.title') }}</h2>
         </div>
         <p class="section-subtitle">
-          Notes on Vue, AI, and enterprise engineering from production work.
+          {{ t('sections.blog.subtitle') }}
         </p>
       </div>
 
@@ -61,7 +64,7 @@ onMounted(() => {
 
       <div class="blog-actions">
         <RouterLink to="/blog" class="view-all-btn">
-          View all articles
+          {{ t('sections.blog.viewAll') }}
           <v-icon size="small">mdi-arrow-right</v-icon>
         </RouterLink>
       </div>

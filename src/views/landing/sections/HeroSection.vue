@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, inject, type Ref } from "vue";
+import { ref, onMounted, inject, computed, type Ref } from "vue";
 import gsap from "gsap";
 import type { ISocialLinks } from "@/interfaces";
 import MagneticButton from "../effects/MagneticButton.vue";
@@ -9,8 +9,19 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { DOWNLOAD_ITEMS, AVAILABILITY } from "@/utils/ferasatProfile";
 import { CALENDLY_URL } from "@/utils/ferasatRecruiter";
 import { useRecruiterPack } from "@/composables/useRecruiterPack";
+import { useI18n } from "vue-i18n";
 
 const { openPack } = useRecruiterPack();
+const { t } = useI18n();
+
+const availabilityLabel = computed(() => t(`availability.${AVAILABILITY.status}`));
+const availabilityDetail = computed(() => {
+  const key = `availability.detail${AVAILABILITY.status.charAt(0).toUpperCase()}${AVAILABILITY.status.slice(1)}` as
+    | "availability.detailOpen"
+    | "availability.detailLimited"
+    | "availability.detailUnavailable";
+  return t(key);
+});
 
 gsap.registerPlugin(TextPlugin);
 
@@ -79,12 +90,12 @@ onMounted(() => {
             <div
               class="availability-badge"
               :class="`status-${AVAILABILITY.status}`"
-              :title="AVAILABILITY.detail"
+              :title="availabilityDetail"
             >
               <span class="availability-dot" aria-hidden="true" />
-              {{ AVAILABILITY.label }}
+              {{ availabilityLabel }}
             </div>
-            <p class="greeting" ref="greetingRef">Hello, I'm</p>
+            <p class="greeting" ref="greetingRef">{{ t('hero.greeting') }}</p>
             <h1 class="hero-name" ref="nameRef">Muhammad Ferasat Ali</h1>
             <p class="hero-role" ref="roleRef">{{ title }}</p>
             <p class="hero-desc" ref="descRef" />
@@ -92,23 +103,23 @@ onMounted(() => {
             <div class="hero-actions">
               <MagneticButton>
                 <v-btn class="modern-btn" size="large" @click="scrollTo('contact')">
-                  Contact Me
+                  {{ t('hero.contactMe') }}
                 </v-btn>
               </MagneticButton>
               <MagneticButton>
                 <v-btn class="outline-btn" size="large" variant="outlined" to="/resume">
-                  View Resume
+                  {{ t('hero.viewResume') }}
                 </v-btn>
               </MagneticButton>
               <MagneticButton>
                 <v-btn class="outline-btn" size="large" variant="outlined" to="/cover-letter">
-                  Cover Letter
+                  {{ t('hero.coverLetter') }}
                 </v-btn>
               </MagneticButton>
               <MagneticButton>
                 <v-btn class="outline-btn" size="large" variant="outlined" @click="openPack">
                   <v-icon start>mdi-briefcase-download</v-icon>
-                  Recruiter Pack
+                  {{ t('hero.recruiterPack') }}
                 </v-btn>
               </MagneticButton>
               <MagneticButton v-if="CALENDLY_URL">
@@ -122,12 +133,12 @@ onMounted(() => {
                   tag="a"
                 >
                   <v-icon start>mdi-calendar</v-icon>
-                  Book 30 min
+                  {{ t('hero.bookCall') }}
                 </v-btn>
               </MagneticButton>
               <MagneticButton>
                 <v-btn class="outline-btn" size="large" variant="outlined" @click="scrollTo('recruiters')">
-                  For Recruiters
+                  {{ t('hero.forRecruiters') }}
                 </v-btn>
               </MagneticButton>
 
@@ -139,7 +150,7 @@ onMounted(() => {
                   @click="downloadOpen = !downloadOpen"
                 >
                   <v-icon start>mdi-download</v-icon>
-                  Download
+                  {{ t('hero.download') }}
                   <v-icon end>{{ downloadOpen ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
                 </v-btn>
                 <Transition name="dropdown">

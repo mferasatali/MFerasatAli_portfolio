@@ -2,6 +2,9 @@
 import { ref, onMounted, inject, type Ref } from "vue";
 import type { Testimonial } from "@/interfaces/testimonial.interface";
 import { useGsapReveal } from "@/composables/useGsapReveal";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 defineProps<{ testimonials: Testimonial[] }>();
 
@@ -39,10 +42,10 @@ const setActive = (index: number) => {
       <div class="section-header">
         <div class="section-title-wrapper">
           <span class="section-number">07</span>
-          <h2 ref="titleRef" class="section-title">Testimonials</h2>
+          <h2 ref="titleRef" class="section-title">{{ t('sections.testimonials.title') }}</h2>
         </div>
         <p class="section-subtitle">
-          What colleagues and clients say about working together.
+          {{ t('sections.testimonials.subtitle') }}
         </p>
       </div>
 

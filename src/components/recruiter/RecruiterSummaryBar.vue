@@ -1,22 +1,26 @@
 <script setup lang="ts">
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
 import { RECRUITER_SUMMARY } from "@/utils/ferasatRecruiter";
 
-const items = [
-  { icon: "mdi-briefcase", label: "Role", value: RECRUITER_SUMMARY.role },
-  { icon: "mdi-code-tags", label: "Stack", value: RECRUITER_SUMMARY.stack },
-  { icon: "mdi-map-marker", label: "Location", value: RECRUITER_SUMMARY.location },
-  { icon: "mdi-laptop", label: "Remote", value: RECRUITER_SUMMARY.remote },
-  { icon: "mdi-calendar-clock", label: "Notice", value: RECRUITER_SUMMARY.noticePeriod },
-  { icon: "mdi-passport", label: "Work auth", value: RECRUITER_SUMMARY.workAuthorization },
-];
+const { t } = useI18n();
+
+const items = computed(() => [
+  { icon: "mdi-briefcase", label: t("recruiterBar.role"), value: RECRUITER_SUMMARY.role },
+  { icon: "mdi-code-tags", label: t("recruiterBar.stack"), value: RECRUITER_SUMMARY.stack },
+  { icon: "mdi-map-marker", label: t("recruiterBar.location"), value: RECRUITER_SUMMARY.location },
+  { icon: "mdi-laptop", label: t("recruiterBar.remote"), value: RECRUITER_SUMMARY.remote },
+  { icon: "mdi-calendar-clock", label: t("recruiterBar.notice"), value: RECRUITER_SUMMARY.noticePeriod },
+  { icon: "mdi-passport", label: t("recruiterBar.workAuth"), value: RECRUITER_SUMMARY.workAuthorization },
+]);
 </script>
 
 <template>
-  <aside class="recruiter-summary-bar" aria-label="Quick facts for recruiters">
+  <aside class="recruiter-summary-bar" :aria-label="t('recruiterBar.label')">
     <div class="bar-inner">
       <span class="bar-label">
         <v-icon size="small">mdi-account-tie</v-icon>
-        For recruiters
+        {{ t('recruiterBar.label') }}
       </span>
       <div class="bar-items">
         <div v-for="item in items" :key="item.label" class="bar-item" :title="item.value">

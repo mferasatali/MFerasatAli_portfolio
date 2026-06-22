@@ -7,6 +7,9 @@ import {
   ASSISTANT_SUGGESTIONS,
   type AssistantAction,
 } from "@/utils/portfolioAssistant";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 interface ChatMessage {
   id: number;
@@ -89,16 +92,16 @@ watch(open, (isOpen) => {
 <template>
   <div class="portfolio-assistant" :class="{ 'is-open': open }">
     <Transition name="panel">
-      <div v-if="open" class="assistant-panel" role="dialog" aria-label="Portfolio assistant">
+      <div v-if="open" class="assistant-panel" role="dialog" :aria-label="t('assistant.title')">
         <header class="panel-header">
           <div class="panel-title">
             <span class="panel-dot" aria-hidden="true" />
             <div>
-              <strong>MFA Assistant</strong>
-              <span class="panel-sub">Portfolio guide · offline</span>
+              <strong>{{ t('assistant.title') }}</strong>
+              <span class="panel-sub">{{ t('assistant.subtitle') }}</span>
             </div>
           </div>
-          <button class="panel-close" aria-label="Close chat" @click="closePanel">
+          <button class="panel-close" :aria-label="t('assistant.close')" @click="closePanel">
             <v-icon size="small">mdi-close</v-icon>
           </button>
         </header>
@@ -158,7 +161,7 @@ watch(open, (isOpen) => {
             ref="inputEl"
             v-model="input"
             type="text"
-            placeholder="Ask about contact, Calendly, experience, projects…"
+            :placeholder="t('assistant.placeholder')"
             autocomplete="off"
             maxlength="280"
           />
@@ -169,7 +172,7 @@ watch(open, (isOpen) => {
 
         <button type="button" class="panel-contact" @click="navigateContact">
           <v-icon size="small">mdi-email-outline</v-icon>
-          Contact Muhammad directly
+          {{ t('assistant.contactDirect') }}
         </button>
       </div>
     </Transition>
@@ -177,12 +180,12 @@ watch(open, (isOpen) => {
     <button
       class="assistant-fab"
       :aria-expanded="open"
-      aria-label="Open portfolio assistant"
+      :aria-label="t('assistant.open')"
       @click="open ? closePanel() : openPanel()"
     >
       <v-icon v-if="!open" size="small">mdi-message-text-outline</v-icon>
       <v-icon v-else size="small">mdi-close</v-icon>
-      <span class="fab-label">Ask MFA</span>
+      <span class="fab-label">{{ t('assistant.label') }}</span>
     </button>
   </div>
 </template>

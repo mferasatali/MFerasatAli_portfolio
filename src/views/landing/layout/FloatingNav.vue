@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useMediaQuery } from "@vueuse/core";
 import { NAV_ITEMS } from "@/constants/navigation";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 defineProps<{ activeSection: string }>();
 const emit = defineEmits<{ navigate: [id: string] }>();
@@ -15,7 +18,7 @@ const isDesktop = useMediaQuery("(min-width: 961px)");
       :key="nav.id"
       class="nav-dot"
       :class="{ active: activeSection === nav.id }"
-      :aria-label="nav.label"
+      :aria-label="t(`nav.${nav.id}`)"
       :aria-current="activeSection === nav.id ? 'true' : undefined"
       icon
       size="small"

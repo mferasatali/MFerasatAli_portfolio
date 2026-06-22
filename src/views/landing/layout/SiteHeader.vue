@@ -5,6 +5,10 @@ import { useMediaQuery } from "@vueuse/core";
 import { NAV_ITEMS } from "@/constants/navigation";
 import MagneticButton from "../effects/MagneticButton.vue";
 import ThemeToggle from "@/components/ThemeToggle.vue";
+import LanguageToggle from "@/components/LanguageToggle.vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 defineProps<{ activeSection: string }>();
 const emit = defineEmits<{ navigate: [id: string] }>();
@@ -35,7 +39,7 @@ onUnmounted(() => {
 <template>
   <header class="site-header" :class="{ scrolled: isScrolled }">
     <div class="header-inner">
-      <button class="logo" @click="navigate('hero')" aria-label="Go to top">
+      <button class="logo" @click="navigate('hero')" :aria-label="t('header.goTop')">
         <span class="logo-text">MFA</span>
       </button>
 
@@ -47,19 +51,20 @@ onUnmounted(() => {
           :class="{ active: activeSection === item.id }"
           @click="navigate(item.id)"
         >
-          {{ item.label }}
+          {{ t(`nav.${item.id}`) }}
         </button>
       </nav>
 
       <div class="header-actions">
         <nav v-if="!isMobile" class="doc-links" aria-label="Documents">
-          <RouterLink to="/resume" class="doc-link">Resume</RouterLink>
-          <RouterLink to="/cover-letter" class="doc-link">Cover Letter</RouterLink>
+          <RouterLink to="/resume" class="doc-link">{{ t('header.resume') }}</RouterLink>
+          <RouterLink to="/cover-letter" class="doc-link">{{ t('header.coverLetter') }}</RouterLink>
         </nav>
+        <LanguageToggle v-if="!isMobile" />
         <ThemeToggle v-if="!isMobile" />
         <MagneticButton v-if="!isMobile" class="hire-wrap">
           <v-btn class="modern-btn hire-btn" size="small" @click="navigate('contact')">
-            Hire Me
+            {{ t('header.hireMe') }}
           </v-btn>
         </MagneticButton>
 
@@ -67,7 +72,7 @@ onUnmounted(() => {
           v-if="isMobile"
           class="menu-toggle"
           :aria-expanded="drawerOpen"
-          aria-label="Toggle menu"
+          :aria-label="t('header.toggleMenu')"
           @click="drawerOpen = !drawerOpen"
         >
           <v-icon>{{ drawerOpen ? "mdi-close" : "mdi-menu" }}</v-icon>
@@ -85,24 +90,25 @@ onUnmounted(() => {
           @click="navigate(item.id)"
         >
           <v-icon size="small">{{ item.icon }}</v-icon>
-          {{ item.label }}
+          {{ t(`nav.${item.id}`) }}
         </button>
-        <v-btn class="modern-btn mt-4" block @click="navigate('contact')">Hire Me</v-btn>
+        <v-btn class="modern-btn mt-4" block @click="navigate('contact')">{{ t('header.hireMe') }}</v-btn>
         <div class="drawer-theme">
+          <LanguageToggle />
           <ThemeToggle />
-          <span>Toggle theme</span>
+          <span>{{ t('header.toggleTheme') }}</span>
         </div>
         <RouterLink to="/resume" class="drawer-doc-link" @click="drawerOpen = false">
           <v-icon size="small">mdi-file-document-outline</v-icon>
-          Resume
+          {{ t('header.resume') }}
         </RouterLink>
         <RouterLink to="/cover-letter" class="drawer-doc-link" @click="drawerOpen = false">
           <v-icon size="small">mdi-email-outline</v-icon>
-          Cover Letter
+          {{ t('header.coverLetter') }}
         </RouterLink>
         <RouterLink to="/blog" class="drawer-doc-link" @click="drawerOpen = false">
           <v-icon size="small">mdi-post-outline</v-icon>
-          Articles
+          {{ t('header.articles') }}
         </RouterLink>
       </nav>
     </Transition>

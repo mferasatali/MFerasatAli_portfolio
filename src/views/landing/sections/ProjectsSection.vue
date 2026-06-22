@@ -4,6 +4,9 @@ import { RouterLink } from "vue-router";
 import type { IProjects } from "@/interfaces";
 import TiltCard from "../effects/TiltCard.vue";
 import { useGsapReveal } from "@/composables/useGsapReveal";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 defineProps<{ projects: IProjects.PersonalProjectsPayload[] }>();
 
@@ -58,10 +61,10 @@ watch(
       <div class="section-header">
         <div class="section-title-wrapper">
           <span class="section-number">05</span>
-          <h2 ref="titleRef" class="section-title">Featured Projects</h2>
+          <h2 ref="titleRef" class="section-title">{{ t('sections.projects.title') }}</h2>
         </div>
         <p class="section-subtitle">
-          Enterprise platforms, AI integrations, and open-source tools
+          {{ t('sections.projects.subtitle') }}
         </p>
       </div>
 
@@ -125,7 +128,7 @@ watch(
                   @click.stop
                 >
                   <v-icon size="small">mdi-play-circle-outline</v-icon>
-                  Live demo
+                  {{ t('sections.projects.liveDemo') }}
                 </a>
                 <a
                   v-for="(link, idx) in project.links.filter((l) => l.url)"
@@ -195,7 +198,7 @@ watch(
             class="project-link demo-link"
           >
             <v-icon size="small">mdi-play-circle-outline</v-icon>
-            Live demo
+            {{ t('sections.projects.liveDemo') }}
           </a>
           <a
             v-for="(link, idx) in featured.links.filter((l) => l.url)"
@@ -217,7 +220,7 @@ watch(
           @click="closeModal"
         >
           <v-icon size="small">mdi-text-box-search-outline</v-icon>
-          Read full case study
+          {{ t('sections.projects.caseStudy') }}
         </RouterLink>
       </div>
     </v-dialog>

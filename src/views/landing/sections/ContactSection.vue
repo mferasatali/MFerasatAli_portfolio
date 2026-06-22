@@ -7,6 +7,9 @@ import type { PROFILE } from "@/utils/ferasatProfile";
 import { CALENDLY_URL } from "@/utils/ferasatRecruiter";
 import { useRecruiterPack } from "@/composables/useRecruiterPack";
 import MagneticButton from "../effects/MagneticButton.vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const { openPack } = useRecruiterPack();
 
@@ -29,14 +32,14 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const contactFerasat = async () => {
   if (!firstName.value || !lastName.value || !email.value || !message.value || !phoneNumber.value) {
-    snackbarMessage.value = "Please fill all fields";
+    snackbarMessage.value = t("sections.contact.fillAll");
     snackbarColor.value = "error";
     snackbar.value = true;
     return;
   }
 
   if (!emailRegex.test(email.value)) {
-    snackbarMessage.value = "Please enter a valid email address";
+    snackbarMessage.value = t("sections.contact.invalidEmail");
     snackbarColor.value = "error";
     snackbar.value = true;
     return;
@@ -50,7 +53,7 @@ const contactFerasat = async () => {
       Message: message.value,
       Phone: phoneNumber.value,
     });
-    snackbarMessage.value = "Message sent successfully!";
+    snackbarMessage.value = t("sections.contact.success");
     snackbarColor.value = "success";
     snackbar.value = true;
     firstName.value = "";
@@ -59,7 +62,7 @@ const contactFerasat = async () => {
     message.value = "";
     phoneNumber.value = "";
   } catch {
-    snackbarMessage.value = "Error sending message. Please try again.";
+    snackbarMessage.value = t("sections.contact.error");
     snackbarColor.value = "error";
     snackbar.value = true;
   }
@@ -76,10 +79,10 @@ const contactFerasat = async () => {
         <div class="contact-info">
           <div class="section-title-wrapper">
             <span class="section-number">08</span>
-            <h2 class="section-title contact-title">Let's build something</h2>
+            <h2 class="section-title contact-title">{{ t('sections.contact.title') }}</h2>
           </div>
           <p class="contact-lead">
-            I'd love to hear from you. Whether you have a project in mind or just want to connect — reach out.
+            {{ t('sections.contact.lead') }}
           </p>
 
           <div class="contact-details">
@@ -108,7 +111,7 @@ const contactFerasat = async () => {
 
           <div class="contact-social">
             <button type="button" class="social-chip recruiter-chip" @click="openPack">
-              Recruiter pack
+              {{ t('sections.contact.recruiterPack') }}
             </button>
             <a
               v-if="CALENDLY_URL"
@@ -117,11 +120,11 @@ const contactFerasat = async () => {
               rel="noopener noreferrer"
               class="social-chip"
             >
-              Book 30 min
+              {{ t('sections.contact.bookCall') }}
             </a>
-            <RouterLink to="/recruiter" class="social-chip">Recruiter page</RouterLink>
-            <RouterLink to="/resume" class="social-chip">Resume</RouterLink>
-            <RouterLink to="/cover-letter" class="social-chip">Cover Letter</RouterLink>
+            <RouterLink to="/recruiter" class="social-chip">{{ t('sections.contact.recruiterPage') }}</RouterLink>
+            <RouterLink to="/resume" class="social-chip">{{ t('header.resume') }}</RouterLink>
+            <RouterLink to="/cover-letter" class="social-chip">{{ t('header.coverLetter') }}</RouterLink>
             <a :href="profile.linkedin" target="_blank" rel="noopener noreferrer" class="social-chip">
               LinkedIn
             </a>
@@ -143,7 +146,7 @@ const contactFerasat = async () => {
             <v-col cols="12" sm="6">
               <v-text-field
                 v-model="firstName"
-                label="First Name"
+                :label="t('sections.contact.firstName')"
                 variant="outlined"
                 class="modern-input"
                 hide-details="auto"
@@ -152,7 +155,7 @@ const contactFerasat = async () => {
             <v-col cols="12" sm="6">
               <v-text-field
                 v-model="lastName"
-                label="Last Name"
+                :label="t('sections.contact.lastName')"
                 variant="outlined"
                 class="modern-input"
                 hide-details="auto"
@@ -161,7 +164,7 @@ const contactFerasat = async () => {
             <v-col cols="12" sm="6">
               <v-text-field
                 v-model="email"
-                label="Email"
+                :label="t('sections.contact.email')"
                 type="email"
                 variant="outlined"
                 class="modern-input"
@@ -171,7 +174,7 @@ const contactFerasat = async () => {
             <v-col cols="12" sm="6">
               <v-text-field
                 v-model="phoneNumber"
-                label="Phone Number"
+                :label="t('sections.contact.phone')"
                 type="tel"
                 variant="outlined"
                 class="modern-input"
@@ -181,7 +184,7 @@ const contactFerasat = async () => {
             <v-col cols="12">
               <v-textarea
                 v-model="message"
-                label="Message"
+                :label="t('sections.contact.message')"
                 rows="5"
                 variant="outlined"
                 class="modern-input"
@@ -197,7 +200,7 @@ const contactFerasat = async () => {
                   :loading="loading"
                   @click="contactFerasat"
                 >
-                  Send Message
+                  {{ loading ? t('sections.contact.sending') : t('sections.contact.send') }}
                 </v-btn>
               </MagneticButton>
             </v-col>

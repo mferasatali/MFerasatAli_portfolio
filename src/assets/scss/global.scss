@@ -145,6 +145,46 @@ body {
   }
 }
 
+// RTL layout adjustments
+html[dir="rtl"] {
+  .floating-nav {
+    right: auto;
+    left: 1.5rem;
+  }
+
+  .portfolio-assistant {
+    right: auto;
+    left: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .assistant-panel {
+    right: auto;
+    left: 0;
+  }
+
+  .site-footer .back-top {
+    right: auto;
+    left: clamp(1rem, 4vw, 2rem);
+  }
+
+  .view-all-btn .v-icon {
+    transform: scaleX(-1);
+  }
+
+  .recruiter-page-link,
+  .faq-question {
+    text-align: right;
+  }
+
+  .message.user {
+    align-self: flex-start;
+  }
+
+  .message.assistant {
+    align-self: flex-end;
+  }
+}
+
 @media print {
   .v-application,
   .site-header,

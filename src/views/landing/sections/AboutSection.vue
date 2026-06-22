@@ -3,6 +3,9 @@ import { ref, watch, nextTick, onMounted, inject, type Ref } from "vue";
 import gsap from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { useGsapReveal } from "@/composables/useGsapReveal";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 gsap.registerPlugin(TextPlugin);
 
@@ -42,6 +45,13 @@ onMounted(() => {
 });
 
 watch(
+  () => props.canDo,
+  () => {
+    if (props.isDataLoaded) animateBody();
+  }
+);
+
+watch(
   () => props.isDataLoaded,
   async (loaded) => {
     if (loaded) {
@@ -71,7 +81,7 @@ watch(
               aria-hidden="true"
             />
             <blockquote ref="quoteRef" class="pull-quote">
-              "Building enterprise systems that scale — from AI-powered HCM platforms to production LLM integrations."
+              "{{ t('sections.about.quote') }}"
             </blockquote>
           </div>
         </div>
@@ -79,10 +89,10 @@ watch(
         <div class="about-content">
           <div class="section-title-wrapper">
             <span class="section-number">01</span>
-            <h2 ref="titleRef" class="section-title">About Me</h2>
+            <h2 ref="titleRef" class="section-title">{{ t('sections.about.title') }}</h2>
           </div>
           <p ref="subtitleRef" class="section-subtitle about-subtitle">
-            Passionate about creating innovative solutions
+            {{ t('sections.about.subtitle') }}
           </p>
           <p ref="bodyRef" class="about-body" />
         </div>

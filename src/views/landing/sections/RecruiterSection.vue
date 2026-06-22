@@ -15,6 +15,9 @@ import { useRecruiterPack } from "@/composables/useRecruiterPack";
 import { useGsapReveal } from "@/composables/useGsapReveal";
 import { useReducedMotion } from "@/composables/useReducedMotion";
 import { trackEvent } from "@/composables/useAnalytics";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const { prefersReducedMotion } = useReducedMotion();
 const { revealSplit, staggerChildren } = useGsapReveal(prefersReducedMotion);
@@ -73,17 +76,17 @@ onMounted(() => {
       <div class="section-header">
         <div class="section-title-wrapper">
           <span class="section-number">04</span>
-          <h2 ref="titleRef" class="section-title">For Recruiters</h2>
+          <h2 ref="titleRef" class="section-title">{{ t('sections.recruiters.title') }}</h2>
         </div>
         <p class="section-subtitle">
-          Quick answers, skills match, and one-click access to resume &amp; links.
+          {{ t('sections.recruiters.subtitle') }}
         </p>
       </div>
 
       <div class="recruiter-actions">
         <v-btn class="modern-btn" @click="openPackDialog">
           <v-icon start>mdi-briefcase-download</v-icon>
-          Recruiter pack
+          {{ t('sections.recruiters.pack') }}
         </v-btn>
         <v-btn
           v-if="CALENDLY_URL"
@@ -95,10 +98,10 @@ onMounted(() => {
           tag="a"
         >
           <v-icon start>mdi-calendar</v-icon>
-          Book 30 min
+          {{ t('sections.recruiters.bookCall') }}
         </v-btn>
         <RouterLink to="/recruiter" class="recruiter-page-link">
-          Full recruiter page →
+          {{ t('sections.recruiters.fullPage') }}
         </RouterLink>
       </div>
 
@@ -108,13 +111,13 @@ onMounted(() => {
           <div class="card-glow" />
           <h3 class="card-title">
             <v-icon size="small" color="primary">mdi-magnify-scan</v-icon>
-            Skills match
+            {{ t('sections.recruiters.skillsMatch') }}
           </h3>
-          <p class="card-desc">Paste job keywords or pick a preset — see overlap instantly.</p>
+          <p class="card-desc">{{ t('sections.recruiters.skillsDesc') }}</p>
 
           <v-text-field
             v-model="searchQuery"
-            placeholder="e.g. Vue NestJS OpenAI Azure"
+            :placeholder="t('sections.recruiters.skillsPlaceholder')"
             variant="outlined"
             density="compact"
             hide-details
@@ -135,8 +138,8 @@ onMounted(() => {
           </div>
 
           <p v-if="matchSummary" class="match-summary">
-            <strong>{{ matchSummary.count }}</strong> of {{ matchSummary.total }} skills match
-            <span v-if="matchSummary.expert"> · {{ matchSummary.expert }} expert-level</span>
+            {{ t('sections.recruiters.matchOf', { count: matchSummary.count, total: matchSummary.total }) }}
+            <span v-if="matchSummary.expert">{{ t('sections.recruiters.expertLevel', { count: matchSummary.expert }) }}</span>
           </p>
 
           <ul class="skills-list">
@@ -157,7 +160,7 @@ onMounted(() => {
           <div class="card-glow" />
           <h3 class="card-title">
             <v-icon size="small" color="primary">mdi-frequently-asked-questions</v-icon>
-            Recruiter FAQ
+            {{ t('sections.recruiters.recruiterFaq') }}
           </h3>
           <div class="faq-list">
             <div
@@ -185,7 +188,7 @@ onMounted(() => {
           <div class="card-glow" />
           <h3 class="card-title">
             <v-icon size="small" color="primary">mdi-certificate</v-icon>
-            Education &amp; certs
+            {{ t('sections.recruiters.educationCerts') }}
           </h3>
           <ul class="cert-list">
             <li v-for="cert in CERTIFICATIONS" :key="cert.name" class="cert-item">
@@ -203,7 +206,7 @@ onMounted(() => {
           <div class="card-glow" />
           <h3 class="card-title">
             <v-icon size="small" color="primary">mdi-domain</v-icon>
-            Enterprise experience
+            {{ t('sections.recruiters.enterpriseExp') }}
           </h3>
           <ul class="client-list">
             <li v-for="client in CLIENT_HIGHLIGHTS" :key="client.name" class="client-item">

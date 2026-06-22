@@ -3,6 +3,9 @@ import { ref, watch, nextTick, onMounted, inject, type Ref } from "vue";
 import type { IExperience } from "@/interfaces";
 import ExperienceTimeline from "@/components/recruiter/ExperienceTimeline.vue";
 import { useGsapReveal } from "@/composables/useGsapReveal";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = defineProps<{
   experiences: IExperience.ExperiencePayload[];
@@ -48,9 +51,9 @@ watch(
       <div class="section-header">
         <div class="section-title-wrapper">
           <span class="section-number">02</span>
-          <h2 ref="titleRef" class="section-title">Professional Experience</h2>
+          <h2 ref="titleRef" class="section-title">{{ t('sections.experience.title') }}</h2>
         </div>
-        <p class="section-subtitle">Navigating challenges and driving success</p>
+        <p class="section-subtitle">{{ t('sections.experience.subtitle') }}</p>
       </div>
       <ExperienceTimeline />
     </v-container>

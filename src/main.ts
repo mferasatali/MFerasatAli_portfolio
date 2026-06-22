@@ -16,8 +16,10 @@ import moment from 'moment';
 import { initAppTheme } from "@/composables/useAppTheme";
 import { initAnalytics } from "@/composables/useAnalytics";
 import { initReferralTracking } from "@/composables/useReferralTracking";
+import { initI18n } from "@/i18n";
 
 initAppTheme();
+initI18n();
 initReferralTracking();
 initAnalytics();
 

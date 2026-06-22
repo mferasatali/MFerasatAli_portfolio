@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import type { ISocialLinks } from "@/interfaces";
 import { RouterLink } from "vue-router";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 defineProps<{ socialLinks: ISocialLinks.SocialLinks[] }>();
 const emit = defineEmits<{ scrollTop: [] }>();
@@ -10,12 +13,12 @@ const emit = defineEmits<{ scrollTop: [] }>();
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="copyright">
-        &copy; {{ new Date().getFullYear() }} Muhammad Ferasat Ali. All rights reserved.
+        &copy; {{ new Date().getFullYear() }} Muhammad Ferasat Ali. {{ t('footer.rights') }}
       </p>
       <div class="footer-links">
-        <RouterLink to="/resume" class="footer-link">Resume</RouterLink>
-        <RouterLink to="/cover-letter" class="footer-link">Cover Letter</RouterLink>
-        <RouterLink to="/blog" class="footer-link">Articles</RouterLink>
+        <RouterLink to="/resume" class="footer-link">{{ t('header.resume') }}</RouterLink>
+        <RouterLink to="/cover-letter" class="footer-link">{{ t('header.coverLetter') }}</RouterLink>
+        <RouterLink to="/blog" class="footer-link">{{ t('header.articles') }}</RouterLink>
         <a
           v-for="(link, index) in socialLinks"
           :key="index"
@@ -27,7 +30,7 @@ const emit = defineEmits<{ scrollTop: [] }>();
           {{ link.name }}
         </a>
       </div>
-      <button class="back-top" aria-label="Back to top" @click="emit('scrollTop')">
+      <button class="back-top" :aria-label="t('footer.backTop')" @click="emit('scrollTop')">
         <v-icon size="small">mdi-arrow-up</v-icon>
       </button>
     </div>

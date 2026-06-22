@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, inject, type Ref } from "vue";
 import { useGsapReveal } from "@/composables/useGsapReveal";
+import { useI18n } from "vue-i18n";
 import {
   fetchGitHubData,
   GITHUB_FALLBACK,
@@ -9,6 +10,8 @@ import {
   type GitHubProfile,
   type GitHubRepo,
 } from "@/utils/ferasatGitHub";
+
+const { t } = useI18n();
 
 const prefersReducedMotion = inject<Ref<boolean>>("prefersReducedMotion")!;
 
@@ -54,10 +57,10 @@ onMounted(async () => {
       <div class="section-header">
         <div class="section-title-wrapper">
           <span class="section-number">—</span>
-          <h2 ref="titleRef" class="section-title">GitHub</h2>
+          <h2 ref="titleRef" class="section-title">{{ t('sections.github.title') }}</h2>
         </div>
         <p class="section-subtitle">
-          Open source & public repos
+          {{ t('sections.github.subtitle') }}
           <span v-if="isLive" class="live-badge">Live</span>
         </p>
       </div>
@@ -99,7 +102,7 @@ onMounted(async () => {
             class="github-btn"
           >
             <v-icon size="small">mdi-github</v-icon>
-            View on GitHub
+            {{ t('sections.github.viewProfile') }}
           </a>
         </aside>
 
@@ -144,7 +147,7 @@ onMounted(async () => {
 
         <div v-else class="repos-empty glass-card">
           <v-icon size="large" color="primary">mdi-github</v-icon>
-          <p>No public repos to display right now.</p>
+          <p>{{ t('sections.github.empty') }}</p>
           <a
             :href="`https://github.com/${GITHUB_USERNAME}`"
             target="_blank"

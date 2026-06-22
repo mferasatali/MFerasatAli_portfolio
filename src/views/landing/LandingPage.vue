@@ -39,6 +39,7 @@ const {
   skillCategories,
   skills,
   profile,
+  profileTitle,
   introduction,
   canDo,
   isDataLoaded,
@@ -94,7 +95,7 @@ onMounted(() => {
     <main>
       <HeroSection
         :introduction="introduction"
-        :title="profile.title"
+        :title="profileTitle"
         :location="profile.location"
         :social-links="socialLinks"
         :project-count="projects.length"

@@ -3,6 +3,9 @@ import { ref, watch, nextTick, onMounted, inject, type Ref } from "vue";
 import type { IJourney } from "@/interfaces";
 import TechMarquee from "../layout/TechMarquee.vue";
 import { useGsapReveal } from "@/composables/useGsapReveal";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = defineProps<{
   education: IJourney.Education[];
@@ -45,7 +48,7 @@ watch(
       <div class="section-header">
         <div class="section-title-wrapper">
           <span class="section-number">03</span>
-          <h2 ref="titleRef" class="section-title">Education & Skills</h2>
+          <h2 ref="titleRef" class="section-title">{{ t('sections.skills.title') }}</h2>
         </div>
       </div>
 
