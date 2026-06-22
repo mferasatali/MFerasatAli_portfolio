@@ -62,6 +62,7 @@ export default {
     experience: {
       title: "پیشہ ورانہ تجربہ",
       subtitle: "چیلنجز اور کامیابی",
+      timelineLabel: "کیریئر کا مختصر جائزہ",
     },
     skills: {
       title: "تعلیم اور مہارتیں",
@@ -147,5 +148,35 @@ export default {
   common: {
     readMore: "مزید پڑھیں",
     loading: "لوڈ ہو رہا ہے…",
+  },
+  commandPalette: {
+    title: "کمانڈ پیلیٹ",
+    placeholder: "صفحات، سیکشنز، actions تلاش کریں…",
+    empty: "کوئی نتیجہ نہیں",
+    home: "ہوم",
+    recruiterBrief: "Recruiter brief",
+    openPack: "Recruiter pack کھولیں",
+    contactHire: "رابطہ / Hire Me",
+    toggleTheme: "تھیم تبدیل کریں",
+    caseStudy: "case study",
+    groups: { pages: "صفحات", sections: "سیکشنز", actions: "Actions", projects: "Projects" },
+  },
+  demo: {
+    rag: {
+      title: "Portfolio doc Q&A",
+      subtitle: "Client-side RAG — static corpus سے projects اور experience تلاش کرتا ہے۔",
+      badge: "Offline · no API",
+      placeholder: "Takafo+، stack، contact کے بارے میں پوچھیں…",
+      search: "تلاش",
+      searching: "تلاش…",
+      sources: "Sources",
+      noMatch: "Corpus میں مضبوط match نہیں۔ Takafo+ یا contact آزمائیں۔",
+      samples: { takafo: "Takafo+ کیا ہے؟", stack: "Tech stack کیا ہے؟", contact: "Muhammad کو کیسے hire کریں؟" },
+    },
+    arch: {
+      title: "Takafo+ architecture explorer",
+      subtitle: "Module پر کلک کریں — 11 HCM capabilities۔",
+      readArticle: "مضمون پڑھیں",
+    },
   },
 };

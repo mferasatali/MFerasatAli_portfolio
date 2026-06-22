@@ -62,6 +62,7 @@ export default {
     experience: {
       title: "الخبرة المهنية",
       subtitle: "مواجهة التحديات وتحقيق النجاح",
+      timelineLabel: "لمحة عن المسيرة المهنية",
     },
     skills: {
       title: "التعليم والمهارات",
@@ -147,5 +148,35 @@ export default {
   common: {
     readMore: "اقرأ المزيد",
     loading: "جارٍ التحميل…",
+  },
+  commandPalette: {
+    title: "لوحة الأوامر",
+    placeholder: "ابحث في الصفحات والأقسام والإجراءات…",
+    empty: "لا توجد نتائج",
+    home: "الرئيسية",
+    recruiterBrief: "ملخص للمجندين",
+    openPack: "فتح حزمة المجندين",
+    contactHire: "تواصل / وظّفني",
+    toggleTheme: "تبديل السمة فاتح / داكن",
+    caseStudy: "دراسة حالة",
+    groups: { pages: "صفحات", sections: "أقسام", actions: "إجراءات", projects: "مشاريع" },
+  },
+  demo: {
+    rag: {
+      title: "أسئلة وأجوبة عن المحفظة",
+      subtitle: "عرض RAG محلي — يبحث في corpus ثابت عن المشاريع والخبرة.",
+      badge: "بدون اتصال · بدون API",
+      placeholder: "اسأل عن Takafo+، المجموعة التقنية، التواصل…",
+      search: "بحث",
+      searching: "جارٍ البحث…",
+      sources: "المصادر",
+      noMatch: "لا تطابق قوي. جرّب: Takafo+، Vue، أو التواصل.",
+      samples: { takafo: "ما هو Takafo+؟", stack: "ما هي المجموعة التقنية؟", contact: "كيف أوظف محمد؟" },
+    },
+    arch: {
+      title: "مستكشف بنية Takafo+",
+      subtitle: "انقر على وحدة — 11 قدرة HCM مترابطة.",
+      readArticle: "اقرأ المقال",
+    },
   },
 };

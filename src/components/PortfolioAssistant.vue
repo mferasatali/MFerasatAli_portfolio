@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { ref, nextTick, watch } from "vue";
+import { ref, nextTick, watch, computed } from "vue";
 import { useRouter, RouterLink } from "vue-router";
 import {
   askPortfolioAssistant,
-  ASSISTANT_GREETING,
-  ASSISTANT_SUGGESTIONS,
+  getAssistantGreeting,
+  getAssistantSuggestions,
   type AssistantAction,
 } from "@/utils/portfolioAssistant";
 import { useI18n } from "vue-i18n";
+import type { AppLocale } from "@/i18n";
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
+
+const assistantSuggestions = computed(() =>
+  getAssistantSuggestions(locale.value as AppLocale)
+);
 
 interface ChatMessage {
   id: number;
@@ -47,7 +52,7 @@ const pushMessage = (
 const openPanel = () => {
   open.value = true;
   if (messages.value.length === 0) {
-    pushMessage("assistant", ASSISTANT_GREETING);
+    pushMessage("assistant", getAssistantGreeting(locale.value as AppLocale));
   }
   nextTick(() => inputEl.value?.focus());
 };
@@ -76,7 +81,7 @@ const sendQuestion = async (text: string) => {
 
   await new Promise((r) => setTimeout(r, 400 + Math.random() * 350));
 
-  const { answer, actions } = askPortfolioAssistant(question);
+  const { answer, actions } = askPortfolioAssistant(question, locale.value as AppLocale);
   pushMessage("assistant", answer, actions);
   typing.value = false;
   await scrollToBottom();
@@ -146,7 +151,7 @@ watch(open, (isOpen) => {
 
         <div v-if="messages.length <= 1" class="suggestions">
           <button
-            v-for="s in ASSISTANT_SUGGESTIONS"
+            v-for="s in assistantSuggestions"
             :key="s"
             type="button"
             class="suggestion-chip"

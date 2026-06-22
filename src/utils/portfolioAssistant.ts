@@ -3,6 +3,8 @@ import { RECRUITER_SUMMARY, CALENDLY_URL } from "@/utils/ferasatRecruiter";
 import { FerasatExperience } from "@/utils/ferasatExperiences";
 import { FerasatProjects } from "@/utils/ferasatProjects";
 import { FerasatSkillsFlat } from "@/utils/ferasatSkillCategories";
+import type { AppLocale } from "@/i18n";
+import { getAssistantContent } from "@/i18n/content/assistant";
 
 export interface AssistantAction {
   label: string;
@@ -472,17 +474,20 @@ function scoreMatch(query: string, entry: FaqEntry): number {
   return score;
 }
 
-export function askPortfolioAssistant(question: string): AssistantReply {
-  const query = question.toLowerCase().trim().replace(/[^\w\s+.-]/g, " ");
+export function askPortfolioAssistant(question: string, locale: AppLocale = "en"): AssistantReply {
+  const content = getAssistantContent(locale);
+  const query = question.toLowerCase().trim().replace(/[^\w\s+.\u0600-\u06FF-]/g, " ");
 
   if (!query) {
-    return { answer: FALLBACK_ANSWER, suggestions: DEFAULT_SUGGESTIONS };
+    return { answer: content.fallback, suggestions: content.suggestions };
   }
+
+  const faqEntries = locale === "en" ? FAQ_ENTRIES : content.faq;
 
   let bestScore = 0;
   let bestEntry: FaqEntry | null = null;
 
-  for (const entry of FAQ_ENTRIES) {
+  for (const entry of faqEntries) {
     const score = scoreMatch(query, entry);
     if (score > bestScore) {
       bestScore = score;
@@ -498,22 +503,22 @@ export function askPortfolioAssistant(question: string): AssistantReply {
         : docActions[0].label.includes("Resume")
           ? `Here's ${PROFILE.name}'s resume — download the PDF or view in the portfolio.`
           : `Here's the cover letter — download the PDF or view in the portfolio.`;
-      return { answer, suggestions: DEFAULT_SUGGESTIONS.slice(0, 3), actions: docActions };
+      return { answer, suggestions: content.suggestions.slice(0, 3), actions: docActions };
     }
 
     const contactActions = detectContactActions(query);
     if (contactActions) {
       return {
-        answer: `Here are the best ways to reach ${PROFILE.name} — tap a button below.`,
-        suggestions: DEFAULT_SUGGESTIONS.slice(0, 3),
+        answer: content.fallback,
+        suggestions: content.suggestions.slice(0, 3),
         actions: contactActions,
       };
     }
 
-    return { answer: FALLBACK_ANSWER, suggestions: DEFAULT_SUGGESTIONS };
+    return { answer: content.fallback, suggestions: content.suggestions };
   }
 
-  const suggestions = DEFAULT_SUGGESTIONS.filter(
+  const suggestions = content.suggestions.filter(
     (s) => s.toLowerCase() !== question.toLowerCase().trim()
   ).slice(0, 3);
 
@@ -523,6 +528,16 @@ export function askPortfolioAssistant(question: string): AssistantReply {
   return { answer: bestEntry.answer, suggestions, actions };
 }
 
-export const ASSISTANT_GREETING = `Hi! I'm MFA's portfolio assistant. Ask about experience, projects, skills — or how to contact Muhammad (Calendly, WhatsApp, email, LinkedIn).`;
+export function getAssistantGreeting(locale: AppLocale = "en"): string {
+  return getAssistantContent(locale).greeting;
+}
 
-export const ASSISTANT_SUGGESTIONS = DEFAULT_SUGGESTIONS;
+export function getAssistantSuggestions(locale: AppLocale = "en"): string[] {
+  return getAssistantContent(locale).suggestions;
+}
+
+/** @deprecated use getAssistantGreeting(locale) */
+export const ASSISTANT_GREETING = getAssistantGreeting("en");
+
+/** @deprecated use getAssistantSuggestions(locale) */
+export const ASSISTANT_SUGGESTIONS = getAssistantSuggestions("en");

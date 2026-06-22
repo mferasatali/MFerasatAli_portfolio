@@ -10,19 +10,27 @@ import {
   FerasatArticles,
 } from "@/utils/ferasatArticles";
 import { applyPageSeo } from "@/utils/siteSeo";
+import { useLocalizedContent } from "@/composables/useLocalizedContent";
 
 const route = useRoute();
+const { localizeArticleByLocale, localizeArticlesList } = useLocalizedContent();
 
-const article = computed(() => getArticleBySlug(route.params.slug as string));
+const article = computed(() => {
+  const base = getArticleBySlug(route.params.slug as string);
+  return base ? localizeArticleByLocale(base) : undefined;
+});
 
 const related = computed(() => {
   if (!article.value) return [];
-  return FerasatArticles.filter(
-    (a) =>
-      a.slug !== article.value!.slug &&
-      (a.category === article.value!.category ||
-        a.tags.some((t) => article.value!.tags.includes(t)))
-  ).slice(0, 2);
+  const all = localizeArticlesList(FerasatArticles);
+  return all
+    .filter(
+      (a) =>
+        a.slug !== article.value!.slug &&
+        (a.category === article.value!.category ||
+          a.tags.some((tag) => article.value!.tags.includes(tag)))
+    )
+    .slice(0, 2);
 });
 
 watch(

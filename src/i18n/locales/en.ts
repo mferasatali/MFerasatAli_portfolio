@@ -63,6 +63,7 @@ export default {
     experience: {
       title: "Professional Experience",
       subtitle: "Navigating challenges and driving success",
+      timelineLabel: "Career at a glance",
     },
     skills: {
       title: "Education & Skills",
@@ -148,5 +149,44 @@ export default {
   common: {
     readMore: "Read more",
     loading: "Loading…",
+  },
+  commandPalette: {
+    title: "Command palette",
+    placeholder: "Search pages, sections, actions…",
+    empty: "No results found",
+    home: "Home",
+    recruiterBrief: "Recruiter brief",
+    openPack: "Open recruiter pack",
+    contactHire: "Contact / Hire Me",
+    toggleTheme: "Toggle light / dark theme",
+    caseStudy: "case study",
+    groups: {
+      pages: "Pages",
+      sections: "Sections",
+      actions: "Actions",
+      projects: "Projects",
+    },
+  },
+  demo: {
+    rag: {
+      title: "Portfolio doc Q&A",
+      subtitle: "Client-side RAG demo — searches a static corpus about projects & experience.",
+      badge: "Offline · no API key",
+      placeholder: "Ask about Takafo+, stack, contact…",
+      search: "Search",
+      searching: "Searching…",
+      sources: "Sources",
+      noMatch: "No strong match in the portfolio corpus. Try: Takafo+, Vue stack, or contact.",
+      samples: {
+        takafo: "What is Takafo+?",
+        stack: "What is the tech stack?",
+        contact: "How do I hire Muhammad?",
+      },
+    },
+    arch: {
+      title: "Takafo+ architecture explorer",
+      subtitle: "Click a module to explore — 11 interconnected HCM capabilities.",
+      readArticle: "Read article",
+    },
   },
 };

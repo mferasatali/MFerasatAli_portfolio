@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, nextTick, onMounted, inject, type Ref } from "vue";
 import type { IExperience } from "@/interfaces";
-import ExperienceTimeline from "@/components/recruiter/ExperienceTimeline.vue";
+import CareerTimeline from "@/components/career/CareerTimeline.vue";
 import { useGsapReveal } from "@/composables/useGsapReveal";
 import { useI18n } from "vue-i18n";
 
@@ -55,7 +55,7 @@ watch(
         </div>
         <p class="section-subtitle">{{ t('sections.experience.subtitle') }}</p>
       </div>
-      <ExperienceTimeline />
+      <CareerTimeline />
     </v-container>
 
     <div class="experience-track-wrap">

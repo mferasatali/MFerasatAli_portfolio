@@ -1,10 +1,13 @@
 import { ref, computed, watch, onMounted, onUnmounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import { useI18n } from "vue-i18n";
 import { NAV_ITEMS } from "@/constants/navigation";
 import { FerasatCaseStudies } from "@/utils/ferasatCaseStudies";
 import { useAppTheme } from "@/composables/useAppTheme";
 import { useRecruiterPack } from "@/composables/useRecruiterPack";
 import { CALENDLY_URL } from "@/utils/ferasatRecruiter";
+import { localizeCaseStudy } from "@/i18n/content";
+import type { AppLocale } from "@/i18n";
 
 export interface CommandItem {
   id: string;
@@ -23,6 +26,9 @@ export function useCommandPalette() {
   const route = useRoute();
   const { toggleTheme } = useAppTheme();
   const { openPack } = useRecruiterPack();
+  const { t, locale } = useI18n();
+
+  const l = () => locale.value as AppLocale;
 
   const navigateSection = (sectionId: string) => {
     open.value = false;
@@ -40,8 +46,8 @@ export function useCommandPalette() {
     const items: CommandItem[] = [
       {
         id: "home",
-        label: "Home",
-        group: "Pages",
+        label: t("commandPalette.home"),
+        group: t("commandPalette.groups.pages"),
         keywords: ["home", "landing", "portfolio"],
         icon: "mdi-home",
         action: () => {
@@ -51,8 +57,8 @@ export function useCommandPalette() {
       },
       {
         id: "resume",
-        label: "Resume",
-        group: "Pages",
+        label: t("header.resume"),
+        group: t("commandPalette.groups.pages"),
         keywords: ["resume", "cv", "document"],
         icon: "mdi-file-document-outline",
         action: () => {
@@ -62,8 +68,8 @@ export function useCommandPalette() {
       },
       {
         id: "cover-letter",
-        label: "Cover Letter",
-        group: "Pages",
+        label: t("header.coverLetter"),
+        group: t("commandPalette.groups.pages"),
         keywords: ["cover", "letter"],
         icon: "mdi-email-outline",
         action: () => {
@@ -73,8 +79,8 @@ export function useCommandPalette() {
       },
       {
         id: "blog",
-        label: "Articles",
-        group: "Pages",
+        label: t("header.articles"),
+        group: t("commandPalette.groups.pages"),
         keywords: ["blog", "articles", "writing"],
         icon: "mdi-post-outline",
         action: () => {
@@ -84,8 +90,8 @@ export function useCommandPalette() {
       },
       {
         id: "recruiter",
-        label: "Recruiter brief",
-        group: "Pages",
+        label: t("commandPalette.recruiterBrief"),
+        group: t("commandPalette.groups.pages"),
         keywords: ["recruiter", "hire", "pack", "brief", "cv"],
         icon: "mdi-account-tie",
         action: () => {
@@ -96,11 +102,12 @@ export function useCommandPalette() {
     ];
 
     NAV_ITEMS.filter((n) => n.id !== "hero").forEach((item) => {
+      const label = t(`nav.${item.id}`);
       items.push({
         id: item.id,
-        label: item.label,
-        group: "Sections",
-        keywords: [item.id, item.label.toLowerCase()],
+        label,
+        group: t("commandPalette.groups.sections"),
+        keywords: [item.id, label.toLowerCase()],
         icon: item.icon,
         action: () => navigateSection(item.id),
       });
@@ -108,8 +115,8 @@ export function useCommandPalette() {
 
     items.push({
       id: "github",
-      label: "GitHub",
-      group: "Sections",
+      label: t("nav.github"),
+      group: t("commandPalette.groups.sections"),
       keywords: ["github", "repos", "open source"],
       icon: "mdi-github",
       action: () => navigateSection("github"),
@@ -117,8 +124,8 @@ export function useCommandPalette() {
 
     items.push({
       id: "recruiter-pack",
-      label: "Open recruiter pack",
-      group: "Actions",
+      label: t("commandPalette.openPack"),
+      group: t("commandPalette.groups.actions"),
       keywords: ["recruiter", "pack", "resume", "download", "links"],
       icon: "mdi-briefcase-download",
       action: () => {
@@ -134,8 +141,8 @@ export function useCommandPalette() {
     if (CALENDLY_URL) {
       items.push({
         id: "book-call",
-        label: "Book 30 min call",
-        group: "Actions",
+        label: t("hero.bookCall"),
+        group: t("commandPalette.groups.actions"),
         keywords: ["calendly", "book", "call", "schedule", "meeting"],
         icon: "mdi-calendar",
         action: () => {
@@ -147,19 +154,20 @@ export function useCommandPalette() {
 
     items.push({
       id: "contact-hire",
-      label: "Contact / Hire Me",
-      group: "Actions",
+      label: t("commandPalette.contactHire"),
+      group: t("commandPalette.groups.actions"),
       keywords: ["contact", "hire", "email", "message"],
       icon: "mdi-send",
       action: () => navigateSection("contact"),
     });
 
     FerasatCaseStudies.forEach((study) => {
+      const localized = localizeCaseStudy(study, l());
       items.push({
         id: `project-${study.slug}`,
-        label: `${study.title} (case study)`,
-        group: "Projects",
-        keywords: [study.slug, study.title.toLowerCase(), "case study", "project"],
+        label: `${localized.title} (${t("commandPalette.caseStudy")})`,
+        group: t("commandPalette.groups.projects"),
+        keywords: [study.slug, localized.title.toLowerCase(), "case study", "project"],
         icon: "mdi-text-box-search-outline",
         action: () => {
           open.value = false;
@@ -170,8 +178,8 @@ export function useCommandPalette() {
 
     items.push({
       id: "toggle-theme",
-      label: "Toggle light / dark theme",
-      group: "Actions",
+      label: t("commandPalette.toggleTheme"),
+      group: t("commandPalette.groups.actions"),
       keywords: ["theme", "dark", "light", "mode"],
       icon: "mdi-theme-light-dark",
       action: () => {

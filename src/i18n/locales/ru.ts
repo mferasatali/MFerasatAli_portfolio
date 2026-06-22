@@ -62,6 +62,7 @@ export default {
     experience: {
       title: "Опыт работы",
       subtitle: "Вызовы и достижения",
+      timelineLabel: "Карьера в двух словах",
     },
     skills: {
       title: "Образование и навыки",
@@ -147,5 +148,35 @@ export default {
   common: {
     readMore: "Подробнее",
     loading: "Загрузка…",
+  },
+  commandPalette: {
+    title: "Командная палитра",
+    placeholder: "Поиск страниц, разделов, действий…",
+    empty: "Ничего не найдено",
+    home: "Главная",
+    recruiterBrief: "Бриф для рекрутера",
+    openPack: "Открыть пакет рекрутера",
+    contactHire: "Связаться / Нанять",
+    toggleTheme: "Светлая / тёмная тема",
+    caseStudy: "кейс",
+    groups: { pages: "Страницы", sections: "Разделы", actions: "Действия", projects: "Проекты" },
+  },
+  demo: {
+    rag: {
+      title: "Doc Q&A портфолио",
+      subtitle: "Клиентский RAG — поиск по статическому корпусу проектов.",
+      badge: "Offline · без API",
+      placeholder: "Спросите о Takafo+, стеке, контакте…",
+      search: "Поиск",
+      searching: "Поиск…",
+      sources: "Источники",
+      noMatch: "Нет совпадения. Попробуйте: Takafo+, стек, контакт.",
+      samples: { takafo: "Что такое Takafo+?", stack: "Какой tech stack?", contact: "Как связаться?" },
+    },
+    arch: {
+      title: "Архитектура Takafo+",
+      subtitle: "Клик по модулю — 11 связанных HCM-модулей.",
+      readArticle: "Читать статью",
+    },
   },
 };

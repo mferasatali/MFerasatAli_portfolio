@@ -62,6 +62,7 @@ export default {
     experience: {
       title: "Berufserfahrung",
       subtitle: "Herausforderungen meistern und Erfolg liefern",
+      timelineLabel: "Karriere auf einen Blick",
     },
     skills: {
       title: "Ausbildung & Skills",
@@ -147,5 +148,35 @@ export default {
   common: {
     readMore: "Mehr lesen",
     loading: "Lädt…",
+  },
+  commandPalette: {
+    title: "Befehlspalette",
+    placeholder: "Seiten, Abschnitte, Aktionen suchen…",
+    empty: "Keine Ergebnisse",
+    home: "Start",
+    recruiterBrief: "Recruiter-Brief",
+    openPack: "Recruiter-Pack öffnen",
+    contactHire: "Kontakt / Einstellen",
+    toggleTheme: "Hell / Dunkel umschalten",
+    caseStudy: "Case Study",
+    groups: { pages: "Seiten", sections: "Abschnitte", actions: "Aktionen", projects: "Projekte" },
+  },
+  demo: {
+    rag: {
+      title: "Portfolio Doc Q&A",
+      subtitle: "Client-seitiges RAG — durchsucht statischen Projekt-Korpus.",
+      badge: "Offline · kein API-Key",
+      placeholder: "Fragen zu Takafo+, Stack, Kontakt…",
+      search: "Suchen",
+      searching: "Suche…",
+      sources: "Quellen",
+      noMatch: "Kein Treffer. Versuchen: Takafo+, Stack, Kontakt.",
+      samples: { takafo: "Was ist Takafo+?", stack: "Welcher Tech-Stack?", contact: "Wie kontaktieren?" },
+    },
+    arch: {
+      title: "Takafo+ Architektur-Explorer",
+      subtitle: "Modul anklicken — 11 verknüpfte HCM-Module.",
+      readArticle: "Artikel lesen",
+    },
   },
 };

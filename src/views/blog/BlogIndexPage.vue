@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { RouterLink } from "vue-router";
 import BlogLayout from "./BlogLayout.vue";
 import {
@@ -7,11 +7,13 @@ import {
   formatArticleDate,
   CATEGORY_COLORS,
 } from "@/utils/ferasatArticles";
+import { useLocalizedContent } from "@/composables/useLocalizedContent";
 
 const titleRef = ref<HTMLElement | null>(null);
+const { localizeArticlesList } = useLocalizedContent();
 
-const sortedArticles = [...FerasatArticles].sort((a, b) =>
-  b.date.localeCompare(a.date)
+const sortedArticles = computed(() =>
+  [...localizeArticlesList(FerasatArticles)].sort((a, b) => b.date.localeCompare(a.date))
 );
 
 onMounted(() => {

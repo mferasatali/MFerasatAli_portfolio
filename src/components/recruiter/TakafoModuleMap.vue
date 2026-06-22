@@ -1,15 +1,28 @@
 <script setup lang="ts">
-import { TAKAFO_MODULES } from "@/utils/ferasatRecruiter";
+import { computed } from "vue";
 import { RouterLink } from "vue-router";
+import { useI18n } from "vue-i18n";
+import { useLocalizedContent } from "@/composables/useLocalizedContent";
+import { TAKAFO_MODULE_ARTICLE_SLUGS } from "@/i18n/content/takafoModules";
+
+const { t } = useI18n();
+const { localizedTakafoModules } = useLocalizedContent();
+
+const modules = computed(() =>
+  localizedTakafoModules.value.map((mod, index) => ({
+    ...mod,
+    articleSlug: TAKAFO_MODULE_ARTICLE_SLUGS[index],
+  }))
+);
 </script>
 
 <template>
-  <div class="module-map" aria-label="Takafo+ HCM module map">
-    <h3 class="map-title">Takafo+ module map</h3>
-    <p class="map-desc">11 interconnected HCM modules — private enterprise; diagram is conceptual.</p>
+  <div class="module-map" :aria-label="t('demo.arch.title')">
+    <h3 class="map-title">{{ t('demo.arch.title') }}</h3>
+    <p class="map-desc">{{ t('demo.arch.subtitle') }}</p>
     <div class="map-grid">
       <div
-        v-for="mod in TAKAFO_MODULES"
+        v-for="mod in modules"
         :key="mod.name"
         class="map-node"
       >
@@ -20,7 +33,7 @@ import { RouterLink } from "vue-router";
           :to="`/blog/${mod.articleSlug}`"
           class="node-link"
         >
-          Read article →
+          {{ t('demo.arch.readArticle') }} →
         </RouterLink>
       </div>
     </div>

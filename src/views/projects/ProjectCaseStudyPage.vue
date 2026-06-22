@@ -5,9 +5,15 @@ import { getCaseStudyBySlug } from "@/utils/ferasatCaseStudies";
 import { CASE_STUDY_ARCHITECTURE } from "@/utils/ferasatRecruiter";
 import TakafoModuleMap from "@/components/recruiter/TakafoModuleMap.vue";
 import { applyPageSeo } from "@/utils/siteSeo";
+import { useLocalizedContent } from "@/composables/useLocalizedContent";
 
 const route = useRoute();
-const study = computed(() => getCaseStudyBySlug(route.params.slug as string));
+const { localizeCaseStudyByLocale } = useLocalizedContent();
+
+const study = computed(() => {
+  const base = getCaseStudyBySlug(route.params.slug as string);
+  return base ? localizeCaseStudyByLocale(base) : undefined;
+});
 const architecture = computed(() =>
   study.value ? CASE_STUDY_ARCHITECTURE[study.value.slug] : undefined
 );

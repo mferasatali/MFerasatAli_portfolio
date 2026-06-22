@@ -16,6 +16,8 @@ import { useGsapReveal } from "@/composables/useGsapReveal";
 import { useReducedMotion } from "@/composables/useReducedMotion";
 import { trackEvent } from "@/composables/useAnalytics";
 import { useI18n } from "vue-i18n";
+import PortfolioRagDemo from "@/components/demo/PortfolioRagDemo.vue";
+import TakafoArchitectureExplorer from "@/components/takafo/TakafoArchitectureExplorer.vue";
 
 const { t } = useI18n();
 
@@ -104,6 +106,9 @@ onMounted(() => {
           {{ t('sections.recruiters.fullPage') }}
         </RouterLink>
       </div>
+
+      <PortfolioRagDemo />
+      <TakafoArchitectureExplorer />
 
       <div ref="gridRef" class="recruiter-grid">
         <!-- Skills matcher -->

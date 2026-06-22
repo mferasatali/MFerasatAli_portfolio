@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, watch, nextTick } from "vue";
 import { useCommandPalette } from "@/composables/useCommandPalette";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const {
   open,
@@ -27,21 +30,21 @@ watch(open, async (isOpen) => {
   <Teleport to="body">
     <Transition name="palette">
       <div v-if="open" class="command-palette-overlay" @click.self="closePalette">
-        <div class="command-palette" role="dialog" aria-label="Command palette">
+        <div class="command-palette" role="dialog" :aria-label="t('commandPalette.title')">
           <div class="palette-search">
             <v-icon size="small" class="search-icon">mdi-magnify</v-icon>
             <input
               ref="inputRef"
               v-model="query"
               type="text"
-              placeholder="Search pages, sections, actions…"
+              :placeholder="t('commandPalette.placeholder')"
               autocomplete="off"
               spellcheck="false"
             />
             <kbd class="palette-kbd">Esc</kbd>
           </div>
 
-          <div v-if="grouped.size === 0" class="palette-empty">No results found</div>
+          <div v-if="grouped.size === 0" class="palette-empty">{{ t('commandPalette.empty') }}</div>
 
           <ul v-else class="palette-list">
             <template v-for="[group, items] in grouped" :key="group">
