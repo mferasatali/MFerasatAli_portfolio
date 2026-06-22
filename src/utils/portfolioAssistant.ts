@@ -1,5 +1,5 @@
 import { PROFILE, AVAILABILITY, DOWNLOAD_LINKS } from "@/utils/ferasatProfile";
-import { RECRUITER_SUMMARY, RESUME_LAST_UPDATED } from "@/utils/ferasatRecruiter";
+import { RECRUITER_SUMMARY, CALENDLY_URL } from "@/utils/ferasatRecruiter";
 import { FerasatExperience } from "@/utils/ferasatExperiences";
 import { FerasatProjects } from "@/utils/ferasatProjects";
 import { FerasatSkillsFlat } from "@/utils/ferasatSkillCategories";
@@ -52,14 +52,79 @@ const COVER_LETTER_ACTIONS: AssistantAction[] = [
   },
 ];
 
+function buildContactActions(): AssistantAction[] {
+  const actions: AssistantAction[] = [];
+
+  if (CALENDLY_URL) {
+    actions.push({
+      label: "Book 30 min (Calendly)",
+      icon: "mdi-calendar",
+      href: CALENDLY_URL,
+      external: true,
+    });
+  }
+
+  actions.push(
+    {
+      label: "Chat on WhatsApp",
+      icon: "mdi-whatsapp",
+      href: PROFILE.whatsappUrl,
+      external: true,
+    },
+    {
+      label: "Send email",
+      icon: "mdi-email",
+      href: `mailto:${PROFILE.email}`,
+      external: true,
+    },
+    {
+      label: "LinkedIn",
+      icon: "mdi-linkedin",
+      href: PROFILE.linkedin,
+      external: true,
+    },
+    {
+      label: "GitHub",
+      icon: "mdi-github",
+      href: PROFILE.github,
+      external: true,
+    },
+    {
+      label: "Contact form",
+      icon: "mdi-form-select",
+      route: "/#contact",
+    },
+    {
+      label: "Recruiter page",
+      icon: "mdi-account-tie",
+      route: "/recruiter",
+    }
+  );
+
+  return actions;
+}
+
+const CONTACT_ACTIONS = buildContactActions();
+
+const CALENDLY_ACTIONS: AssistantAction[] = CALENDLY_URL
+  ? [
+      {
+        label: "Book on Calendly",
+        icon: "mdi-calendar",
+        href: CALENDLY_URL,
+        external: true,
+      },
+    ]
+  : [];
+
 const DEFAULT_SUGGESTIONS = [
+  "How can I contact you?",
+  "Book a call",
   "Recruiter pack",
-  "What's your experience?",
   "Notice period?",
-  "How can I hire you?",
 ];
 
-const FALLBACK_ANSWER = `I'm MFA's portfolio assistant. I can share info about experience, projects, skills, and how to get in touch. Try one of the suggestions below, or ask about Vue, AI, enterprise work, or contact details.`;
+const FALLBACK_ANSWER = `I'm MFA's portfolio assistant. Ask about experience, projects, skills, or how to reach Muhammad — Calendly, WhatsApp, email, LinkedIn, or the contact form.`;
 
 const FAQ_ENTRIES: FaqEntry[] = [
   {
@@ -76,11 +141,13 @@ const FAQ_ENTRIES: FaqEntry[] = [
   },
   {
     keywords: ["salary", "compensation", "pay", "rate", "package", "ctc"],
-    answer: `Salary is discussed on a brief call based on role, location, and contract type. Email ${PROFILE.email} or use WhatsApp to connect.`,
+    answer: `Salary is discussed on a brief call based on role, location, and contract type. Book a slot on Calendly or message on WhatsApp.`,
+    actions: CALENDLY_URL ? [...CALENDLY_ACTIONS, ...CONTACT_ACTIONS.slice(0, 2)] : CONTACT_ACTIONS.slice(0, 2),
   },
   {
     keywords: ["contract", "full-time", "full time", "freelance", "part-time", "part time"],
-    answer: `Open to full-time and contract. ${AVAILABILITY.detail}. Best contact: WhatsApp or the contact form.`,
+    answer: `Open to full-time and contract. ${AVAILABILITY.detail}. Best contact: Calendly, WhatsApp, or the contact form.`,
+    actions: CONTACT_ACTIONS,
   },
   {
     keywords: ["certification", "certifications", "degree", "education", "university"],
@@ -180,20 +247,104 @@ const FAQ_ENTRIES: FaqEntry[] = [
   },
   {
     keywords: [
+      "calendly",
+      "book a call",
+      "book call",
+      "schedule",
+      "scheduling",
+      "meeting",
+      "appointment",
+      "calendar",
+      "time slot",
+      "pick a time",
+      "30 min",
+      "30min",
+      "video call",
+      "intro call",
+    ],
+    answer: CALENDLY_URL
+      ? `Book a free 30-minute intro call on Calendly — pick any open slot that works for you. ${PROFILE.name} is ${AVAILABILITY.label.toLowerCase()}.`
+      : `Scheduling is available via WhatsApp (${PROFILE.phoneDisplay}) or email ${PROFILE.email}.`,
+    actions: CALENDLY_URL ? CALENDLY_ACTIONS : CONTACT_ACTIONS.slice(0, 3),
+  },
+  {
+    keywords: [
+      "how to contact",
+      "how can i contact",
+      "how do i contact",
+      "ways to contact",
+      "reach you",
+      "reach him",
+      "get in touch",
+      "talk to",
+      "speak with",
+      "speak to",
+      "connect with",
+      "contact options",
+      "contact methods",
+    ],
+    answer: `Here’s how to reach ${PROFILE.name}: ${CALENDLY_URL ? "Calendly for a scheduled 30 min call, " : ""}WhatsApp (${PROFILE.phoneDisplay}), email (${PROFILE.email}), LinkedIn, GitHub, or the contact form on this site.`,
+    actions: CONTACT_ACTIONS,
+  },
+  {
+    keywords: ["email", "e-mail", "mail", "gmail", "inbox"],
+    answer: `Email ${PROFILE.name} at ${PROFILE.email} — usually replies within 24 hours on weekdays.`,
+    actions: [
+      {
+        label: "Send email",
+        icon: "mdi-email",
+        href: `mailto:${PROFILE.email}`,
+        external: true,
+      },
+      ...(CALENDLY_URL ? CALENDLY_ACTIONS : []),
+    ],
+  },
+  {
+    keywords: ["linkedin", "linked in"],
+    answer: `Connect on LinkedIn: linkedin.com/in/mferasatali — good for recruiters and professional outreach.`,
+    actions: [
+      {
+        label: "Open LinkedIn",
+        icon: "mdi-linkedin",
+        href: PROFILE.linkedin,
+        external: true,
+      },
+    ],
+  },
+  {
+    keywords: ["contact form", "send message", "message form", "write to", "leave a message"],
+    answer: `Use the contact form on this portfolio — name, email, phone, and message. It goes straight to ${PROFILE.name}'s inbox workflow.`,
+    actions: [
+      {
+        label: "Open contact form",
+        icon: "mdi-form-select",
+        route: "/#contact",
+      },
+    ],
+  },
+  {
+    keywords: [
       "hire",
+      "interview",
+      "opportunity",
+      "recruit",
+      "recruiting",
+      "job offer",
+      "role",
+      "position",
+    ],
+    answer: `${AVAILABILITY.label}. ${AVAILABILITY.detail}. Best next step: book a Calendly call or message on WhatsApp with role details.`,
+    actions: CONTACT_ACTIONS,
+  },
+  {
+    keywords: [
       "contact",
-      "email",
       "reach",
       "connect",
       "message",
-      "interview",
-      "opportunity",
-      "freelance",
-      "contract",
-      "full-time",
-      "full time",
     ],
-    answer: `${AVAILABILITY.label}. Reach out via WhatsApp (${PROFILE.phoneDisplay}), contact form, email ${PROFILE.email}, or LinkedIn.`,
+    answer: `${AVAILABILITY.label}. Reach out via Calendly, WhatsApp (${PROFILE.phoneDisplay}), email ${PROFILE.email}, LinkedIn, or the contact form below.`,
+    actions: CONTACT_ACTIONS,
   },
   {
     keywords: ["whatsapp", "whats app", "phone", "call", "number", "mobile", "text me"],
@@ -217,7 +368,8 @@ const FAQ_ENTRIES: FaqEntry[] = [
       "notice",
       "start",
     ],
-    answer: `Status: ${AVAILABILITY.label}. ${AVAILABILITY.detail}. Best way to connect: contact form or ${PROFILE.email}.`,
+    answer: `Status: ${AVAILABILITY.label}. ${AVAILABILITY.detail}. Book a call or use the contact form.`,
+    actions: CONTACT_ACTIONS,
   },
   {
     keywords: ["location", "remote", "lahore", "pakistan", "timezone", "relocate"],
@@ -256,11 +408,13 @@ const FAQ_ENTRIES: FaqEntry[] = [
   },
   {
     keywords: ["hello", "hi", "hey", "salam", "assalam"],
-    answer: `Hello! I can help you learn about ${PROFILE.name}' experience, projects, skills, and how to get in touch. What would you like to know?`,
+    answer: `Hello! I can help with ${PROFILE.name}'s experience, projects, skills, and how to contact him — Calendly, WhatsApp, email, or LinkedIn. What would you like to know?`,
+    actions: CONTACT_ACTIONS.slice(0, CALENDLY_URL ? 3 : 2),
   },
   {
     keywords: ["thanks", "thank", "shukriya"],
-    answer: `You're welcome! Feel free to use the contact form if you'd like to speak with ${PROFILE.name} directly.`,
+    answer: `You're welcome! Book a call on Calendly or use WhatsApp if you'd like to speak with ${PROFILE.name} directly.`,
+    actions: CALENDLY_URL ? CALENDLY_ACTIONS : CONTACT_ACTIONS.slice(0, 2),
   },
   {
     keywords: [
@@ -276,6 +430,25 @@ const FAQ_ENTRIES: FaqEntry[] = [
     answer: `Colleagues and clients highlight strong Vue 3 delivery, AI/LLM integration, mentoring, and reliable production support — see the Testimonials section on the homepage for quotes from enterprise HCM, Aslase, and prior teams.`,
   },
 ];
+
+function detectContactActions(query: string): AssistantAction[] | undefined {
+  if (
+    /calendly|book\s*(a\s*)?call|schedule|meeting|appointment|30\s*min/.test(query) &&
+    CALENDLY_URL
+  ) {
+    return CALENDLY_ACTIONS;
+  }
+
+  if (
+    /contact|reach|email|whatsapp|linkedin|phone|call|message|hire|talk|connect|book/.test(
+      query
+    )
+  ) {
+    return CONTACT_ACTIONS;
+  }
+
+  return undefined;
+}
 
 function detectDocumentActions(query: string): AssistantAction[] | undefined {
   const wantsResume = /\bresume\b|\bcv\b|\bbiodata\b|\bcurriculum\b/.test(query);
@@ -327,6 +500,16 @@ export function askPortfolioAssistant(question: string): AssistantReply {
           : `Here's the cover letter — download the PDF or view in the portfolio.`;
       return { answer, suggestions: DEFAULT_SUGGESTIONS.slice(0, 3), actions: docActions };
     }
+
+    const contactActions = detectContactActions(query);
+    if (contactActions) {
+      return {
+        answer: `Here are the best ways to reach ${PROFILE.name} — tap a button below.`,
+        suggestions: DEFAULT_SUGGESTIONS.slice(0, 3),
+        actions: contactActions,
+      };
+    }
+
     return { answer: FALLBACK_ANSWER, suggestions: DEFAULT_SUGGESTIONS };
   }
 
@@ -340,6 +523,6 @@ export function askPortfolioAssistant(question: string): AssistantReply {
   return { answer: bestEntry.answer, suggestions, actions };
 }
 
-export const ASSISTANT_GREETING = `Hi! I'm MFA's portfolio assistant — ask about experience, projects, skills, AI work, or how to hire Muhammad Ferasat Ali.`;
+export const ASSISTANT_GREETING = `Hi! I'm MFA's portfolio assistant. Ask about experience, projects, skills — or how to contact Muhammad (Calendly, WhatsApp, email, LinkedIn).`;
 
 export const ASSISTANT_SUGGESTIONS = DEFAULT_SUGGESTIONS;

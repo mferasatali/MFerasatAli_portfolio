@@ -158,7 +158,7 @@ watch(open, (isOpen) => {
             ref="inputEl"
             v-model="input"
             type="text"
-            placeholder="Ask about experience, projects, AI…"
+            placeholder="Ask about contact, Calendly, experience, projects…"
             autocomplete="off"
             maxlength="280"
           />
