@@ -84,6 +84,35 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
     selected: false,
   },
   {
+    title: "Babul Hawaij Events",
+    subtitle: "Event records & volunteers",
+    date: "2026",
+    stack: ["Vue 3", "Supabase", "Pinia", "Vercel"],
+    projectType: "Client · Live",
+    isPrivate: false,
+    slug: "babul-hawaij-events",
+    content: [
+      "Yearly event collections, expense tracking, and volunteer manager roles on Vue 3 + Supabase.",
+      "Auth, Postgres, and storage on a free Vercel + Supabase stack.",
+    ],
+    links: [
+      {
+        name: "GitHub",
+        color: "link",
+        url: "https://github.com/babulhawaij/babulhawaij-events",
+      },
+      {
+        name: "Live",
+        color: "link",
+        url: "https://babulhawaij-events.vercel.app/",
+      },
+    ],
+    liveDemo: "https://babulhawaij-events.vercel.app/",
+    animation: "animation-lab-4",
+    projectImages: [],
+    selected: false,
+  },
+  {
     title: "Takafo+",
     subtitle: "Mubadala Investment Company",
     date: "2024 – Present",

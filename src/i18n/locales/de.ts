@@ -35,13 +35,13 @@ export default {
     back: "Zurück zum Portfolio",
     eyebrow: "Persönliche Labs",
     title: "Tools, die ich wirklich nutze",
-    lead: "Changelog, SQL Lab und AI News — jedes öffnet in einem neuen Tab.",
+    lead: "Changelog, SQL Lab, AI News und Babul Hawaij Events — jedes öffnet in einem neuen Tab.",
     openNewTab: "In neuem Tab öffnen",
     localDemo: "Lokale Demo",
     live: "Live",
     comingSoon: "Demnächst",
     footnote:
-      "Changelog Generator, SQL Lab und AI News sind alle live auf Netlify.",
+      "Changelog Generator, SQL Lab, AI News und Babul Hawaij Events sind alle live.",
   },
   profile: {
     title: "Senior Full-Stack Engineer · Vue · React · Angular · Node.js · AI/LLM",

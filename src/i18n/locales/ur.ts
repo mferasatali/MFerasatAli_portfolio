@@ -35,13 +35,13 @@ export default {
     back: "پورٹ فولیو پر واپس",
     eyebrow: "ذاتی لیبز",
     title: "ٹولز جو میں واقعی استعمال کرتا ہوں",
-    lead: "Changelog، SQL Lab اور AI News — ہر ایک نئی ٹیب میں کھلتی ہے۔",
+    lead: "Changelog، SQL Lab، AI News اور Babul Hawaij Events — ہر ایک نئی ٹیب میں کھلتی ہے۔",
     openNewTab: "نئی ٹیب میں کھولیں",
     localDemo: "لوکل ڈیمو",
     live: "لائیو",
     comingSoon: "جلد آ رہا ہے",
     footnote:
-      "Changelog Generator، SQL Lab اور AI News تینوں Netlify پر لائیو ہیں۔",
+      "Changelog Generator، SQL Lab، AI News اور Babul Hawaij Events سب لائیو ہیں۔",
   },
   profile: {
     title: "سینئر فل اسٹیک انجینئر · Vue · React · Angular · Node.js · AI/LLM",

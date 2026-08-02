@@ -35,13 +35,13 @@ export default {
     back: "العودة للمعرض",
     eyebrow: "مختبرات شخصية",
     title: "أدوات أبنيها فعلاً",
-    lead: "Changelog وSQL وAI News — كل أداة تفتح في تبويب جديد.",
+    lead: "Changelog وSQL وAI News وBabul Hawaij Events — كل أداة تفتح في تبويب جديد.",
     openNewTab: "فتح في تبويب جديد",
     localDemo: "تجربة محلية",
     live: "مباشر",
     comingSoon: "قريباً",
     footnote:
-      "Changelog Generator وSQL Lab وAI News جميعها مباشرة على Netlify.",
+      "Changelog Generator وSQL Lab وAI News وBabul Hawaij Events جميعها مباشرة.",
   },
   profile: {
     title: "مهندس Full-Stack أول · Vue · React · Angular · Node.js · AI/LLM",

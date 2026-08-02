@@ -53,4 +53,17 @@ export const FerasatLabs: LabTool[] = [
     icon: "mdi-newspaper-variant-outline",
     accent: "#c2410c",
   },
+	{
+		id: "babul-hawaij-events",
+		title: "Babul Hawaij Events",
+		tagline: "Collections · expenses · volunteers",
+		description:
+			"Vue 3 + Supabase app for yearly event collections, expense tracking, and volunteer managers — auth, Postgres, and storage on a free stack (Vercel).",
+		stack: ["Vue 3", "Supabase", "Pinia", "Vercel"],
+		href: "https://babulhawaij-events.vercel.app/",
+		repoUrl: "https://github.com/babulhawaij/babulhawaij-events",
+		status: "live",
+		icon: "mdi-calendar-heart",
+		accent: "#7c3aed",
+	},
 ];

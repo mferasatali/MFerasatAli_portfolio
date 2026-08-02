@@ -35,13 +35,13 @@ export default {
     back: "Back to portfolio",
     eyebrow: "Personal labs",
     title: "Build tools worth showing",
-    lead: "Side projects I use for real work — changelog notes, SQL, and AI news. Each opens in a new tab.",
+    lead: "Side projects I use for real work — changelog, SQL, AI news, and event ops. Each opens in a new tab.",
     openNewTab: "Open in new tab",
     localDemo: "Local demo",
     live: "Live",
     comingSoon: "Coming soon",
     footnote:
-      "Changelog Generator, SQL Lab, and AI News are all live on Netlify.",
+      "Changelog Generator, SQL Lab, AI News, and Babul Hawaij Events are all live.",
   },
   profile: {
     title: "Senior Full-Stack Engineer · Vue · React · Angular · Node.js · AI/LLM",
