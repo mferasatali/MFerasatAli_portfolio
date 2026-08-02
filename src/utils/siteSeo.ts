@@ -38,7 +38,7 @@ const ROUTE_SEO: Record<string, Partial<PageSeoOptions>> = {
   "/labs": {
     title: "Labs — Muhammad Ferasat Ali",
     description:
-      "Personal engineering labs: Changelog Generator, SQL Lab, AI News Pulse Desk, and Babul Hawaij Events by Muhammad Ferasat Ali.",
+      "Personal engineering labs: Changelog Generator, SQL Lab, AI News, Babul Hawaij Events, Rosca, and Expense Tracker by Muhammad Ferasat Ali.",
   },
   "/blog": {
     title: "Articles — Muhammad Ferasat Ali",

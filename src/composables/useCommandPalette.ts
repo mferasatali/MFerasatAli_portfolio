@@ -59,7 +59,7 @@ export function useCommandPalette() {
         id: "labs",
         label: t("header.labs"),
         group: t("commandPalette.groups.pages"),
-        keywords: ["labs", "tools", "changelog", "sql", "ai news", "pulse", "babul", "hawaij", "events"],
+        keywords: ["labs", "tools", "changelog", "sql", "ai news", "pulse", "babul", "hawaij", "events", "rosca", "kameeti", "expense", "budget"],
         icon: "mdi-flask-outline",
         action: () => {
           open.value = false;

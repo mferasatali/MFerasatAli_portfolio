@@ -41,7 +41,7 @@ export default {
     live: "لائیو",
     comingSoon: "جلد آ رہا ہے",
     footnote:
-      "Changelog Generator، SQL Lab، AI News اور Babul Hawaij Events سب لائیو ہیں۔",
+      "Listed labs سب Netlify یا Vercel پر لائیو ہیں۔",
   },
   profile: {
     title: "سینئر فل اسٹیک انجینئر · Vue · React · Angular · Node.js · AI/LLM",

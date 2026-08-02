@@ -41,7 +41,7 @@ export default {
     live: "مباشر",
     comingSoon: "قريباً",
     footnote:
-      "Changelog Generator وSQL Lab وAI News وBabul Hawaij Events جميعها مباشرة.",
+      "جميع المختبرات المدرجة مباشرة على Netlify أو Vercel.",
   },
   profile: {
     title: "مهندس Full-Stack أول · Vue · React · Angular · Node.js · AI/LLM",

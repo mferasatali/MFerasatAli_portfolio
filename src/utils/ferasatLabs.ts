@@ -66,4 +66,30 @@ export const FerasatLabs: LabTool[] = [
 		icon: "mdi-calendar-heart",
 		accent: "#7c3aed",
 	},
+	{
+		id: "rosca",
+		title: "Rosca — Kameeti Manager",
+		tagline: "Rotating savings groups",
+		description:
+			"Vue 3 + Vuetify + Firebase app to manage Kameeti/ROSCA groups — members, monthly pot calculations, contributions, and distribution summaries.",
+		stack: ["Vue 3", "Vuetify", "Firebase", "Vercel"],
+		href: "https://rosca-coral.vercel.app/",
+		repoUrl: "https://github.com/mferasatali/rosca",
+		status: "live",
+		icon: "mdi-account-group-outline",
+		accent: "#b45309",
+	},
+	{
+		id: "expense-tracker",
+		title: "Expense Tracker",
+		tagline: "Personal finance dashboard",
+		description:
+			"Vue 3 + Firebase expense tracker with accounts, income, budgets, categories, and Chart.js dashboards — real-time sync on Vercel.",
+		stack: ["Vue 3", "Vuetify", "Firebase", "Chart.js"],
+		href: "https://expense-tracker-ivory-nu-92.vercel.app/",
+		repoUrl: "https://github.com/mferasatali/expense-tracker",
+		status: "live",
+		icon: "mdi-wallet-outline",
+		accent: "#047857",
+	},
 ];

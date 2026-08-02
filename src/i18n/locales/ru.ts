@@ -41,7 +41,7 @@ export default {
     live: "Live",
     comingSoon: "Скоро",
     footnote:
-      "Changelog Generator, SQL Lab, AI News и Babul Hawaij Events уже все live.",
+      "Все перечисленные labs уже live на Netlify или Vercel.",
   },
   profile: {
     title: "Senior Full-Stack · Vue · React · Angular · Node.js · AI/LLM",

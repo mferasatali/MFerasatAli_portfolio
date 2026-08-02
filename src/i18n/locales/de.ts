@@ -41,7 +41,7 @@ export default {
     live: "Live",
     comingSoon: "Demnächst",
     footnote:
-      "Changelog Generator, SQL Lab, AI News und Babul Hawaij Events sind alle live.",
+      "Alle gelisteten Labs sind live auf Netlify oder Vercel.",
   },
   profile: {
     title: "Senior Full-Stack Engineer · Vue · React · Angular · Node.js · AI/LLM",
