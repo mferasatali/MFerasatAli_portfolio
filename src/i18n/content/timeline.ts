@@ -2,8 +2,8 @@ import type { TimelineByLocale } from "./types";
 
 export const TIMELINE_BY_LOCALE: TimelineByLocale = {
   en: [
-    { company: "Inception - IBHC", role: "Senior Software Engineer", period: "2024 – Present", impact: "Takafo+ HCM · 11 modules · AI hiring · Azure SSO" },
-    { company: "Aslase", role: "Frontend Lead · Full-Stack", period: "2023 – Present", impact: "Team lead · OpenAI/RAG · NestJS APIs" },
+    { company: "Inception - IBHC", role: "Full-Stack (Primary)", period: "2024 – Present", impact: "Takafo+ HCM · 11 modules · AI hiring · Azure SSO" },
+    { company: "Aslase", role: "Frontend Lead (Concurrent)", period: "2023 – Present", impact: "Team lead · OpenAI/RAG · NestJS APIs" },
     { company: "Byte Sailors", role: "Full-Stack Engineer", period: "2022 – 2023", impact: "Booking systems · payments · PostgreSQL perf" },
   ],
   ar: [

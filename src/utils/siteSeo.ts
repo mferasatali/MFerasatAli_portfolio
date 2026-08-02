@@ -6,9 +6,9 @@ export const SITE_URL = "https://mferasatali.github.io/MFerasatAli_portfolio";
 export const SITE_NAME = "Muhammad Ferasat Ali — Portfolio";
 
 export const DEFAULT_DESCRIPTION =
-  "Senior Full-Stack Engineer specializing in Vue, React, Angular, Node.js, and AI/LLM integration. Enterprise platforms for UAE clients including Mubadala and G42.";
+  "Full-Stack Engineer building Vue/Node enterprise platforms with AI hiring workflows. Ship record for UAE clients including Mubadala and G42 via Inception - IBHC.";
 
-export const DEFAULT_TITLE = "Muhammad Ferasat Ali — Senior Full-Stack Engineer";
+export const DEFAULT_TITLE = "Muhammad Ferasat Ali — Full-Stack Engineer";
 
 /** Social share image — 1200×630 PNG in /public */
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
@@ -29,11 +29,11 @@ const ROUTE_SEO: Record<string, Partial<PageSeoOptions>> = {
   "/resume": {
     title: "Resume — Muhammad Ferasat Ali",
     description:
-      "Resume of Muhammad Ferasat Ali — Senior Full-Stack Engineer with enterprise Vue, React, Node.js, and AI/LLM experience.",
+      "Resume of Muhammad Ferasat Ali — Full-Stack Engineer with enterprise Vue, React, Node.js, and AI/LLM experience.",
   },
   "/cover-letter": {
     title: "Cover Letter — Muhammad Ferasat Ali",
-    description: "Cover letter of Muhammad Ferasat Ali — Senior Full-Stack Engineer.",
+    description: "Cover letter of Muhammad Ferasat Ali — Full-Stack Engineer.",
   },
   "/labs": {
     title: "Labs — Muhammad Ferasat Ali",
@@ -79,7 +79,7 @@ function setJsonLd() {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
         name: PROFILE.name,
-        jobTitle: "Senior Full-Stack Engineer",
+        jobTitle: "Full-Stack Engineer",
         email: PROFILE.email,
         url: SITE_URL,
         image: DEFAULT_OG_IMAGE,

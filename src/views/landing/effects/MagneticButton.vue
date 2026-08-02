@@ -17,7 +17,7 @@ const onMove = (e: MouseEvent) => {
   const rect = buttonRef.value.getBoundingClientRect();
   const cx = rect.left + rect.width / 2;
   const cy = rect.top + rect.height / 2;
-  const strength = props.strength ?? 0.3;
+  const strength = props.strength ?? 0.18;
   quickX((e.clientX - cx) * strength);
   quickY((e.clientY - cy) * strength);
 };
@@ -29,8 +29,8 @@ const onLeave = () => {
 
 onMounted(() => {
   if (isTouch.value || !buttonRef.value) return;
-  quickX = gsap.quickTo(buttonRef.value, "x", { duration: 0.4, ease: "power3.out" });
-  quickY = gsap.quickTo(buttonRef.value, "y", { duration: 0.4, ease: "power3.out" });
+  quickX = gsap.quickTo(buttonRef.value, "x", { duration: 0.18, ease: "power2.out" });
+  quickY = gsap.quickTo(buttonRef.value, "y", { duration: 0.18, ease: "power2.out" });
   buttonRef.value.addEventListener("mousemove", onMove);
   buttonRef.value.addEventListener("mouseleave", onLeave);
 });

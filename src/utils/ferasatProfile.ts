@@ -21,7 +21,7 @@ export const FerasatSocialLinks: ISocialLinks.SocialLinks[] = [
 export const PROFILE = {
   name: "Muhammad Ferasat Ali",
   title:
-    "Senior Full-Stack Engineer · Vue · React · Angular · Node.js · AI/LLM",
+    "Full-Stack Engineer · Vue · React · Node.js · AI/LLM platforms",
   email: "mferasatali@gmail.com",
   linkedin: "https://linkedin.com/in/mferasatali",
   github: "https://github.com/mferasatali",
@@ -32,7 +32,7 @@ export const PROFILE = {
   whatsappUrl:
     "https://wa.me/923424658936?text=Hi%20Muhammad%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect.",
   summary:
-    "Senior Full-Stack Software Engineer with 3+ years delivering enterprise-scale web applications and AI-integrated platforms for high-profile UAE clients — including Mubadala Investment Company, G42 (Inception · Core42 · Space42), Emirates Foundation, Dubai Municipality, and Khalifa University — through Inception - IBHC Abu Dhabi. Proficient across Vue.js, React, Angular, Nuxt.js, and Next.js on the frontend; Node.js, NestJS, and Laravel on the backend; PostgreSQL, MongoDB, and Redis for data. Actively integrating LLMs, RAG pipelines, vector databases, and OpenAI API into production systems.",
+    "I build Vue/Node enterprise platforms with AI hiring workflows — shipped for UAE clients including Mubadala Investment Company and G42 ecosystem companies through Inception - IBHC Abu Dhabi. Frontend: Vue 3, React, Angular. Backend: Node.js, NestJS. Data: PostgreSQL, MongoDB, Redis. Production AI: LLMs, RAG, and OpenAI-powered screening.",
 };
 
 export type AvailabilityStatus = "open" | "limited" | "unavailable";

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 import { useMediaQuery } from "@vueuse/core";
 
 const props = withDefaults(
@@ -8,9 +8,30 @@ const props = withDefaults(
 );
 
 const isMobile = useMediaQuery("(max-width: 768px)");
+const prefersReduced = useMediaQuery("(prefers-reduced-motion: reduce)");
+
+/** Skip particles on low-end / battery-saver / data-saver devices */
+const isLowEnd = computed(() => {
+  if (typeof navigator === "undefined") return false;
+  const nav = navigator as Navigator & {
+    deviceMemory?: number;
+    connection?: { saveData?: boolean };
+  };
+  if (nav.connection?.saveData) return true;
+  if (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4) return true;
+  if (typeof nav.hardwareConcurrency === "number" && nav.hardwareConcurrency <= 2) {
+    return true;
+  }
+  return false;
+});
+
+const canRender = computed(
+  () => props.enabled && !isMobile.value && !prefersReduced.value && !isLowEnd.value
+);
 
 const particles = computed(() => {
-  const n = isMobile.value ? 0 : props.count;
+  if (!canRender.value) return [];
+  const n = Math.min(props.count, 12);
   return Array.from({ length: n }, (_, i) => {
     const size = Math.random() * 2.5 + 1;
     return {
@@ -24,14 +45,10 @@ const particles = computed(() => {
     };
   });
 });
-
-onMounted(() => {
-  // particles computed once on mount via isMobile
-});
 </script>
 
 <template>
-  <div v-if="enabled && particles.length" class="particle-field" aria-hidden="true">
+  <div v-if="particles.length" class="particle-field" aria-hidden="true">
     <span
       v-for="p in particles"
       :key="p.id"
@@ -60,8 +77,9 @@ onMounted(() => {
 .particle {
   position: absolute;
   border-radius: 50%;
-  background: rgba(99, 102, 241, 0.4);
+  background: rgba(99, 102, 241, 0.35);
   animation: float linear infinite;
+  will-change: transform, opacity;
 }
 
 @keyframes float {
@@ -72,7 +90,7 @@ onMounted(() => {
   }
   50% {
     transform: translateY(-30px) translateX(10px);
-    opacity: 0.6;
+    opacity: 0.55;
   }
 }
 

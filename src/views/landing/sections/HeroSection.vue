@@ -5,7 +5,6 @@ import type { ISocialLinks } from "@/interfaces";
 import MagneticButton from "../effects/MagneticButton.vue";
 import StatsBar from "../layout/StatsBar.vue";
 import { splitTextToWords } from "@/composables/useGsapReveal";
-import { TextPlugin } from "gsap/TextPlugin";
 import { DOWNLOAD_ITEMS, AVAILABILITY } from "@/utils/ferasatProfile";
 import { CALENDLY_URL } from "@/utils/ferasatRecruiter";
 import { useRecruiterPack } from "@/composables/useRecruiterPack";
@@ -22,8 +21,6 @@ const availabilityDetail = computed(() => {
     | "availability.detailUnavailable";
   return t(key);
 });
-
-gsap.registerPlugin(TextPlugin);
 
 const props = defineProps<{
   introduction: string;
@@ -49,32 +46,26 @@ onMounted(() => {
     return;
   }
 
-  const visited = sessionStorage.getItem("mfa-visited");
+  if (descRef.value) descRef.value.textContent = props.introduction;
+
   const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-  tl.from(greetingRef.value, { opacity: 0, y: 20, duration: 0.5 })
-    .from(roleRef.value, { opacity: 0, y: 20, duration: 0.5 }, "-=0.2");
+  tl.from(greetingRef.value, { opacity: 0, y: 16, duration: 0.4 })
+    .from(roleRef.value, { opacity: 0, y: 16, duration: 0.4 }, "-=0.15");
 
   if (nameRef.value) {
     const words = splitTextToWords(nameRef.value);
     gsap.set(words, { y: "110%", opacity: 0 });
-    tl.to(words, { y: 0, opacity: 1, duration: 0.7, stagger: 0.06 }, "-=0.3");
+    tl.to(words, { y: 0, opacity: 1, duration: 0.55, stagger: 0.04 }, "-=0.2");
   }
 
-  if (visited) {
-    if (descRef.value) descRef.value.textContent = props.introduction;
-    tl.from(descRef.value, { opacity: 0, y: 16, duration: 0.5 }, "-=0.2");
-  } else {
-    tl.from(descRef.value, { opacity: 0, duration: 0.5 }, "-=0.2");
-    tl.to(
-      descRef.value,
-      { duration: 1.2, text: props.introduction, ease: "none" },
-      "-=0.3"
-    );
-    sessionStorage.setItem("mfa-visited", "1");
-  }
+  tl.from(descRef.value, { opacity: 0, y: 12, duration: 0.4 }, "-=0.15").from(
+    imageRef.value,
+    { scale: 0.96, opacity: 0, duration: 0.6 },
+    "-=0.45"
+  );
 
-  tl.from(imageRef.value, { scale: 0.92, opacity: 0, duration: 0.8 }, "-=0.8");
+  sessionStorage.setItem("mfa-visited", "1");
 });
 </script>
 
@@ -102,24 +93,8 @@ onMounted(() => {
 
             <div class="hero-actions">
               <MagneticButton>
-                <v-btn class="modern-btn" size="large" @click="scrollTo('contact')">
-                  {{ t('hero.contactMe') }}
-                </v-btn>
-              </MagneticButton>
-              <MagneticButton>
-                <v-btn class="outline-btn" size="large" variant="outlined" to="/resume">
-                  {{ t('hero.viewResume') }}
-                </v-btn>
-              </MagneticButton>
-              <MagneticButton>
-                <v-btn class="outline-btn" size="large" variant="outlined" to="/cover-letter">
-                  {{ t('hero.coverLetter') }}
-                </v-btn>
-              </MagneticButton>
-              <MagneticButton>
-                <v-btn class="outline-btn" size="large" variant="outlined" @click="openPack">
-                  <v-icon start>mdi-briefcase-download</v-icon>
-                  {{ t('hero.recruiterPack') }}
+                <v-btn class="modern-btn" size="large" @click="scrollTo('selected-work')">
+                  {{ t('hero.viewProjects') }}
                 </v-btn>
               </MagneticButton>
               <MagneticButton v-if="CALENDLY_URL">
@@ -136,11 +111,6 @@ onMounted(() => {
                   {{ t('hero.bookCall') }}
                 </v-btn>
               </MagneticButton>
-              <MagneticButton>
-                <v-btn class="outline-btn" size="large" variant="outlined" @click="scrollTo('recruiters')">
-                  {{ t('hero.forRecruiters') }}
-                </v-btn>
-              </MagneticButton>
 
               <div class="download-dropdown">
                 <v-btn
@@ -149,12 +119,23 @@ onMounted(() => {
                   variant="outlined"
                   @click="downloadOpen = !downloadOpen"
                 >
-                  <v-icon start>mdi-download</v-icon>
-                  {{ t('hero.download') }}
+                  {{ t('hero.moreActions') }}
                   <v-icon end>{{ downloadOpen ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
                 </v-btn>
                 <Transition name="dropdown">
                   <div v-if="downloadOpen" class="download-menu">
+                    <button type="button" class="download-item" @click="scrollTo('recruiters'); downloadOpen = false">
+                      {{ t('hero.forRecruiters') }}
+                    </button>
+                    <button type="button" class="download-item" @click="openPack(); downloadOpen = false">
+                      {{ t('hero.recruiterPack') }}
+                    </button>
+                    <router-link to="/resume" class="download-item" @click="downloadOpen = false">
+                      {{ t('hero.viewResume') }}
+                    </router-link>
+                    <router-link to="/cover-letter" class="download-item" @click="downloadOpen = false">
+                      {{ t('hero.coverLetter') }}
+                    </router-link>
                     <a
                       v-for="item in DOWNLOAD_ITEMS"
                       :key="item.label"
@@ -164,8 +145,11 @@ onMounted(() => {
                       class="download-item"
                       @click="downloadOpen = false"
                     >
-                      {{ item.label }}
+                      {{ t('hero.download') }} {{ item.label }}
                     </a>
+                    <button type="button" class="download-item" @click="scrollTo('contact'); downloadOpen = false">
+                      {{ t('hero.contactMe') }}
+                    </button>
                   </div>
                 </Transition>
               </div>
@@ -199,10 +183,14 @@ onMounted(() => {
           <div class="hero-image-wrap" ref="imageRef">
             <div class="image-ring" aria-hidden="true" />
             <img
-              src="@/assets/my-profile.png"
+              src="@/assets/my-profile.jpg"
               alt="Muhammad Ferasat Ali"
               class="hero-image"
+              width="480"
+              height="600"
               loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
           </div>
         </v-col>
@@ -340,10 +328,10 @@ onMounted(() => {
 }
 
 .hero-desc {
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--color-text-muted);
-  max-width: 560px;
+  max-width: 34rem;
   margin-bottom: 2rem;
 }
 
@@ -373,10 +361,15 @@ onMounted(() => {
 
 .download-item {
   display: block;
+  width: 100%;
+  text-align: left;
   padding: 0.75rem 1rem;
   color: var(--color-text-muted);
   text-decoration: none;
   font-size: 0.875rem;
+  background: none;
+  border: none;
+  cursor: pointer;
   transition: background 0.2s, color 0.2s;
 
   &:hover {
@@ -434,27 +427,40 @@ onMounted(() => {
 
 .hero-image-wrap {
   position: relative;
-  max-width: 420px;
+  width: min(100%, 320px);
+  max-width: 320px;
   margin: 0 auto;
 }
 
 .image-ring {
   position: absolute;
-  inset: -12px;
+  inset: -8px;
   border-radius: var(--radius-xl);
   background: var(--gradient-primary);
-  opacity: 0.35;
-  filter: blur(24px);
+  opacity: 0.22;
+  filter: blur(18px);
   animation: pulse-glow 4s ease-in-out infinite;
 }
 
 .hero-image {
   position: relative;
+  display: block;
   width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border);
   object-fit: cover;
-  aspect-ratio: 4/5;
+  object-position: center 12%;
+  background: var(--color-surface);
+}
+
+@media (max-width: 960px) {
+  .hero-image-wrap {
+    width: min(100%, 240px);
+    max-width: 240px;
+    margin-top: 0.5rem;
+  }
 }
 
 @keyframes pulse-glow {

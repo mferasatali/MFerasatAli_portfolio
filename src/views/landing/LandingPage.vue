@@ -12,10 +12,10 @@ import FloatingNav from "./layout/FloatingNav.vue";
 import SiteFooter from "./layout/SiteFooter.vue";
 import SectionDivider from "./layout/SectionDivider.vue";
 import ParticleField from "./effects/ParticleField.vue";
-import CustomCursor from "./effects/CustomCursor.vue";
 
 import HeroSection from "./sections/HeroSection.vue";
 import AboutSection from "./sections/AboutSection.vue";
+import ImpactSection from "./sections/ImpactSection.vue";
 import ExperienceSection from "./sections/ExperienceSection.vue";
 import SkillsSection from "./sections/SkillsSection.vue";
 import ProjectsSection from "./sections/ProjectsSection.vue";
@@ -47,19 +47,27 @@ const {
   testimonials,
 } = usePortfolioData();
 
-const { lenis, initLenis, scrollTo, scrollToTop } = useLenisScroll(prefersReducedMotion);
+const { lenis, initLenis, scrollTo, scrollToTop, stopScroll, startScroll } =
+  useLenisScroll(prefersReducedMotion);
 const { activeSection } = useScrollSpy(lenis);
 
 const isReady = ref(false);
 const showPreloader = ref(true);
 
 provide("scrollTo", scrollTo);
+provide("stopScroll", stopScroll);
+provide("startScroll", startScroll);
 provide("prefersReducedMotion", prefersReducedMotion);
 
 const onPreloaderDone = () => {
   showPreloader.value = false;
   isReady.value = true;
   initLenis();
+  const boot = document.getElementById("boot-loader");
+  if (boot) {
+    boot.classList.add("is-done");
+    window.setTimeout(() => boot.remove(), 400);
+  }
 };
 
 watch(isDataLoaded, async () => {
@@ -68,10 +76,18 @@ watch(isDataLoaded, async () => {
 });
 
 onMounted(() => {
+  // Hand off from HTML splash → Vue preloader (keeps spinner continuous)
+  const boot = document.getElementById("boot-loader");
+  if (boot && showPreloader.value && !prefersReducedMotion.value) {
+    boot.classList.add("is-done");
+    window.setTimeout(() => boot.remove(), 350);
+  }
+
   if (prefersReducedMotion.value) {
     showPreloader.value = false;
     isReady.value = true;
     initLenis();
+    document.getElementById("boot-loader")?.remove();
   }
 
   if (window.location.hash) {
@@ -86,7 +102,6 @@ onMounted(() => {
 
   <div class="landing-page" :class="{ 'is-ready': isReady || prefersReducedMotion }">
     <ParticleField :enabled="isReady && !prefersReducedMotion" />
-    <CustomCursor />
 
     <SiteHeader :active-section="activeSection" @navigate="scrollTo" />
     <RecruiterSummaryBar />
@@ -104,10 +119,13 @@ onMounted(() => {
       <SectionDivider id="d1" />
       <AboutSection :can-do="canDo" :is-data-loaded="isDataLoaded" />
 
-      <SectionDivider id="d2" reverse />
+      <SectionDivider id="d1b" reverse />
+      <ImpactSection />
+
+      <SectionDivider id="d2" />
       <ExperienceSection :experiences="experiences" :is-data-loaded="isDataLoaded" />
 
-      <SectionDivider id="d3" />
+      <SectionDivider id="d3" reverse />
       <SkillsSection
         :education="education"
         :skill-categories="skillCategories"
@@ -115,10 +133,10 @@ onMounted(() => {
         :is-data-loaded="isDataLoaded"
       />
 
-      <SectionDivider id="d3b" reverse />
+      <SectionDivider id="d3b" />
       <RecruiterSection />
 
-      <SectionDivider id="d4" />
+      <SectionDivider id="d4" reverse />
       <ProjectsSection :projects="projects" />
 
       <SectionDivider id="d4b" />

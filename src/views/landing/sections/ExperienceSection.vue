@@ -50,7 +50,7 @@ watch(
     <v-container class="experience-header-wrap">
       <div class="section-header">
         <div class="section-title-wrapper">
-          <span class="section-number">02</span>
+          <span class="section-number">03</span>
           <h2 ref="titleRef" class="section-title">{{ t('sections.experience.title') }}</h2>
         </div>
         <p class="section-subtitle">{{ t('sections.experience.subtitle') }}</p>
@@ -72,6 +72,7 @@ watch(
           </div>
           <h3 class="exp-company">{{ exp.companyName }}</h3>
           <p class="exp-role">{{ exp.role }}</p>
+          <p v-if="exp.engagement" class="exp-engagement">{{ exp.engagement }}</p>
           <p v-if="exp.location" class="exp-location">
             <v-icon size="x-small" class="mr-1">mdi-map-marker</v-icon>
             {{ exp.location }}
@@ -96,6 +97,7 @@ watch(
           </div>
           <h3 class="exp-company">{{ exp.companyName }}</h3>
           <p class="exp-role">{{ exp.role }}</p>
+          <p v-if="exp.engagement" class="exp-engagement">{{ exp.engagement }}</p>
           <p v-if="exp.location" class="exp-location">
             <v-icon size="x-small" class="mr-1">mdi-map-marker</v-icon>
             {{ exp.location }}
@@ -163,7 +165,20 @@ watch(
 .exp-role {
   color: var(--color-primary-light);
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.exp-engagement {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-accent);
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  margin-bottom: 0.65rem;
 }
 
 .exp-location {

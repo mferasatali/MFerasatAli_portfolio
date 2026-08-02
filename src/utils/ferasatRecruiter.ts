@@ -47,7 +47,7 @@ export interface TakafoModule {
 }
 
 export const RECRUITER_SUMMARY = {
-  role: "Senior Full-Stack Engineer",
+  role: "Full-Stack Engineer · AI platforms",
   stack: "Vue 3 · React · Node.js · NestJS · AI/LLM",
   location: PROFILE.location,
   remote: "Remote-friendly · UAE enterprise experience",
@@ -58,7 +58,45 @@ export const RECRUITER_SUMMARY = {
   phone: PROFILE.phoneDisplay,
 } as const;
 
-export const RECRUITER_SHORT_BIO = `${PROFILE.name} — ${PROFILE.title}. 3+ years building enterprise HCM, AI assessment, and full-stack products for Mubadala, G42, and UAE government clients.`;
+export const RECRUITER_SHORT_BIO = `${PROFILE.name} — ${PROFILE.title}. Builds enterprise HCM and AI hiring workflows for Mubadala, G42 ecosystem, and UAE government clients.`;
+
+/** What a team can expect in the first 90 days */
+export const NINETY_DAY_PLAN = [
+  {
+    phase: "Days 1–30",
+    title: "Context & quick wins",
+    detail:
+      "Map codebase + delivery rituals, ship a scoped Vue/API improvement, and document the critical path for the product.",
+  },
+  {
+    phase: "Days 31–60",
+    title: "Own a feature slice",
+    detail:
+      "Deliver an end-to-end slice (UI + API + data) with tests/monitoring hooks — especially AI or workflow-heavy surfaces.",
+  },
+  {
+    phase: "Days 61–90",
+    title: "Raise the bar",
+    detail:
+      "Stabilize performance/SSO/auth edges, mentor on standards, and leave a clear roadmap for the next quarter.",
+  },
+] as const;
+
+export const SELECTED_WORK = {
+  slug: "takafo-plus",
+  title: "Takafo+",
+  client: "Mubadala Investment Company · via Inception - IBHC",
+  problem:
+    "A sovereign wealth fund needed a secure multi-module HCM suite — complex approvals, SSO, real-time updates, and AI-assisted hiring — without fragmenting UX across roles.",
+  built:
+    "Vue 3 + Pinia workflows, Azure MSAL/B2C SSO, WebSocket notifications, OpenAI candidate scoring, and Heygen live-avatar interviews with server-side prompt validation.",
+  results: [
+    "11 HCM modules live across 30+ personas",
+    "AI matching + VIP CV analysis in production",
+    "Enterprise Azure SSO for government & corporate users",
+    "Real-time WebSocket notifications at org scale",
+  ],
+} as const;
 
 export const RECRUITER_PACK_LINKS = [
   { label: "Download Resume (PDF)", icon: "mdi-download", href: DOWNLOAD_LINKS.resume, external: true },
@@ -74,7 +112,7 @@ export const RECRUITER_PACK_LINKS = [
 export const RECRUITER_FAQ: RecruiterFaqItem[] = [
   {
     question: "Are you open to new roles?",
-    answer: `${AVAILABILITY.detail}. Best fit: Senior Full-Stack, Frontend Lead, or AI-integrated product engineering.`,
+    answer: `${AVAILABILITY.detail}. Best fit: Full-Stack Engineer, Frontend Lead, or AI-integrated product engineering.`,
   },
   {
     question: "Remote, hybrid, or on-site?",
@@ -150,13 +188,13 @@ export const CLIENT_HIGHLIGHTS: ClientHighlight[] = [
 export const EXPERIENCE_TIMELINE: ExperienceTimelineItem[] = [
   {
     company: "Inception - IBHC",
-    role: "Senior Software Engineer",
+    role: "Full-Stack (Primary)",
     period: "2024 – Present",
     impact: "Takafo+ HCM · 11 modules · AI hiring · Azure SSO",
   },
   {
     company: "Aslase",
-    role: "Frontend Lead · Full-Stack",
+    role: "Frontend Lead (Concurrent)",
     period: "2023 – Present",
     impact: "Team lead · OpenAI/RAG · NestJS APIs",
   },

@@ -29,7 +29,7 @@ export const GITHUB_FALLBACK: {
     login: GITHUB_USERNAME,
     name: "Muhammad Ferasat Ali",
     avatarUrl: "https://github.com/mferasatali.png",
-    bio: "Senior Full-Stack Engineer · Vue · React · Node.js · AI/LLM",
+    bio: "Full-Stack Engineer · Vue · React · Node.js · AI/LLM",
     publicRepos: 0,
     followers: 0,
     htmlUrl: "https://github.com/mferasatali",

@@ -78,7 +78,7 @@ const contactFerasat = async () => {
       <div class="contact-grid">
         <div class="contact-info">
           <div class="section-title-wrapper">
-            <span class="section-number">08</span>
+            <span class="section-number">09</span>
             <h2 class="section-title contact-title">{{ t('sections.contact.title') }}</h2>
           </div>
           <p class="contact-lead">

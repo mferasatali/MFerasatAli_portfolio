@@ -8,7 +8,7 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 
-defineProps<{ projects: IProjects.PersonalProjectsPayload[] }>();
+const props = defineProps<{ projects: IProjects.PersonalProjectsPayload[] }>();
 
 const prefersReducedMotion = inject<Ref<boolean>>("prefersReducedMotion")!;
 
@@ -17,8 +17,25 @@ const gridRef = ref<HTMLElement | null>(null);
 const hoveredProjectId = ref<number | null>(null);
 const modalOpen = ref(false);
 const selectedProject = ref<IProjects.PersonalProjectsPayload | null>(null);
+const showAll = ref(false);
 
 const { revealSplit, staggerChildren, refresh } = useGsapReveal(prefersReducedMotion);
+
+const featuredProjects = computed(() =>
+  props.projects.filter((p) => p.featured)
+);
+
+const visibleProjects = computed(() =>
+  showAll.value || featuredProjects.value.length === 0
+    ? props.projects
+    : featuredProjects.value
+);
+
+const hasMore = computed(
+  () =>
+    featuredProjects.value.length > 0 &&
+    props.projects.length > featuredProjects.value.length
+);
 
 const featured = computed(() => selectedProject.value);
 
@@ -42,7 +59,7 @@ onMounted(() => {
 });
 
 watch(
-  () => gridRef.value,
+  () => [gridRef.value, visibleProjects.value.length, showAll.value],
   async () => {
     await nextTick();
     if (gridRef.value) {
@@ -60,7 +77,7 @@ watch(
     <v-container>
       <div class="section-header">
         <div class="section-title-wrapper">
-          <span class="section-number">05</span>
+          <span class="section-number">06</span>
           <h2 ref="titleRef" class="section-title">{{ t('sections.projects.title') }}</h2>
         </div>
         <p class="section-subtitle">
@@ -70,8 +87,8 @@ watch(
 
       <div ref="gridRef" class="projects-grid">
         <TiltCard
-          v-for="(project, index) in projects"
-          :key="index"
+          v-for="(project, index) in visibleProjects"
+          :key="project.slug || project.title"
           :class="['project-card-wrap', { featured: index === 0 }]"
         >
           <article
@@ -117,6 +134,7 @@ watch(
               </div>
 
               <p class="project-desc">{{ project.content[0] }}</p>
+              <p v-if="project.content[2]" class="project-result">{{ project.content[2] }}</p>
 
               <div v-if="!project.isPrivate && (project.links.length || project.liveDemo)" class="project-links">
                 <a
@@ -131,7 +149,7 @@ watch(
                   {{ t('sections.projects.liveDemo') }}
                 </a>
                 <a
-                  v-for="(link, idx) in project.links.filter((l) => l.url)"
+                  v-for="(link, idx) in project.links.filter((l) => l.url && l.name !== 'Live')"
                   :key="idx"
                   :href="link.url"
                   target="_blank"
@@ -143,9 +161,32 @@ watch(
                   {{ link.name }}
                 </a>
               </div>
+
+              <RouterLink
+                v-if="project.slug"
+                :to="`/projects/${project.slug}`"
+                class="card-case-link"
+                @click.stop
+              >
+                {{ t('sections.projects.caseStudy') }}
+              </RouterLink>
             </div>
           </article>
         </TiltCard>
+      </div>
+
+      <div class="projects-footer">
+        <button
+          v-if="hasMore"
+          type="button"
+          class="outline-btn toggle-more"
+          @click="showAll = !showAll"
+        >
+          {{ showAll ? t('sections.projects.showLess') : t('sections.projects.showMore') }}
+        </button>
+        <RouterLink to="/labs" class="labs-link">
+          {{ t('sections.projects.viewLabs') }}
+        </RouterLink>
       </div>
     </v-container>
 
@@ -201,7 +242,7 @@ watch(
             {{ t('sections.projects.liveDemo') }}
           </a>
           <a
-            v-for="(link, idx) in featured.links.filter((l) => l.url)"
+            v-for="(link, idx) in featured.links.filter((l) => l.url && l.name !== 'Live')"
             :key="idx"
             :href="link.url"
             target="_blank"
@@ -299,7 +340,7 @@ watch(
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(99, 102, 241, 0.05));
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(6, 182, 212, 0.05));
   color: var(--color-text-muted);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -356,9 +397,20 @@ watch(
   font-size: 0.8125rem;
   color: var(--color-text-muted);
   line-height: 1.6;
-  flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-result {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-primary-light);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -375,6 +427,53 @@ watch(
   align-items: center;
   gap: 0.35rem;
   font-size: 0.8125rem;
+  color: var(--color-primary-light);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.card-case-link {
+  margin-top: 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-primary-light);
+  }
+}
+
+.projects-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.toggle-more {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary-light);
+  }
+}
+
+.labs-link {
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-primary-light);
   text-decoration: none;
 

@@ -10,6 +10,7 @@ export default {
   nav: {
     hero: "Home",
     about: "About",
+    "selected-work": "Selected Work",
     experience: "Experience",
     skills: "Skills",
     recruiters: "Recruiters",
@@ -44,9 +45,11 @@ export default {
       "All listed labs are live on Netlify, Vercel, or GitHub Pages.",
   },
   profile: {
-    title: "Senior Full-Stack Engineer · Vue · React · Angular · Node.js · AI/LLM",
+    title: "Full-Stack Engineer · Vue · React · Node.js · AI/LLM platforms",
+    tagline:
+      "I build Vue/Node enterprise platforms with AI hiring workflows — shipped for UAE clients including Mubadala & G42.",
     summary:
-      "Senior Full-Stack Software Engineer with 3+ years delivering enterprise-scale web applications and AI-integrated platforms for high-profile UAE clients — including Mubadala Investment Company, G42 (Inception · Core42 · Space42), Emirates Foundation, Dubai Municipality, and Khalifa University — through Inception - IBHC Abu Dhabi. Proficient across Vue.js, React, Angular, Nuxt.js, and Next.js on the frontend; Node.js, NestJS, and Laravel on the backend; PostgreSQL, MongoDB, and Redis for data. Actively integrating LLMs, RAG pipelines, vector databases, and OpenAI API into production systems.",
+      "I build Vue/Node enterprise platforms with AI hiring workflows — shipped for UAE clients including Mubadala Investment Company and G42 ecosystem companies through Inception - IBHC Abu Dhabi. Frontend: Vue 3, React, Angular. Backend: Node.js, NestJS. Data: PostgreSQL, MongoDB, Redis. Production AI: LLMs, RAG, and OpenAI-powered screening.",
   },
   availability: {
     open: "Open to opportunities",
@@ -65,19 +68,35 @@ export default {
     bookCall: "Book 30 min",
     forRecruiters: "For Recruiters",
     download: "Download",
-    viewProjects: "View Projects",
+    viewProjects: "View selected work",
     scrollDown: "Scroll to about",
+    moreActions: "More",
   },
   sections: {
     about: {
       title: "About Me",
-      subtitle: "Passionate about creating innovative solutions",
+      subtitle: "Enterprise Vue/Node delivery with production AI",
       quote:
-        "Building enterprise systems that scale — from AI-powered HCM platforms to production LLM integrations.",
+        "I ship AI-assisted HCM and hiring workflows that hold up under real enterprise constraints — SSO, approvals, and scale.",
+    },
+    impact: {
+      title: "Selected Work",
+      subtitle: "The clearest proof of how I ship — not a dump of every side project.",
+      badge: "Flagship · Enterprise",
+      meta: "2024 – Present · Private",
+      problemLabel: "Problem",
+      builtLabel: "Built",
+      privateNote:
+        "Client UI is private. Case study covers architecture, decisions, and measurable impact — happy to walk through on a call.",
+      readCase: "Read case study",
+      moreWork: "More projects ↓",
+      ninetyTitle: "What I can deliver in 90 days",
+      ninetyLead:
+        "A practical ramp plan for full-stack / AI-platform teams hiring someone who already ships Vue + Node in production.",
     },
     experience: {
       title: "Professional Experience",
-      subtitle: "Navigating challenges and driving success",
+      subtitle: "Primary enterprise delivery + concurrent frontend leadership",
       timelineLabel: "Career at a glance",
     },
     skills: {
@@ -86,9 +105,12 @@ export default {
     },
     projects: {
       title: "Featured Projects",
-      subtitle: "Enterprise platforms, AI integrations, and open-source tools",
+      subtitle: "Enterprise proof first — then the best public tools",
       liveDemo: "Live demo",
       caseStudy: "Read full case study",
+      viewLabs: "More labs →",
+      showMore: "Show more projects",
+      showLess: "Show fewer",
     },
     github: {
       title: "GitHub",

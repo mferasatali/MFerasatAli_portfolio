@@ -41,7 +41,7 @@ const setActive = (index: number) => {
     <v-container>
       <div class="section-header">
         <div class="section-title-wrapper">
-          <span class="section-number">07</span>
+          <span class="section-number">08</span>
           <h2 ref="titleRef" class="section-title">{{ t('sections.testimonials.title') }}</h2>
         </div>
         <p class="section-subtitle">

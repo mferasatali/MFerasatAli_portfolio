@@ -70,22 +70,6 @@ watch(
 
     <v-container>
       <div class="about-grid">
-        <div class="about-visual">
-          <div class="about-frame glass-card">
-            <div class="card-glow" />
-            <img
-              src="@/assets/my-profile.png"
-              alt=""
-              class="about-image"
-              loading="lazy"
-              aria-hidden="true"
-            />
-            <blockquote ref="quoteRef" class="pull-quote">
-              "{{ t('sections.about.quote') }}"
-            </blockquote>
-          </div>
-        </div>
-
         <div class="about-content">
           <div class="section-title-wrapper">
             <span class="section-number">01</span>
@@ -94,6 +78,9 @@ watch(
           <p ref="subtitleRef" class="section-subtitle about-subtitle">
             {{ t('sections.about.subtitle') }}
           </p>
+          <blockquote ref="quoteRef" class="pull-quote">
+            "{{ t('sections.about.quote') }}"
+          </blockquote>
           <p ref="bodyRef" class="about-body" />
         </div>
       </div>
@@ -120,26 +107,12 @@ watch(
 }
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: center;
-}
-
-.about-frame {
-  padding: 1rem;
-  max-width: 360px;
-}
-
-.about-image {
-  width: 100%;
-  border-radius: var(--radius-md);
-  aspect-ratio: 1;
-  object-fit: cover;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .pull-quote {
-  margin-top: 1.25rem;
+  margin: 0 0 1.5rem;
   font-family: var(--font-display);
   font-size: 1.125rem;
   font-weight: 600;
@@ -151,7 +124,7 @@ watch(
 
 .about-subtitle {
   text-align: left;
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.25rem;
 }
 
 .about-body {
@@ -161,16 +134,16 @@ watch(
 }
 
 @media (max-width: 960px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-visual {
-    display: none;
-  }
-
   .about-subtitle {
     text-align: center;
+  }
+
+  .section-title-wrapper {
+    justify-content: center;
+  }
+
+  .pull-quote {
+    text-align: left;
   }
 }
 </style>

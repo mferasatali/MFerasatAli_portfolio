@@ -10,7 +10,7 @@ export const PORTFOLIO_CORPUS: CorpusChunk[] = [
     id: "profile",
     source: "Profile",
     tags: ["about", "summary", "who"],
-    text: "Muhammad Ferasat Ali is a Senior Full-Stack Engineer specializing in Vue 3, React, Node.js, NestJS, and AI/LLM integration. 3+ years delivering enterprise platforms for Mubadala, G42, and UAE government clients through Inception - IBHC Abu Dhabi.",
+    text: "Muhammad Ferasat Ali is a Full-Stack Engineer specializing in Vue 3, React, Node.js, NestJS, and AI/LLM integration. Builds enterprise platforms for Mubadala, G42, and UAE government clients through Inception - IBHC Abu Dhabi.",
   },
   {
     id: "takafo-overview",

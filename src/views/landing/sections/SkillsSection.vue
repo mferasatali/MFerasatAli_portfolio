@@ -47,7 +47,7 @@ watch(
     <v-container>
       <div class="section-header">
         <div class="section-title-wrapper">
-          <span class="section-number">03</span>
+          <span class="section-number">04</span>
           <h2 ref="titleRef" class="section-title">{{ t('sections.skills.title') }}</h2>
         </div>
       </div>

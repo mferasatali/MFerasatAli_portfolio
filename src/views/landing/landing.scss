@@ -15,10 +15,6 @@
   &:not(.is-ready) {
     visibility: hidden;
   }
-
-  @media (pointer: fine) {
-    cursor: none;
-  }
 }
 
 .section {

@@ -30,7 +30,7 @@ onMounted(() => {
     <v-container>
       <div class="section-header">
         <div class="section-title-wrapper">
-          <span class="section-number">06</span>
+          <span class="section-number">07</span>
           <h2 ref="titleRef" class="section-title">{{ t('sections.blog.title') }}</h2>
         </div>
         <p class="section-subtitle">

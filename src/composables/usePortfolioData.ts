@@ -27,7 +27,7 @@ export function usePortfolioData() {
   const skillCategories = ref<IJourney.SkillCategory[]>(FerasatSkillCategories);
   const skills = ref<string[]>(FerasatSkillsFlat);
   const profile = ref(PROFILE);
-  const introduction = computed(() => t("profile.summary"));
+  const introduction = computed(() => t("profile.tagline"));
   const canDo = computed(() => t("profile.summary"));
   const profileTitle = computed(() => t("profile.title"));
   const articles = computed(() => localizeArticlesList(getFeaturedArticles(3)));
