@@ -22,11 +22,26 @@ export default {
   header: {
     resume: "السيرة الذاتية",
     coverLetter: "خطاب التقديم",
+    labs: "المختبرات",
     hireMe: "وظّفني",
     toggleTheme: "تبديل المظهر",
     articles: "المقالات",
     goTop: "العودة للأعلى",
     toggleMenu: "القائمة",
+    menuSections: "الأقسام",
+    menuPages: "الصفحات",
+  },
+  labs: {
+    back: "العودة للمعرض",
+    eyebrow: "مختبرات شخصية",
+    title: "أدوات أبنيها فعلاً",
+    lead: "Changelog وSQL وAI News — كل أداة تفتح في تبويب جديد.",
+    openNewTab: "فتح في تبويب جديد",
+    localDemo: "تجربة محلية",
+    live: "مباشر",
+    comingSoon: "قريباً",
+    footnote:
+      "Changelog Generator وSQL Lab وAI News جميعها مباشرة على Netlify.",
   },
   profile: {
     title: "مهندس Full-Stack أول · Vue · React · Angular · Node.js · AI/LLM",

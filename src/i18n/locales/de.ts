@@ -22,11 +22,26 @@ export default {
   header: {
     resume: "Lebenslauf",
     coverLetter: "Anschreiben",
+    labs: "Labs",
     hireMe: "Einstellen",
     toggleTheme: "Design wechseln",
     articles: "Artikel",
     goTop: "Nach oben",
     toggleMenu: "Menü",
+    menuSections: "Abschnitte",
+    menuPages: "Seiten",
+  },
+  labs: {
+    back: "Zurück zum Portfolio",
+    eyebrow: "Persönliche Labs",
+    title: "Tools, die ich wirklich nutze",
+    lead: "Changelog, SQL Lab und AI News — jedes öffnet in einem neuen Tab.",
+    openNewTab: "In neuem Tab öffnen",
+    localDemo: "Lokale Demo",
+    live: "Live",
+    comingSoon: "Demnächst",
+    footnote:
+      "Changelog Generator, SQL Lab und AI News sind alle live auf Netlify.",
   },
   profile: {
     title: "Senior Full-Stack Engineer · Vue · React · Angular · Node.js · AI/LLM",

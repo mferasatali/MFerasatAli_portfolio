@@ -2,6 +2,88 @@ import { IProjects } from "@/interfaces/index";
 
 export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
   {
+    title: "Changelog Generator",
+    subtitle: "SvelteKit Dev Tool",
+    date: "2026",
+    stack: ["SvelteKit", "TypeScript", "GitHub API", "Octokit"],
+    projectType: "Open Source · Live",
+    isPrivate: false,
+    slug: "changelog-generator",
+    content: [
+      "Multi-account GitHub changelog generator — Personal/Office switch, tag ranges, markdown copy & download.",
+      "Built in SvelteKit to diversify beyond Vue/React portfolio apps.",
+    ],
+    links: [
+      {
+        name: "GitHub",
+        color: "link",
+        url: "https://github.com/mferasatali/change-log-generator",
+      },
+      {
+        name: "Live",
+        color: "link",
+        url: "https://change-log-generator.netlify.app/",
+      },
+    ],
+    liveDemo: "https://change-log-generator.netlify.app/",
+    animation: "animation-lab-1",
+    projectImages: [],
+    selected: false,
+  },
+  {
+    title: "SQL Lab",
+    subtitle: "Postgres Query Studio",
+    date: "2026",
+    stack: ["Vue 3", "Netlify Functions", "PostgreSQL", "CodeMirror"],
+    projectType: "Open Source · Live",
+    isPrivate: false,
+    slug: "sql-lab",
+    content: [
+      "Browser-based Postgres workbench with CodeMirror editor, Netlify Functions query API, and saved query library.",
+      "Connections stay in localStorage; supports multiple profiles for local / staging / production workflows.",
+    ],
+    links: [
+      {
+        name: "GitHub",
+        color: "link",
+        url: "https://github.com/mferasatali/sql-labs",
+      },
+      {
+        name: "Live",
+        color: "link",
+        url: "https://sql-labs.netlify.app/",
+      },
+    ],
+    liveDemo: "https://sql-labs.netlify.app/",
+    animation: "animation-lab-2",
+    projectImages: [],
+    selected: false,
+  },
+  {
+    title: "AI News · Pulse Desk",
+    subtitle: "Career-first AI briefing",
+    date: "2026",
+    stack: ["Next.js", "TypeScript", "RSS", "PWA"],
+    projectType: "Open Source · Live",
+    isPrivate: false,
+    slug: "ai-pulse-desk",
+    content: [
+      "Daily AI news desk with RSS ingestion, career-ranked stories, must-read list, streaks, and optional Gemini explanations.",
+      "Installable PWA designed as a morning briefing habit for engineers.",
+    ],
+    links: [
+      {
+        name: "Live",
+        color: "link",
+        url: "https://ai-news-live.netlify.app/",
+      },
+    ],
+    liveDemo: "https://ai-news-live.netlify.app/",
+    animation: "animation-lab-3",
+    projectImages: [],
+    selected: false,
+  },
+  {
     title: "Takafo+",
     subtitle: "Mubadala Investment Company",
     date: "2024 – Present",

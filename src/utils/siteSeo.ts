@@ -35,6 +35,11 @@ const ROUTE_SEO: Record<string, Partial<PageSeoOptions>> = {
     title: "Cover Letter — Muhammad Ferasat Ali",
     description: "Cover letter of Muhammad Ferasat Ali — Senior Full-Stack Engineer.",
   },
+  "/labs": {
+    title: "Labs — Muhammad Ferasat Ali",
+    description:
+      "Personal engineering labs: Changelog Generator, SQL Lab, and AI News Pulse Desk by Muhammad Ferasat Ali.",
+  },
   "/blog": {
     title: "Articles — Muhammad Ferasat Ali",
     description:

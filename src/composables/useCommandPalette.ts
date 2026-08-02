@@ -56,6 +56,17 @@ export function useCommandPalette() {
         },
       },
       {
+        id: "labs",
+        label: t("header.labs"),
+        group: t("commandPalette.groups.pages"),
+        keywords: ["labs", "tools", "changelog", "sql", "ai news", "pulse"],
+        icon: "mdi-flask-outline",
+        action: () => {
+          open.value = false;
+          window.open(`${window.location.origin}/labs`, "_blank", "noopener,noreferrer");
+        },
+      },
+      {
         id: "resume",
         label: t("header.resume"),
         group: t("commandPalette.groups.pages"),

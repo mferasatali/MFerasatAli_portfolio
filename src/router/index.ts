@@ -36,6 +36,12 @@ const routes = [
     component: () => import("@/views/projects/ProjectCaseStudyPage.vue"),
   },
   {
+    path: "/labs",
+    name: "Labs",
+    component: () => import("@/views/labs/LabsPage.vue"),
+    meta: { title: "Labs — Muhammad Ferasat Ali" },
+  },
+  {
     path: "/recruiter",
     name: "Recruiter",
     component: () => import("@/views/recruiter/RecruiterPage.vue"),

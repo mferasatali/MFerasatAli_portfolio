@@ -22,11 +22,26 @@ export default {
   header: {
     resume: "Resume",
     coverLetter: "Cover Letter",
+    labs: "Labs",
     hireMe: "Hire Me",
     toggleTheme: "Toggle theme",
     articles: "Articles",
     goTop: "Go to top",
     toggleMenu: "Toggle menu",
+    menuSections: "Sections",
+    menuPages: "Pages",
+  },
+  labs: {
+    back: "Back to portfolio",
+    eyebrow: "Personal labs",
+    title: "Build tools worth showing",
+    lead: "Side projects I use for real work — changelog notes, SQL, and AI news. Each opens in a new tab.",
+    openNewTab: "Open in new tab",
+    localDemo: "Local demo",
+    live: "Live",
+    comingSoon: "Coming soon",
+    footnote:
+      "Changelog Generator, SQL Lab, and AI News are all live on Netlify.",
   },
   profile: {
     title: "Senior Full-Stack Engineer · Vue · React · Angular · Node.js · AI/LLM",
