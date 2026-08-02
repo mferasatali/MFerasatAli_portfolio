@@ -92,4 +92,17 @@ export const FerasatLabs: LabTool[] = [
 		icon: "mdi-wallet-outline",
 		accent: "#047857",
 	},
+	{
+		id: "anything-log",
+		title: "Anything Log",
+		tagline: "Capture anything · search later",
+		description:
+			"Angular + Supabase private timeline for any life log — custom types, tags, search, CSV export, and auth with Postgres RLS on GitHub Pages.",
+		stack: ["Angular", "Supabase", "Postgres", "GitHub Pages"],
+		href: "https://mferasatali.github.io/anything-log/",
+		repoUrl: "https://github.com/mferasatali/anything-log",
+		status: "live",
+		icon: "mdi-notebook-outline",
+		accent: "#0b1f33",
+	},
 ];

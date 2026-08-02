@@ -171,6 +171,35 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
     selected: false,
   },
   {
+    title: "Anything Log",
+    subtitle: "Universal personal logger",
+    date: "2026",
+    stack: ["Angular", "Supabase", "Postgres", "GitHub Pages"],
+    projectType: "Open Source · Live",
+    isPrivate: false,
+    slug: "anything-log",
+    content: [
+      "Private Angular timeline for any kind of log — custom types, tags, search, and CSV export.",
+      "Supabase Auth + Postgres RLS, hosted on GitHub Pages.",
+    ],
+    links: [
+      {
+        name: "GitHub",
+        color: "link",
+        url: "https://github.com/mferasatali/anything-log",
+      },
+      {
+        name: "Live",
+        color: "link",
+        url: "https://mferasatali.github.io/anything-log/",
+      },
+    ],
+    liveDemo: "https://mferasatali.github.io/anything-log/",
+    animation: "animation-lab-7",
+    projectImages: [],
+    selected: false,
+  },
+  {
     title: "Takafo+",
     subtitle: "Mubadala Investment Company",
     date: "2024 – Present",

@@ -41,7 +41,7 @@ export default {
     live: "Live",
     comingSoon: "Coming soon",
     footnote:
-      "All listed labs are live on Netlify or Vercel.",
+      "All listed labs are live on Netlify, Vercel, or GitHub Pages.",
   },
   profile: {
     title: "Senior Full-Stack Engineer · Vue · React · Angular · Node.js · AI/LLM",
