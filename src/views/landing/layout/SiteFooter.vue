@@ -16,7 +16,7 @@ const emit = defineEmits<{ scrollTop: [] }>();
         &copy; {{ new Date().getFullYear() }} Muhammad Ferasat Ali. {{ t('footer.rights') }}
       </p>
       <div class="footer-links">
-        <RouterLink to="/labs" class="footer-link" target="_blank" rel="noopener">{{ t('header.labs') }}</RouterLink>
+        <RouterLink to="/labs" class="footer-link">{{ t('header.labs') }}</RouterLink>
         <RouterLink to="/resume" class="footer-link">{{ t('header.resume') }}</RouterLink>
         <RouterLink to="/cover-letter" class="footer-link">{{ t('header.coverLetter') }}</RouterLink>
         <RouterLink to="/blog" class="footer-link">{{ t('header.articles') }}</RouterLink>

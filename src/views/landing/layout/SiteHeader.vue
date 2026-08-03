@@ -87,8 +87,6 @@ onUnmounted(() => {
         <RouterLink
           to="/labs"
           class="doc-link labs-link"
-          target="_blank"
-          rel="noopener"
           :aria-label="t('header.labs')"
         >
           <v-icon size="16">mdi-flask-outline</v-icon>
@@ -171,7 +169,7 @@ onUnmounted(() => {
             </button>
 
             <p class="drawer-label">{{ t("header.menuPages") }}</p>
-            <RouterLink to="/labs" class="drawer-doc-link" target="_blank" rel="noopener" @click="drawerOpen = false">
+            <RouterLink to="/labs" class="drawer-doc-link" @click="drawerOpen = false">
               <v-icon size="small">mdi-flask-outline</v-icon>
               {{ t("header.labs") }}
             </RouterLink>

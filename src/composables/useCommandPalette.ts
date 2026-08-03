@@ -63,7 +63,7 @@ export function useCommandPalette() {
         icon: "mdi-flask-outline",
         action: () => {
           open.value = false;
-          window.open(`${window.location.origin}/labs`, "_blank", "noopener,noreferrer");
+          router.push("/labs");
         },
       },
       {
