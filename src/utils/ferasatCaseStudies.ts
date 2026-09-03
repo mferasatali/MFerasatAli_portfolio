@@ -230,6 +230,94 @@ export const FerasatCaseStudies: CaseStudy[] = [
     links: [],
   },
   {
+    slug: "dialect-ai",
+    title: "Dialect AI",
+    subtitle: "Universal Multi-Database Studio & Schema RAG",
+    date: "2026",
+    projectType: "Personal Product · In Progress",
+    isPrivate: false,
+    client: "Personal product",
+    role: "Creator — Full-Stack (Vue 3, Fastify, RAG)",
+    stack: [
+      "Vue 3",
+      "Pinia",
+      "Monaco",
+      "Fastify",
+      "PostgreSQL",
+      "pgvector",
+      "Groq",
+      "Supabase Auth",
+      "DuckDB WASM",
+      "sqlglot",
+    ],
+    overview:
+      "Dialect AI is a universal multi-database SQL studio and schema RAG engine — connect Postgres, MySQL, or SQLite (plus local CSV via DuckDB WASM), explore schemas, run guarded queries, and ask natural language that becomes dialect-aware SQL. Public demo is not live yet; this case study documents the product vision, architecture, and what is already built.",
+    challenge:
+      "Engineers bounce between database GUIs, chatbots that dump entire schemas into prompts (and hit token limits), and fragile copy-paste across dialects. Large real schemas break naive NL2SQL; production connections need read-only safety; and teams often only have an exported Prisma/DDL file with no live DB from their laptop.",
+    solution:
+      "Built a monorepo studio + Fastify API around a shared SchemaGraph contract and DialectBackendAdapter. Vue 3 workbench (Monaco, results grid, ERD, AI copilot) talks to multi-dialect adapters. RAG uses local MiniLM embeddings + pgvector to prune relevant tables (with FK-neighbor expansion and token-budget clamps) before Groq NL2SQL. Offline schema mode, dialect transpile via sqlglot, golden queries, Supabase Auth with per-user scoping, and production safety guards are first-class.",
+    impact: [
+      "End-to-end studio verified against real Supabase data — connections, schema tree, guarded queries, AI generate/explain/fix",
+      "RAG pruning survives large/hub-and-spoke schemas without Groq 413 token overruns",
+      "Postgres + SQLite (+ DuckDB CSV) paths browser-verified; MySQL adapter built",
+      "Offline schema workflow: import Prisma/DDL/JSON → AI-write SQL → copy out when the real DB is unreachable",
+    ],
+    highlights: [
+      "SchemaGraph + multi-dialect backend router (Postgres / MySQL / SQLite)",
+      "pgvector semantic table pruning + golden-query few-shot retrieval",
+      "Production Safety Guard for read-only / write blocking",
+      "Offline schema mode, ERD, saved queries, sqlglot dialect transpile",
+      "Supabase Auth JWT verification + per-user connection ownership",
+    ],
+    metrics: [
+      { value: "RAG", label: "Schema embeddings + prune + golden queries" },
+      { value: "3+", label: "Live SQL dialects (+ DuckDB CSV)" },
+      { value: "NL2SQL", label: "Generate · Explain · Fix via Groq" },
+      { value: "Soon", label: "Public demo URL not published yet" },
+    ],
+    decisions: [
+      {
+        title: "SchemaGraph as the single contract",
+        detail:
+          "Adapters (live Postgres/MySQL/SQLite, Prisma, SQL DDL, JSON) all normalize to one graph so the studio, ERD, completions, and AI prompts never special-case engines.",
+      },
+      {
+        title: "RAG prune before prompt — never dump the whole schema",
+        detail:
+          "Local MiniLM embeddings + pgvector rank tables, expand one FK hop, then clamp to a token budget. Unindexed connections fall back to in-process pruning instead of sending everything.",
+      },
+      {
+        title: "Two AI providers for two jobs",
+        detail:
+          "Groq for chat NL2SQL; @xenova/transformers locally for embeddings (Groq has no embedding model) — no extra paid embedding API.",
+      },
+      {
+        title: "Offline schema as a first-class mode",
+        detail:
+          "Import Prisma/DDL/JSON, generate SQL against the shape with no live DB, copy the query out — matches how people actually work behind VPNs.",
+      },
+      {
+        title: "Safety before cleverness",
+        detail:
+          "Read-only connections and write-statement guards share one Production Safety Guard across dialects; AI rate limits and per-user ownership protect the API.",
+      },
+    ],
+    tradeoffs: [
+      "No public live URL yet — product is actively built; portfolio links to this case study + GitHub.",
+      "MySQL adapter is implemented but not yet verified against a live MySQL instance.",
+      "AI ghost-text on every keystroke deliberately skipped — explicit Generate/Explain/Fix keeps cost and control clearer.",
+      "Adapter SDK packaging (Phase 7) and schema-diff → migration generator are still pending.",
+    ],
+    privateNote:
+      "Public hosted demo is coming soon. Until then, this page is the source of truth for vision, stack, and shipped phases. Happy to walk through a local build on a call.",
+    links: [
+      {
+        name: "GitHub",
+        url: "https://github.com/mferasatali/dialect-ai",
+      },
+    ],
+  },
+  {
     slug: "invoice-generator",
     title: "Invoice Generator",
     subtitle: "Open Source",

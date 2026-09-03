@@ -1,15 +1,27 @@
 <script setup lang="ts">
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
 import ThemeToggle from "@/components/ThemeToggle.vue";
 import LanguageToggle from "@/components/LanguageToggle.vue";
-import { FerasatLabs } from "@/utils/ferasatLabs";
+import { FerasatLabs, type LabTool } from "@/utils/ferasatLabs";
 
 const { t } = useI18n();
+const router = useRouter();
 
-const openLab = (href: string) => {
-  window.open(href, "_blank", "noopener,noreferrer");
+const isInternalHref = (href: string) => href.startsWith("/");
+
+const openLab = (lab: LabTool) => {
+  if (isInternalHref(lab.href)) {
+    router.push(lab.href);
+    return;
+  }
+  window.open(lab.href, "_blank", "noopener,noreferrer");
 };
+
+const labCtaLabel = (lab: LabTool) =>
+  lab.status === "coming-soon" || isInternalHref(lab.href)
+    ? t("labs.readCaseStudy")
+    : t("labs.openNewTab");
 </script>
 
 <template>
@@ -63,10 +75,12 @@ const openLab = (href: string) => {
             <v-btn
               class="modern-btn open-btn"
               :style="{ background: lab.accent }"
-              @click="openLab(lab.href)"
+              @click="openLab(lab)"
             >
-              {{ t("labs.openNewTab") }}
-              <v-icon end size="small">mdi-open-in-new</v-icon>
+              {{ labCtaLabel(lab) }}
+              <v-icon end size="small">
+                {{ isInternalHref(lab.href) ? "mdi-arrow-right" : "mdi-open-in-new" }}
+              </v-icon>
             </v-btn>
             <a
               v-if="lab.repoUrl"

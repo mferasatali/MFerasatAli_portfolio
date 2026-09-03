@@ -37,6 +37,7 @@ export default {
     title: "Tools, die ich wirklich nutze",
     lead: "Changelog, SQL Lab, AI News und Babul Hawaij Events — jedes öffnet in einem neuen Tab.",
     openNewTab: "In neuem Tab öffnen",
+    readCaseStudy: "Case Study lesen",
     localDemo: "Lokale Demo",
     live: "Live",
     comingSoon: "Demnächst",

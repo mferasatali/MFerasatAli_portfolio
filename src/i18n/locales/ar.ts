@@ -37,6 +37,7 @@ export default {
     title: "أدوات أبنيها فعلاً",
     lead: "Changelog وSQL وAI News وBabul Hawaij Events — كل أداة تفتح في تبويب جديد.",
     openNewTab: "فتح في تبويب جديد",
+    readCaseStudy: "قراءة دراسة الحالة",
     localDemo: "تجربة محلية",
     live: "مباشر",
     comingSoon: "قريباً",

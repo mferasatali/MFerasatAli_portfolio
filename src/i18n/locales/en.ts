@@ -36,13 +36,14 @@ export default {
     back: "Back to portfolio",
     eyebrow: "Personal labs",
     title: "Build tools worth showing",
-    lead: "Side projects I use for real work — Vue npm kits (chat, Kanban, tables, schedule), Claude Duo, ClearMD, changelogs, SQL, AI news, events, kameeti, and budgets. Each opens in a new tab.",
+    lead: "Side projects I use for real work — Dialect AI, Claude Duo, ClearMD, changelogs, SQL, AI news, events, and Vue npm kits at the end. Each opens live or to a case study.",
     openNewTab: "Open in new tab",
+    readCaseStudy: "Read case study",
     localDemo: "Local demo",
     live: "Live",
     comingSoon: "Coming soon",
     footnote:
-      "Labs open to live demos, npm packages, or GitHub Releases.",
+      "Labs open to live demos, npm packages, GitHub Releases, or in-progress case studies.",
   },
   profile: {
     title: "Full-Stack Engineer · Vue · React · Node.js · AI/LLM platforms",

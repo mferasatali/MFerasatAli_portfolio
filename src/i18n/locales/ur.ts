@@ -37,6 +37,7 @@ export default {
     title: "ٹولز جو میں واقعی استعمال کرتا ہوں",
     lead: "Changelog، SQL Lab، AI News اور Babul Hawaij Events — ہر ایک نئی ٹیب میں کھلتی ہے۔",
     openNewTab: "نئی ٹیب میں کھولیں",
+    readCaseStudy: "Case study پڑھیں",
     localDemo: "لوکل ڈیمو",
     live: "لائیو",
     comingSoon: "جلد آ رہا ہے",

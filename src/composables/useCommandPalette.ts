@@ -59,7 +59,7 @@ export function useCommandPalette() {
         id: "labs",
         label: t("header.labs"),
         group: t("commandPalette.groups.pages"),
-        keywords: ["labs", "tools", "changelog", "sql", "ai news", "pulse", "babul", "hawaij", "events", "rosca", "kameeti", "expense", "budget", "anything log", "angular", "complete-schedule", "claude duo", "clearmd", "clear-md", "markdown", "vue-ai-chat-kit", "vue-kanban", "vue-custom-data-table", "vue-table-filter", "npm kit"],
+        keywords: ["labs", "tools", "dialect", "dialect-ai", "nl2sql", "rag", "changelog", "sql", "ai news", "pulse", "babul", "hawaij", "events", "rosca", "kameeti", "expense", "budget", "anything log", "angular", "complete-schedule", "claude duo", "clearmd", "clear-md", "markdown", "vue-ai-chat-kit", "vue-kanban", "vue-custom-data-table", "vue-table-filter", "npm kit"],
         icon: "mdi-flask-outline",
         action: () => {
           open.value = false;
