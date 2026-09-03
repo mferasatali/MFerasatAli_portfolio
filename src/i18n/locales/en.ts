@@ -36,7 +36,7 @@ export default {
     back: "Back to portfolio",
     eyebrow: "Personal labs",
     title: "Build tools worth showing",
-    lead: "Side projects I use for real work — Vue kits, Claude Duo, ClearMD, changelogs, SQL, AI news, events, kameeti, and budgets. Each opens in a new tab.",
+    lead: "Side projects I use for real work — Vue npm kits (chat, Kanban, tables, schedule), Claude Duo, ClearMD, changelogs, SQL, AI news, events, kameeti, and budgets. Each opens in a new tab.",
     openNewTab: "Open in new tab",
     localDemo: "Local demo",
     live: "Live",

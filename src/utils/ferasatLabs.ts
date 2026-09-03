@@ -16,6 +16,58 @@ export interface LabTool {
 /** Personal build tools showcased from the portfolio Labs tab. */
 export const FerasatLabs: LabTool[] = [
 	{
+		id: "vue-ai-chat-kit",
+		title: "vue-ai-chat-kit",
+		tagline: "Vue 3 AI chat & conversation UI",
+		description:
+			"Streaming message feed, session history sidebar, prompt suggestions, markdown/code copy — minimal required-key contracts. On npm.",
+		stack: ["Vue 3", "TypeScript", "npm"],
+		href: "https://www.npmjs.com/package/vue-ai-chat-kit",
+		repoUrl: "https://github.com/mferasatali/vue-ai-chat-kit",
+		status: "live",
+		icon: "mdi-robot-outline",
+		accent: "#0891b2",
+	},
+	{
+		id: "vue-kanban-board-kit",
+		title: "vue-kanban-board-kit",
+		tagline: "ATS · succession · VIP · agile boards",
+		description:
+			"Enterprise Vue 3 Kanban with drag-and-drop — ATS pipelines, 9-box succession badges, VIP referrals, and agile task boards. On npm.",
+		stack: ["Vue 3", "TypeScript", "Drag & Drop", "npm"],
+		href: "https://www.npmjs.com/package/vue-kanban-board-kit",
+		repoUrl: "https://github.com/mferasatali/vue-kanban-board-kit",
+		status: "live",
+		icon: "mdi-view-column-outline",
+		accent: "#7c3aed",
+	},
+	{
+		id: "vue-custom-data-table",
+		title: "vue-custom-data-table",
+		tagline: "Excel-style filters · sort · select",
+		description:
+			"Vue 3 enterprise data table with column-header dropdown filters, sorting, row selection, pagination, and backend query mappers. On npm.",
+		stack: ["Vue 3", "TypeScript", "npm"],
+		href: "https://www.npmjs.com/package/vue-custom-data-table",
+		repoUrl: "https://github.com/mferasatali/vue-custom-data-table",
+		status: "live",
+		icon: "mdi-table-large",
+		accent: "#2563eb",
+	},
+	{
+		id: "vue-table-filter-kit",
+		title: "vue-table-filter-kit",
+		tagline: "Search · pills · filter builder",
+		description:
+			"Vue 3 table filter kit — unified search, multi-type filter builder, active filter pills, saved presets, and backend query mapper. On npm.",
+		stack: ["Vue 3", "TypeScript", "npm"],
+		href: "https://www.npmjs.com/package/vue-table-filter-kit",
+		repoUrl: "https://github.com/mferasatali/vue-table-filter-kit",
+		status: "live",
+		icon: "mdi-filter-variant",
+		accent: "#db2777",
+	},
+	{
 		id: "complete-schedule",
 		title: "complete-schedule",
 		tagline: "Vue 3 calendar · slots · meetings",

@@ -38,7 +38,7 @@ const ROUTE_SEO: Record<string, Partial<PageSeoOptions>> = {
   "/labs": {
     title: "Labs — Muhammad Ferasat Ali",
     description:
-      "Personal engineering labs: complete-schedule, Claude Duo, ClearMD, Changelog Generator, SQL Lab, AI News, Babul Hawaij Events, Rosca, Expense Tracker, and Anything Log by Muhammad Ferasat Ali.",
+      "Personal engineering labs: Vue kits (AI chat, Kanban, data table, table filter, schedule), Claude Duo, ClearMD, Changelog Generator, SQL Lab, and more by Muhammad Ferasat Ali.",
   },
   "/blog": {
     title: "Articles — Muhammad Ferasat Ali",
