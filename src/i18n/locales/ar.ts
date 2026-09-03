@@ -41,7 +41,7 @@ export default {
     live: "مباشر",
     comingSoon: "قريباً",
     footnote:
-      "جميع المختبرات المدرجة مباشرة على Netlify أو Vercel.",
+      "المختبرات تفتح عروضًا مباشرة أو حزم npm أو إصدارات GitHub.",
   },
   profile: {
     title: "مهندس Full-Stack أول · Vue · React · Angular · Node.js · AI/LLM",

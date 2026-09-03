@@ -16,6 +16,45 @@ export interface LabTool {
 /** Personal build tools showcased from the portfolio Labs tab. */
 export const FerasatLabs: LabTool[] = [
 	{
+		id: "complete-schedule",
+		title: "complete-schedule",
+		tagline: "Vue 3 calendar · slots · meetings",
+		description:
+			"Vue 3 schedule kit — calendar, slot picker, and meeting card. Pass only required keys; mappers cover Microsoft Graph, availability days, and interview payloads. On npm.",
+		stack: ["Vue 3", "Schedule-X", "TypeScript", "npm"],
+		href: "https://www.npmjs.com/package/complete-schedule",
+		repoUrl: "https://github.com/mferasatali/complete-schedule",
+		status: "live",
+		icon: "mdi-calendar-clock",
+		accent: "#4f46e5",
+	},
+	{
+		id: "claude-duo",
+		title: "Claude Duo",
+		tagline: "Two Claude Code panes on Windows",
+		description:
+			"Open-source Windows CLI that opens two Claude Code sessions in one Windows Terminal window — optional second account via isolated CLAUDE_CONFIG_DIR. npx claude-duo.",
+		stack: ["PowerShell", "Windows Terminal", "Node.js", "npm"],
+		href: "https://www.npmjs.com/package/claude-duo",
+		repoUrl: "https://github.com/mferasatali/claude-duo",
+		status: "live",
+		icon: "mdi-console",
+		accent: "#d97706",
+	},
+	{
+		id: "clear-md",
+		title: "ClearMD",
+		tagline: "Markdown viewer for Windows",
+		description:
+			"Attractive Markdown viewer — Electron desktop app with Open with / drag-drop, plus a VS Code webview extension. Portable builds on GitHub Releases.",
+		stack: ["Electron", "React", "Vite", "VS Code"],
+		href: "https://github.com/mferasatali/clear-md/releases",
+		repoUrl: "https://github.com/mferasatali/clear-md",
+		status: "live",
+		icon: "mdi-language-markdown",
+		accent: "#0e7490",
+	},
+	{
 		id: "changelog-generator",
 		title: "Changelog Generator",
 		tagline: "Commits → release notes",

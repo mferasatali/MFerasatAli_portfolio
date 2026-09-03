@@ -41,7 +41,7 @@ export default {
     live: "لائیو",
     comingSoon: "جلد آ رہا ہے",
     footnote:
-      "Listed labs سب Netlify یا Vercel پر لائیو ہیں۔",
+      "Labs لائیو ڈیمو، npm پیکجز، یا GitHub Releases کھولتے ہیں۔",
   },
   profile: {
     title: "سینئر فل اسٹیک انجینئر · Vue · React · Angular · Node.js · AI/LLM",
