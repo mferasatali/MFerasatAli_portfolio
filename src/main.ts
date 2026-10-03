@@ -42,4 +42,8 @@ requestInterceptor();
 
 registerPlugins(app);
 
-app.mount("#app");
+// Resolve the initial route before mount so deep links (e.g. /projects/dialect-ai)
+// don't flash the wrong path / leave the HTML boot splash stuck.
+router.isReady().then(() => {
+  app.mount("#app");
+});
