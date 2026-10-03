@@ -1,7 +1,7 @@
 import { PROFILE } from "@/utils/ferasatProfile";
 
 /** GitHub Pages production URL (no trailing slash) */
-export const SITE_URL = "https://mferasatali.github.io/MFerasatAli_portfolio";
+export const SITE_URL = "https://mferasatali.github.io";
 
 export const SITE_NAME = "Muhammad Ferasat Ali — Portfolio";
 

@@ -31,7 +31,7 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
     links: [],
     animation: "animation-1",
     projectImages: [],
-    selected: true,
+    selected: false,
   },
   {
     title: "Qudra Tech",
@@ -85,15 +85,15 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
       "Supabase",
       "Monaco",
     ],
-    projectType: "Personal Product · In Progress",
+    projectType: "Personal Product · Public",
     isPrivate: false,
     featured: true,
     slug: "dialect-ai",
     content: [
       "Problem: NL2SQL and SQL studios choke on large schemas, mixed dialects, and offline Prisma/DDL-only workflows.",
-      "Built: Vue 3 + Fastify studio with SchemaGraph adapters, RAG table pruning, Groq NL2SQL, safety guards, ERD, and transpile.",
-      "Result: Working product locally against real DBs — public demo URL coming soon; full case study published.",
-      "Tradeoff: Shipping depth before a hosted demo — architecture and phases documented first.",
+      "Built: Vue 3 + Fastify studio with SchemaGraph adapters, RAG table pruning, full-request token budgets, Groq NL2SQL, safety guards, ERD, and transpile.",
+      "Result: Working product against real DBs — large-schema AI no longer 413s; full case study with product gallery.",
+      "Tradeoff: Depth and correctness before a hosted public demo URL.",
     ],
     links: [
       {
@@ -101,10 +101,22 @@ export const FerasatProjects: IProjects.PersonalProjectsPayload[] = [
         color: "link",
         url: "https://github.com/mferasatali/dialect-ai",
       },
+      {
+        name: "Case study",
+        color: "link",
+        url: "/projects/dialect-ai",
+      },
     ],
     animation: "animation-dialect",
-    projectImages: [],
-    selected: false,
+    projectImages: [
+      "/projectImages/dialect-ai/03-real-landing.png",
+      "/projectImages/dialect-ai/01-hero.jpg",
+      "/projectImages/dialect-ai/04-workbench.jpg",
+      "/projectImages/dialect-ai/05-ask-ai.jpg",
+      "/projectImages/dialect-ai/06-erd.jpg",
+      "/projectImages/dialect-ai/07-results.jpg",
+    ],
+    selected: true,
   },
   {
     title: "SQL Lab",

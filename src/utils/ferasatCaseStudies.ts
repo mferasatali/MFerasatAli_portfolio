@@ -22,6 +22,8 @@ export interface CaseStudy {
   tradeoffs?: string[];
   /** Privacy / walkthrough note for restricted work */
   privateNote?: string;
+  /** Optional product gallery (public paths under /projectImages/...) */
+  gallery?: { src: string; alt: string }[];
 }
 
 export const FerasatCaseStudies: CaseStudy[] = [
@@ -234,7 +236,7 @@ export const FerasatCaseStudies: CaseStudy[] = [
     title: "Dialect AI",
     subtitle: "Universal Multi-Database Studio & Schema RAG",
     date: "2026",
-    projectType: "Personal Product · In Progress",
+    projectType: "Personal Product · Public",
     isPrivate: false,
     client: "Personal product",
     role: "Creator — Full-Stack (Vue 3, Fastify, RAG)",
@@ -251,20 +253,22 @@ export const FerasatCaseStudies: CaseStudy[] = [
       "sqlglot",
     ],
     overview:
-      "Dialect AI is a universal multi-database SQL studio and schema RAG engine — connect Postgres, MySQL, or SQLite (plus local CSV via DuckDB WASM), explore schemas, run guarded queries, and ask natural language that becomes dialect-aware SQL. Public demo is not live yet; this case study documents the product vision, architecture, and what is already built.",
+      "Dialect AI is a multi-dialect SQL studio with AI that still works on large, real schemas — connect Postgres, MySQL, or SQLite (plus local CSV via DuckDB WASM), explore schemas, run guarded queries, and turn plain English into dialect-aware SQL. Built end to end as a monorepo product with auth, RAG, and a hard request-size gate so AI calls survive free-tier model limits.",
     challenge:
       "Engineers bounce between database GUIs, chatbots that dump entire schemas into prompts (and hit token limits), and fragile copy-paste across dialects. Large real schemas break naive NL2SQL; production connections need read-only safety; and teams often only have an exported Prisma/DDL file with no live DB from their laptop.",
     solution:
-      "Built a monorepo studio + Fastify API around a shared SchemaGraph contract and DialectBackendAdapter. Vue 3 workbench (Monaco, results grid, ERD, AI copilot) talks to multi-dialect adapters. RAG uses local MiniLM embeddings + pgvector to prune relevant tables (with FK-neighbor expansion and token-budget clamps) before Groq NL2SQL. Offline schema mode, dialect transpile via sqlglot, golden queries, Supabase Auth with per-user scoping, and production safety guards are first-class.",
+      "Built a monorepo studio + Fastify API around a shared SchemaGraph contract and DialectBackendAdapter. Vue 3 workbench (Monaco, results grid, ERD, AI copilot, dark/light landing) talks to multi-dialect adapters. RAG uses local MiniLM embeddings + pgvector to prune relevant tables, then a permanent end-to-end token budget trims system + schema + golden examples before every Groq call — fixing real 413 TPM failures. Offline schema mode, sqlglot transpile, golden queries, Supabase Auth with per-user scoping, and write Safety Guards are first-class.",
     impact: [
       "End-to-end studio verified against real Supabase data — connections, schema tree, guarded queries, AI generate/explain/fix",
-      "RAG pruning survives large/hub-and-spoke schemas without Groq 413 token overruns",
+      "Full-request token budget + RAG pruning keeps large schemas under an 8k TPM model instead of hard 413 failures",
       "Postgres + SQLite (+ DuckDB CSV) paths browser-verified; MySQL adapter built",
-      "Offline schema workflow: import Prisma/DDL/JSON → AI-write SQL → copy out when the real DB is unreachable",
+      "Offline schema workflow: import Prisma/DDL/JSON → index for AI → generate SQL → copy out when the real DB is unreachable",
+      "Product UI refresh: landing hero, dark/light appearance, emoji-free toolbar iconography",
     ],
     highlights: [
       "SchemaGraph + multi-dialect backend router (Postgres / MySQL / SQLite)",
       "pgvector semantic table pruning + golden-query few-shot retrieval",
+      "Permanent Groq input-budget gate (system + schema + examples)",
       "Production Safety Guard for read-only / write blocking",
       "Offline schema mode, ERD, saved queries, sqlglot dialect transpile",
       "Supabase Auth JWT verification + per-user connection ownership",
@@ -273,7 +277,7 @@ export const FerasatCaseStudies: CaseStudy[] = [
       { value: "RAG", label: "Schema embeddings + prune + golden queries" },
       { value: "3+", label: "Live SQL dialects (+ DuckDB CSV)" },
       { value: "NL2SQL", label: "Generate · Explain · Fix via Groq" },
-      { value: "Soon", label: "Public demo URL not published yet" },
+      { value: "8k→fit", label: "Hard TPM budget before every AI call" },
     ],
     decisions: [
       {
@@ -282,9 +286,9 @@ export const FerasatCaseStudies: CaseStudy[] = [
           "Adapters (live Postgres/MySQL/SQLite, Prisma, SQL DDL, JSON) all normalize to one graph so the studio, ERD, completions, and AI prompts never special-case engines.",
       },
       {
-        title: "RAG prune before prompt — never dump the whole schema",
+        title: "RAG prune first — then budget the whole request",
         detail:
-          "Local MiniLM embeddings + pgvector rank tables, expand one FK hop, then clamp to a token budget. Unindexed connections fall back to in-process pruning instead of sending everything.",
+          "Schema-only clamps still left ~9.5k-token Groq requests. The permanent fix measures system + user + golden examples and drops examples/tables until the payload fits under TPM.",
       },
       {
         title: "Two AI providers for two jobs",
@@ -294,22 +298,48 @@ export const FerasatCaseStudies: CaseStudy[] = [
       {
         title: "Offline schema as a first-class mode",
         detail:
-          "Import Prisma/DDL/JSON, generate SQL against the shape with no live DB, copy the query out — matches how people actually work behind VPNs.",
+          "Import Prisma/DDL/JSON, index for AI, generate SQL against the shape with no live DB — matches how people work behind VPNs.",
       },
       {
         title: "Safety before cleverness",
         detail:
-          "Read-only connections and write-statement guards share one Production Safety Guard across dialects; AI rate limits and per-user ownership protect the API.",
+          "Read-only connections and write-statement guards share one Production Safety Guard; AI rate limits and per-user ownership protect the API.",
       },
     ],
     tradeoffs: [
-      "No public live URL yet — product is actively built; portfolio links to this case study + GitHub.",
+      "Hosted public demo app URL not published yet — GitHub + this case study carry the product story.",
       "MySQL adapter is implemented but not yet verified against a live MySQL instance.",
       "AI ghost-text on every keystroke deliberately skipped — explicit Generate/Explain/Fix keeps cost and control clearer.",
-      "Adapter SDK packaging (Phase 7) and schema-diff → migration generator are still pending.",
+      "Adapter SDK packaging and schema-diff → migration generator are still pending.",
     ],
     privateNote:
-      "Public hosted demo is coming soon. Until then, this page is the source of truth for vision, stack, and shipped phases. Happy to walk through a local build on a call.",
+      "Open-source on GitHub. Happy to walk through a local build, the RAG prune path, or the token-budget gate on a call.",
+    gallery: [
+      {
+        src: "/projectImages/dialect-ai/03-real-landing.png",
+        alt: "Dialect AI Studio landing and sign-in",
+      },
+      {
+        src: "/projectImages/dialect-ai/01-hero.jpg",
+        alt: "Dialect AI product hero — SQL workbench on desk",
+      },
+      {
+        src: "/projectImages/dialect-ai/04-workbench.jpg",
+        alt: "SQL workbench with schema tree and editor",
+      },
+      {
+        src: "/projectImages/dialect-ai/05-ask-ai.jpg",
+        alt: "Ask AI natural language to SQL",
+      },
+      {
+        src: "/projectImages/dialect-ai/06-erd.jpg",
+        alt: "Schema ERD diagram",
+      },
+      {
+        src: "/projectImages/dialect-ai/07-results.jpg",
+        alt: "Query results grid",
+      },
+    ],
     links: [
       {
         name: "GitHub",

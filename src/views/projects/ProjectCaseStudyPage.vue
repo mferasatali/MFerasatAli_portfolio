@@ -90,6 +90,16 @@ onMounted(() => {
         </div>
       </div>
 
+      <section v-if="study.gallery?.length" class="case-block gallery-block">
+        <h2>Product gallery</h2>
+        <div class="gallery-grid">
+          <figure v-for="shot in study.gallery" :key="shot.src" class="gallery-item">
+            <img :src="shot.src" :alt="shot.alt" loading="lazy" />
+            <figcaption>{{ shot.alt }}</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="case-block">
         <h2>Overview</h2>
         <p>{{ study.overview }}</p>
@@ -261,6 +271,51 @@ onMounted(() => {
   margin: 0 auto;
   padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 4vw, 2rem) 5rem;
 }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 720px) {
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.gallery-item {
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--color-surface, rgba(255, 255, 255, 0.03));
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: #0b0f14;
+}
+
+.gallery-item figcaption {
+  padding: 0.65rem 0.85rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+.gallery-item:first-child {
+  grid-column: 1 / -1;
+}
+
+.gallery-item:first-child img {
+  aspect-ratio: 16 / 9;
+}
+
 
 .case-badge {
   display: inline-block;

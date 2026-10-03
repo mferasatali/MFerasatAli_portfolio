@@ -227,6 +227,8 @@ export const CASE_STUDY_ARCHITECTURE: Record<string, string> = {
     "Vue assessment client → NestJS/Node API → PostgreSQL · OpenAI question gen · WebSocket proctoring",
   "ai-avatars":
     "Vue interview flows → Node orchestration → Heygen live API + OpenAI conversation layer",
+  "dialect-ai":
+    "Vue 3 Studio (Monaco) → Fastify API → multi-dialect adapters · Supabase Auth + pgvector RAG · Groq NL2SQL with end-to-end token budget · DuckDB WASM CSV · sqlglot transpile",
   "invoice-generator":
     "Vue 3 + Pinia SPA → localStorage · client-side PDF export (no backend)",
 };

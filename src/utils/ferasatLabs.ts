@@ -20,11 +20,11 @@ export const FerasatLabs: LabTool[] = [
 		title: "Dialect AI",
 		tagline: "Multi-database studio · schema RAG · NL2SQL",
 		description:
-			"Universal SQL studio with multi-dialect connections, schema RAG, NL→SQL, safety guards, ERD, and dialect transpile. Case study live — public demo coming soon.",
+			"Universal SQL studio with multi-dialect connections, schema RAG, NL→SQL with hard token budgets, safety guards, ERD, and dialect transpile. Full case study + product gallery live.",
 		stack: ["Vue 3", "Fastify", "pgvector", "Groq", "Supabase"],
 		href: "/projects/dialect-ai",
 		repoUrl: "https://github.com/mferasatali/dialect-ai",
-		status: "coming-soon",
+		status: "live-local",
 		icon: "mdi-database-cog-outline",
 		accent: "#06b6d4",
 	},
